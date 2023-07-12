@@ -105,9 +105,10 @@ public class GameController : MonoBehaviour
             }
         }
 
+        centerVector = new Vector2(CenterPoint.position.x, CenterPoint.position.z);
         fadeStartDistance = CenterPoint.gameObject.GetComponent<CenterPointControl>().startDistance;
         fadeEndDistance = CenterPoint.gameObject.GetComponent<CenterPointControl>().endDistance;
-
+        
     }
     
 }
