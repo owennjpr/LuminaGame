@@ -44,6 +44,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
         public bool haltWalk;
         public bool flipped;
+        // public float offsetAngle;
         // Use this for initialization
         private void Start()
         {
@@ -248,7 +249,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         transform.eulerAngles.y + 180,
                         transform.eulerAngles.z
                     ));
-            }
+            } 
+
         }
 
 

@@ -9,6 +9,8 @@ public class CenterPointControl : MonoBehaviour
     private SphereCollider StartCollider;
     private SphereCollider EndCollider;
     public GameController controller;
+    public bool isMoving;
+    public Vector3 relativeSpawnPos;
 
     void Start() {
         controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
@@ -16,11 +18,13 @@ public class CenterPointControl : MonoBehaviour
         StartCollider = transform.GetChild(0).GetComponent<SphereCollider>();
         EndCollider = transform.GetChild(1).GetComponent<SphereCollider>();
 
-        StartCollider.radius = startDistance;
-        EndCollider.radius = endDistance;
+        StartCollider.radius = startDistance - 1;
+        EndCollider.radius = endDistance - 1;
     }
 
     public void updateCenterState() {
         controller.findNewCenter();
     }
+
+    
 }

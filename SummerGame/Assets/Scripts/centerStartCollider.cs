@@ -17,4 +17,10 @@ public class centerStartCollider : MonoBehaviour
             control.updateCenterState();
         }
     }
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Player")) {
+            Debug.Log("exiting");
+            control.updateCenterState();
+        }
+    }
 }
