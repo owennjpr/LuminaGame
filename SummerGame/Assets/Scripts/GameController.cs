@@ -7,7 +7,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameController : MonoBehaviour
 {
-    private Transform CenterPoint;
+    public Transform CenterPoint;
     public GameObject player;
     private Vector2 playerVector;
     private Vector2 centerVector;
@@ -21,7 +21,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CenterPoint = transform.GetChild(0).transform;
+        findNewCenter();
+
         centerVector = new Vector2(CenterPoint.position.x, CenterPoint.position.z);
 
         player = GameObject.FindWithTag("Player");
@@ -32,10 +33,6 @@ public class GameController : MonoBehaviour
         fadeRange = fadeEndDistance - fadeStartDistance;
 
         controller = player.GetComponent<FirstPersonController>();
-        // if (CenterPoint != null & player != null)
-        // {
-        //     Debug.Log("YAYAYAYAYAYAYAY");
-        // }
     }
 
     // Update is called once per frame
@@ -71,6 +68,46 @@ public class GameController : MonoBehaviour
         player.transform.position = Vector3.MoveTowards(player.transform.position, CenterPoint.position, 5);
         yield return new WaitForSeconds(0.05f);
         controller.haltWalk = false;
+    }
+
+    public void findNewCenter() {
+        Debug.Log("updating");
+        GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
+        GameObject[] activeCenters = {null, null};
+        foreach(GameObject c in centers) {
+            Vector2 currCenterVector = new Vector2(c.transform.position.x, c.transform.position.z);
+            float distance = Vector2.Distance(currCenterVector, playerVector);
+            // Debug.Log("found center");
+
+            if (distance <= c.GetComponent<CenterPointControl>().startDistance) {
+                // Debug.Log("found overlapping");
+                if(activeCenters[0] == null) {
+                    // Debug.Log("found center 1");
+                    activeCenters[0] = c;
+                } else {
+                    // Debug.Log("found center 2");
+                    activeCenters[1] = c;
+                }
+            }
+        }
+
+        if (activeCenters[0] == null) {
+            return;
+        } else if (activeCenters[1] == null) {
+            CenterPoint = activeCenters[0].transform;
+        } else {
+            float c1range = activeCenters[0].GetComponent<CenterPointControl>().startDistance;
+            float c2range = activeCenters[1].GetComponent<CenterPointControl>().startDistance;
+            if (c1range > c2range) {
+                CenterPoint = activeCenters[0].transform;
+            } else {
+                CenterPoint = activeCenters[1].transform;
+            }
+        }
+
+        fadeStartDistance = CenterPoint.gameObject.GetComponent<CenterPointControl>().startDistance;
+        fadeEndDistance = CenterPoint.gameObject.GetComponent<CenterPointControl>().endDistance;
+
     }
     
 }
