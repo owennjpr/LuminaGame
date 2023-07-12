@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
+
 
 public class GameController : MonoBehaviour
 {
     private Transform CenterPoint;
-    private GameObject player;
+    public GameObject player;
     private Vector2 playerVector;
     private Vector2 centerVector;
     public Image fullScreenFade;
@@ -14,6 +16,8 @@ public class GameController : MonoBehaviour
     public float fadeStartDistance;
     public float fadeEndDistance;
     private float fadeRange;
+
+    public FirstPersonController controller;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,8 @@ public class GameController : MonoBehaviour
         fadeColor.a = 0.0f;
         
         fadeRange = fadeEndDistance - fadeStartDistance;
+
+        controller = player.GetComponent<FirstPersonController>();
         // if (CenterPoint != null & player != null)
         // {
         //     Debug.Log("YAYAYAYAYAYAYAY");
@@ -35,19 +41,38 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerVector = new Vector2(player.transform.position.x, player.transform.position.z);
+        //if (!returning) {
+            playerVector = new Vector2(player.transform.position.x, player.transform.position.z);
         
-        float distance = Vector2.Distance(centerVector, playerVector);
-        //Debug.Log(distance);
+            float distance = Vector2.Distance(centerVector, playerVector);
         
-        if (distance >= fadeStartDistance) {
-            float x = (((distance - fadeStartDistance)/fadeRange));
-            // Debug.Log(x);
-            fadeColor.a = Mathf.Min(x, 1.0f);
-        } else {
-            fadeColor.a = 0.0f;
-        }
-        fullScreenFade.color = fadeColor;
-
+            if (distance >= fadeStartDistance) {
+                float x = (((distance - fadeStartDistance)/fadeRange));
+                fadeColor.a = Mathf.Min(x, 1.0f);
+                if (x > 1.5f) {
+                    // controller.testWalk = false;
+                    // controller.flipped = !(controller.flipped);
+                    // player.transform.position = Vector3.MoveTowards(player.transform.position, CenterPoint.position, 5);
+                    // controller.testWalk = true;
+                    // fadeColor.a = 0.0f;
+                    // fullScreenFade.color = fadeColor;
+                    StartCoroutine(oobReturn());
+                    
+                }
+            } else {
+                fadeColor.a = 0.0f;
+            }
+            fullScreenFade.color = fadeColor;
     }
+
+    private IEnumerator oobReturn() {
+        controller.haltWalk = true;
+        controller.flipped = !(controller.flipped);
+        player.transform.position = Vector3.MoveTowards(player.transform.position, CenterPoint.position, 5);
+        yield return new WaitForSeconds(0.05f);
+        controller.haltWalk = false;
+    }
+    
 }
+
+
