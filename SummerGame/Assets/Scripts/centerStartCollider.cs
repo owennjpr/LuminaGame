@@ -15,6 +15,7 @@ public class centerStartCollider : MonoBehaviour
         if (other.CompareTag("Player")) {
             Debug.Log("entering");
             control.updateCenterState();
+            control.checkFade();
         }
     }
     private void OnTriggerExit(Collider other) {

@@ -14,7 +14,9 @@ public class GameController : MonoBehaviour
     private Vector2 playerVector;
     private Vector2 centerVector;
     public Image fullScreenFade;
+    public Image DynamicFullScreenFade;
     private Color fadeColor;
+    private Color DynamicFadeColor;
     public float fadeStartDistance;
     public float fadeEndDistance;
     private float fadeRange;
@@ -29,6 +31,8 @@ public class GameController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         fadeColor = fullScreenFade.color;
+        DynamicFadeColor = DynamicFullScreenFade.color;
+        DynamicFadeColor.a = 0.0f;
         fadeColor.a = 0.0f;
         
         controller = player.GetComponent<FirstPersonController>();
@@ -119,6 +123,24 @@ public class GameController : MonoBehaviour
         }
     }
     
+    public void checkFade() {
+        if (fadeColor.a > 0.0f) {
+            StartCoroutine(manualFade(fadeColor.a));
+            Debug.Log("Howdy");
+        }
+    }
+
+    private IEnumerator manualFade(float startingAlpha) {
+        float currAlpha = startingAlpha;
+        while (currAlpha > 0.0f) {
+            // Debug.Log(currAlpha);
+            DynamicFadeColor.a = currAlpha;
+            DynamicFullScreenFade.color = DynamicFadeColor;
+            currAlpha -= 0.01f;
+            yield return new WaitForSeconds(0.01f);
+        }
+        DynamicFadeColor.a = 0.0f;
+    }
 }
 
 

@@ -26,5 +26,7 @@ public class CenterPointControl : MonoBehaviour
         controller.findNewCenter();
     }
 
-    
+    public void checkFade() {
+        controller.checkFade();
+    }
 }
