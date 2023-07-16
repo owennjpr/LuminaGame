@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 8771551064801820253}
   - component: {fileID: 6145627559233268609}
   - component: {fileID: 2850728878367583381}
+  - component: {fileID: -1346975066042483555}
   m_Layer: 0
   m_Name: MovingSphere
   m_TagString: Untagged
@@ -304,3 +305,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90433d3893d3ee4198fa394be9fd37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &-1346975066042483555
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340519483149600821}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

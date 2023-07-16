@@ -58,7 +58,7 @@ public class FloatingLightControl : MonoBehaviour
             }
         }
         if (idle) {
-            Debug.Log("I am chilling");
+            // Debug.Log("I am chilling");
             time += Time.deltaTime;
             float y = Mathf.Sin(time / idle_yMod);
             float x = Mathf.Sin(time / idle_xMod);
