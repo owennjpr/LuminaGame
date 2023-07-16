@@ -11,10 +11,20 @@ public class FloatingLightControl : MonoBehaviour
     public GameObject objectToSpawn;
     private Transform controller;
     public float speed;
+    private bool idle;
+    private float time;
+    private float idle_xMod;
+    private float idle_yMod;
+    private float idle_zMod;
     
     // Start is called before the first frame update
     void Start()
     {
+        idle_xMod = Random.Range(0.5f, 2.5f);
+        idle_yMod = Random.Range(0.5f, 2.5f);
+        idle_zMod = Random.Range(0.5f, 2.5f);
+        idle = true;
+        time = 0;
         controller = GameObject.FindWithTag("GameController").transform;
         startPos = transform.position;
         playerHand = GameObject.FindWithTag("Player").transform.GetChild(0).GetChild(0);
@@ -27,6 +37,7 @@ public class FloatingLightControl : MonoBehaviour
             beingPulled = false;
         }
         if (beingPulled) {
+            idle = false;
             // Debug.Log("Bam"); 
             if (transform.position != playerHand.position) {
                 // Debug.Log("en route");
@@ -41,7 +52,18 @@ public class FloatingLightControl : MonoBehaviour
         } else {
             if (transform.position != startPos) {
                 transform.position = Vector3.MoveTowards(transform.position, startPos, 3*Time.deltaTime);
+            } else {
+                idle = true;
+                time = 0;
             }
+        }
+        if (idle) {
+            Debug.Log("I am chilling");
+            time += Time.deltaTime;
+            float y = Mathf.Sin(time / idle_yMod);
+            float x = Mathf.Sin(time / idle_xMod);
+            float z = Mathf.Sin (time / idle_zMod);
+            transform.position = startPos + new Vector3(0.4f * x, 0.6f * y, 0.4f * z);
         }
     }
 
