@@ -11,11 +11,12 @@ public class centerEndCollider : MonoBehaviour
         control = transform.parent.GetComponent<CenterPointControl>();
     }
 
-    // private void OnTriggerExit(Collider other) {
-    //     if (other.CompareTag("Player")) {
-    //         Debug.Log("exiting");
-    //         control.updateCenterState();
-    //     }
-    // }
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Player")) {
+            Debug.Log("exiting");
+            control.updateCenterState();
+            control.checkFade();
+        }
+    }
 
 }

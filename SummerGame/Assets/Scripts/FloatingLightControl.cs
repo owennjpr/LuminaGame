@@ -16,6 +16,12 @@ public class FloatingLightControl : MonoBehaviour
     private float idle_xMod;
     private float idle_yMod;
     private float idle_zMod;
+    private int ID;
+
+    public Material mat1;
+    public Material mat2;
+    public Material mat3;
+    public Material mat4;
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,27 @@ public class FloatingLightControl : MonoBehaviour
         playerHand = GameObject.FindWithTag("Player").transform.GetChild(0).GetChild(0);
     }
 
+
+    public void Init(Vector3[] path, int lightID) {
+        pathArray = path;
+        // Debug.Log(lightID);
+        ID = lightID;
+        switch (ID) {
+            case 0:
+            transform.GetComponent<MeshRenderer> ().material = mat1;
+                break;
+            case 1:
+            transform.GetComponent<MeshRenderer> ().material = mat2;
+                break;
+            case 2:
+            transform.GetComponent<MeshRenderer> ().material = mat3;
+                break;
+            case 3:
+            transform.GetComponent<MeshRenderer> ().material = mat4;
+                break;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,13 +65,11 @@ public class FloatingLightControl : MonoBehaviour
         }
         if (beingPulled) {
             idle = false;
-            // Debug.Log("Bam"); 
             if (transform.position != playerHand.position) {
-                // Debug.Log("en route");
                 transform.position = Vector3.MoveTowards(transform.position, playerHand.position, 15*Time.deltaTime);
             } else {
                 if (Input.GetKeyDown("e")) {
-                    Debug.Log("E");
+                    // Debug.Log("E");
                     StartCoroutine(spawnObject());
                     
                 }
@@ -58,7 +83,6 @@ public class FloatingLightControl : MonoBehaviour
             }
         }
         if (idle) {
-            // Debug.Log("I am chilling");
             time += Time.deltaTime;
             float y = Mathf.Sin(time / idle_yMod);
             float x = Mathf.Sin(time / idle_xMod);
@@ -75,7 +99,8 @@ public class FloatingLightControl : MonoBehaviour
         
         GameObject newLight = Instantiate(objectToSpawn, transform.position, transform.rotation, controller);
         GetComponent<Renderer>().enabled = false;
-        newLight.GetComponent<ControlledLightMove>().Init(pathArray, speed);
+        transform.parent.GetComponent<LightManager>().lightUsed(ID);
+        newLight.GetComponent<ControlledLightMove>().Init(pathArray, speed, ID);
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
     }

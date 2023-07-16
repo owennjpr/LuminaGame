@@ -16,6 +16,7 @@ public class LightManager : MonoBehaviour
     public GameObject lightPrefab;
     public  CenterPointControl centerpoint;
     private Transform centerpointTrans;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +47,25 @@ public class LightManager : MonoBehaviour
             Vector3 offset = new Vector3(Random.Range(-1 * range, range), Random.Range(2, 5), Random.Range(-1 * range, range));
 
             GameObject newLight = Instantiate(lightPrefab, centerpointTrans.position + offset, centerpointTrans.rotation, transform);
+            switch (index) {
+                case 0:
+                    newLight.GetComponent<FloatingLightControl>().Init(pathArray1, index);
+                    break;
+                case 1:
+                    newLight.GetComponent<FloatingLightControl>().Init(pathArray2, index);
+                    break;
+                case 2:
+                    newLight.GetComponent<FloatingLightControl>().Init(pathArray3, index);
+                    break;
+                case 3:
+                    newLight.GetComponent<FloatingLightControl>().Init(pathArray4, index);
+                    break;
+            }
         }
+    }
+
+    public void lightUsed(int lightID) {
+        currNumLights--;
+        currLightCounts[lightID]--;
     }
 }

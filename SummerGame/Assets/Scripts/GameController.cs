@@ -76,21 +76,16 @@ public class GameController : MonoBehaviour
     }
 
     public void findNewCenter() {
-        // Debug.Log("updating");
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
         GameObject[] activeCenters = {null, null};
         foreach(GameObject c in centers) {
             Vector2 currCenterVector = new Vector2(c.transform.position.x, c.transform.position.z);
             float distance = Vector2.Distance(currCenterVector, playerVector);
-            // Debug.Log(distance);
-
+            
             if (distance <= c.GetComponent<CenterPointControl>().startDistance) {
-                // Debug.Log("found overlapping");
                 if(activeCenters[0] == null) {
-                    // Debug.Log("found center 1");
                     activeCenters[0] = c;
                 } else {
-                    // Debug.Log("found center 2");
                     activeCenters[1] = c;
                 }
             }
@@ -114,13 +109,12 @@ public class GameController : MonoBehaviour
         fadeEndDistance = CenterPoint.gameObject.GetComponent<CenterPointControl>().endDistance;
         fadeRange = fadeEndDistance - fadeStartDistance;
 
-        // Debug.Log(fadeStartDistance);
-        // Debug.Log(fadeEndDistance);
         centerVector = new Vector2(CenterPoint.position.x, CenterPoint.position.z);
         movingCenter = CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving;
         if (!movingCenter) {
             StableCenterPoint = CenterPoint;
         }
+        RenderSettings.fogDensity = 1.2f/fadeStartDistance;
     }
     
     public void checkFade() {
