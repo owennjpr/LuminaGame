@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1577125972424700457
+--- !u!1 &4899409599636576376
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4061379266975235736}
-  - component: {fileID: 4719593235605265058}
-  - component: {fileID: 4326668005771410768}
-  - component: {fileID: 678298420494445235}
-  - component: {fileID: 281953397018797850}
-  m_Layer: 6
-  m_Name: test light
-  m_TagString: Untagged
+  - component: {fileID: 5484515994075976435}
+  - component: {fileID: 5262118898015849981}
+  - component: {fileID: 7543647853951306781}
+  - component: {fileID: 7530189892562835325}
+  - component: {fileID: 1056144832450607706}
+  m_Layer: 7
+  m_Name: knob (initial)
+  m_TagString: dial knob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4061379266975235736
+--- !u!4 &5484515994075976435
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577125972424700457}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 2.5, z: -6}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 1
+  m_GameObject: {fileID: 4899409599636576376}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4719593235605265058
+--- !u!33 &5262118898015849981
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577125972424700457}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4326668005771410768
+  m_GameObject: {fileID: 4899409599636576376}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &7543647853951306781
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577125972424700457}
+  m_GameObject: {fileID: 4899409599636576376}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49d06b3518151874c8d502847c8d44a6, type: 2}
+  - {fileID: 2100000, guid: f66cc7c5e03f9a8449273ea896b3b20f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &678298420494445235
-SphereCollider:
+--- !u!65 &7530189892562835325
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577125972424700457}
+  m_GameObject: {fileID: 4899409599636576376}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -104,29 +104,19 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Size: {x: 3, y: 3, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &281953397018797850
+--- !u!114 &1056144832450607706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577125972424700457}
+  m_GameObject: {fileID: 4899409599636576376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31707a395b6cc49478d05254f4908982, type: 3}
+  m_Script: {fileID: 11500000, guid: 2337791bb48e246488bd314a0523935b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathArray:
-  - {x: 0, y: 2, z: 10}
-  - {x: -24, y: 2, z: 40}
-  - {x: 22, y: 2, z: 63}
-  - {x: 0, y: 2, z: 85}
-  objectToSpawn: {fileID: 1340519483149600821, guid: b6b4478c9075f3846ae224f65584d255,
-    type: 3}
-  speed: 4
-  mat1: {fileID: 2100000, guid: 49d06b3518151874c8d502847c8d44a6, type: 2}
-  mat2: {fileID: 2100000, guid: d2a85a6443266b246a801aab52396a65, type: 2}
-  mat3: {fileID: 2100000, guid: 2ff0ef9adc40e6148ae87b80c7df585c, type: 2}
-  mat4: {fileID: 2100000, guid: 115b73a7edcb9f448b477350699fbb94, type: 2}
+  center: {x: 0, y: 0, z: 0}
+  ID: 0

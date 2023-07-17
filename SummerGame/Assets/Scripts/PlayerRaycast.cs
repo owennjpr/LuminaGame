@@ -25,17 +25,25 @@ public class PlayerRaycast : MonoBehaviour
         Ray ray = mainCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 15, mask)) {
+            if(Input.GetMouseButtonDown(0)) {
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Dial Control")) {
+                    hit.collider.gameObject.GetComponent<knobControl>().clicked();
+                }
+            }
+            
             if (Input.GetMouseButtonDown(1)) {
-                hit.collider.gameObject.GetComponent<FloatingLightControl>().playerClicked();
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floating Light")) {
+                    hit.collider.gameObject.GetComponent<FloatingLightControl>().playerClicked();
+                }
             }
             rotation += 90 *Time.deltaTime;
             crosshair.rectTransform.localEulerAngles = new Vector3(0, 0, rotation);
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            //Debug.Log("Did Hit");
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            // Debug.Log("Did Hit");
             crosshair.color = active;
-            crosshair.rectTransform.localScale = new Vector3(3, 3, 1);
+            crosshair.rectTransform.localScale = new Vector3(2, 2, 1);
         } else {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             //Debug.Log("Did not Hit");
             crosshair.color = inactive;
             crosshair.rectTransform.localScale = new Vector3(1, 1, 1);

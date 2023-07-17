@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - centerpoint
+  - dial knob
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Water
   - UI
   - Floating Light
-  - 
-  - 
+  - Dial Control
+  - Dial Point
   - 
   - 
   - 
