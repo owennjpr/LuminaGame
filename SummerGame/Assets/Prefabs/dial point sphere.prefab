@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7613852794635235664
 MeshFilter:
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758275114161037893}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1570289342812523595
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   active: 0
   activeMat: {fileID: 2100000, guid: 72ec1ee1af96f944cb5dc947f966bf54, type: 2}
   inactiveMat: {fileID: 2100000, guid: f66cc7c5e03f9a8449273ea896b3b20f, type: 2}
-  color0: {fileID: 2100000, guid: 49d06b3518151874c8d502847c8d44a6, type: 2}
-  color1: {fileID: 2100000, guid: d2a85a6443266b246a801aab52396a65, type: 2}
-  color2: {fileID: 2100000, guid: 2ff0ef9adc40e6148ae87b80c7df585c, type: 2}
-  color3: {fileID: 2100000, guid: 115b73a7edcb9f448b477350699fbb94, type: 2}
+  color0: {fileID: 2100000, guid: 396952128c0f5894c838cc1a364108b9, type: 2}
+  color1: {fileID: 2100000, guid: be68be15db857f74a8d4d8bf5afe6694, type: 2}
+  color2: {fileID: 2100000, guid: 8c3c154fa4e380a4ca4f35f0baf6cf34, type: 2}
+  color3: {fileID: 2100000, guid: f8d2b79a5a2504847ba78cd1e6370196, type: 2}
   colorID: 0

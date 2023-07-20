@@ -9,7 +9,8 @@ public class LightManager : MonoBehaviour
     public Vector3[] pathArray3;
     public Vector3[] pathArray4;
     private int[] currLightCounts;
-    public int activePaths;
+    // public int activePaths;
+    public bool[] activeLights;
     public int numEachLight;
     private int maxNumLights;
     private int currNumLights;
@@ -20,7 +21,13 @@ public class LightManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxNumLights = activePaths * numEachLight;
+        int counter = 0;
+        for (int i = 0; i < 4; i++) {
+            if (activeLights[i]) {
+                counter++;
+            }
+        }
+        maxNumLights = counter * numEachLight;
         centerpoint = transform.parent.GetComponent<CenterPointControl>();
         centerpointTrans = transform.parent;
         currLightCounts = new int[4];
@@ -37,7 +44,7 @@ public class LightManager : MonoBehaviour
             currNumLights++;
             int index = 0;
             for (int i = 0; i < 4; i++) {
-                if (currLightCounts[i] < numEachLight) {
+                if ((currLightCounts[i] < numEachLight ) && activeLights[i]) {
                     currLightCounts[i]++;
                     break;
                 }
