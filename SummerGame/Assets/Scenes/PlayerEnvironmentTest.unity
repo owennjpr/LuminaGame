@@ -351,8 +351,8 @@ MonoBehaviour:
   pathArray4:
   - {x: 0, y: 3, z: -20}
   - {x: 0, y: 3, z: 0}
-  activeLights: 00000100
-  numEachLight: 20
+  activeLights: 01000100
+  numEachLight: 10
   lightPrefab: {fileID: 1577125972424700457, guid: 1f7667b1c4114a347bb807ae0040edeb,
     type: 3}
   centerpoint: {fileID: 0}
