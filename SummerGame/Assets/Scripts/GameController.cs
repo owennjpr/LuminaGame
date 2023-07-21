@@ -23,6 +23,10 @@ public class GameController : MonoBehaviour
     private bool movingCenter;
 
     public FirstPersonController controller;
+    private bool slowfallActivated;
+    private bool slowfallInUse;
+    public Image slowfallMask;
+    private Color slowfallMaskColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +40,10 @@ public class GameController : MonoBehaviour
         fadeColor.a = 0.0f;
         
         controller = player.GetComponent<FirstPersonController>();
+        slowfallActivated = false;
+        slowfallInUse = false;
+        slowfallMaskColor = slowfallMask.color;
+        slowfallMaskColor.a = 0.0f;
     }
 
     // Update is called once per frame
@@ -134,6 +142,56 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         DynamicFadeColor.a = 0.0f;
+    }
+
+    public void slowfall() {
+        Debug.Log("Slowly falling");
+        slowfallActivated = true;
+        StartCoroutine(fadeinSlowfall());
+    }
+
+    public void playerJumped() 
+    {
+        Debug.Log("jumped");
+        if (slowfallActivated) {
+            slowfallInUse = true;
+            StartCoroutine(changeGrav());
+        }
+    }
+    
+    public void playerLanded() 
+    {
+        Debug.Log("landed");
+        if (slowfallInUse) {
+            slowfallActivated = false;
+            slowfallInUse = false;
+
+            StartCoroutine(fadeoutSlowfall());
+        }
+    }
+
+    private IEnumerator fadeinSlowfall() {
+        while (slowfallMask.color.a < 0.10f) {
+            slowfallMaskColor.a += Time.deltaTime;
+            slowfallMask.color = slowfallMaskColor;
+            yield return null;
+        }
+    }
+
+    private IEnumerator fadeoutSlowfall() {
+        controller.m_GravityMultiplier = 2;
+        while (slowfallMask.color.a > 0) {
+            slowfallMaskColor.a -= Time.deltaTime;
+            slowfallMask.color = slowfallMaskColor;
+            yield return null;
+        }
+    }
+
+    private IEnumerator changeGrav() {
+        yield return new WaitForSeconds(0.5f);
+        if (slowfallInUse) {
+            controller.m_GravityMultiplier = 0.2f;
+        }
     }
 }
 

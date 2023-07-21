@@ -68,7 +68,8 @@ public class FloatingLightControl : MonoBehaviour
             idle = false;
             if (transform.position != playerHand.position) {
                 transform.position = Vector3.MoveTowards(transform.position, playerHand.position, 15*Time.deltaTime);
-            } else {
+            } 
+            if (Vector3.Distance(transform.position, playerHand.position) < 0.25f) {
                 if (Input.GetKeyDown("e")) {
                     // Debug.Log("E");
                     StartCoroutine(spawnLight());
@@ -77,9 +78,10 @@ public class FloatingLightControl : MonoBehaviour
                     Debug.Log(ID);
                     switch(ID) {
                         case 0:
-                        StartCoroutine(fireProjectile());
+                            StartCoroutine(fireProjectile());
                             break;
                         case 1:
+                            StartCoroutine(startSlowfall());
                             break;
                         case 2:
                             break;
@@ -126,5 +128,15 @@ public class FloatingLightControl : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
 
+    }
+
+    private IEnumerator startSlowfall() {
+        controller.GetComponent<GameController>().slowfall();
+        while (transform.localScale.x > 0) {
+            transform.localScale -= new Vector3(1, 1, 1) *Time.deltaTime;
+            yield return null;
+        }
+        transform.parent.GetComponent<LightManager>().lightUsed(ID);
+        Destroy(gameObject);
     }
 }

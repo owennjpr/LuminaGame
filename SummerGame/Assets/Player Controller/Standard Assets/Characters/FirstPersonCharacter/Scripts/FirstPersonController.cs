@@ -16,7 +16,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
-        [SerializeField] private float m_GravityMultiplier;
+
         [SerializeField] private MouseLook m_MouseLook;
         [SerializeField] private bool m_UseFovKick;
         [SerializeField] private FOVKick m_FovKick = new FOVKick();
@@ -28,6 +28,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+
+        public float m_GravityMultiplier;
+
+        
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -44,6 +48,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
         public bool haltWalk;
         public bool flipped;
+        private GameController gameControl;
         // public float offsetAngle;
         // Use this for initialization
         private void Start()
@@ -59,6 +64,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             flipped = false;
+            gameControl = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         }
 
 
@@ -78,6 +84,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
+                gameControl.playerLanded();
             }
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
@@ -124,6 +131,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
+                    gameControl.playerJumped();
                 }
             }
             else
