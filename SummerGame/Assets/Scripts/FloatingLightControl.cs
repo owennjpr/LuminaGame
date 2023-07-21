@@ -9,6 +9,7 @@ public class FloatingLightControl : MonoBehaviour
     private Transform playerHand;
     public Vector3[] pathArray;
     public GameObject objectToSpawn;
+    public GameObject projectileToSpawn;
     private Transform controller;
     public float speed;
     private bool idle;
@@ -70,8 +71,21 @@ public class FloatingLightControl : MonoBehaviour
             } else {
                 if (Input.GetKeyDown("e")) {
                     // Debug.Log("E");
-                    StartCoroutine(spawnObject());
+                    StartCoroutine(spawnLight());
                     
+                } else if (Input.GetMouseButtonDown(0)) {
+                    Debug.Log(ID);
+                    switch(ID) {
+                        case 0:
+                        StartCoroutine(fireProjectile());
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                    }
                 }
             }
         } else {
@@ -95,7 +109,7 @@ public class FloatingLightControl : MonoBehaviour
         beingPulled = true;
     }
 
-    private IEnumerator spawnObject() {
+    private IEnumerator spawnLight() {
         
         GameObject newLight = Instantiate(objectToSpawn, transform.position, transform.rotation, controller);
         GetComponent<Renderer>().enabled = false;
@@ -103,5 +117,14 @@ public class FloatingLightControl : MonoBehaviour
         newLight.GetComponent<ControlledLightMove>().Init(pathArray, speed, ID);
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
+    }
+
+    private IEnumerator fireProjectile() {
+        GameObject projectile = Instantiate(projectileToSpawn, transform.position, playerHand.rotation, controller);
+        GetComponent<Renderer>().enabled = false;
+        transform.parent.GetComponent<LightManager>().lightUsed(ID);
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
+
     }
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - centerpoint
   - dial knob
+  - breakable
+  - Invisible Collider
+  - floor
   layers:
   - Default
   - TransparentFX
