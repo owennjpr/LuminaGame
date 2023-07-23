@@ -10,6 +10,10 @@ public class knobControl : MonoBehaviour
     private float distFromCenter;
     private Vector3 direction;
     public int ID;
+
+    public Material activeMat;
+    public Material inactiveMat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +48,8 @@ public class knobControl : MonoBehaviour
 
     private void activate() {
         // Debug.Log("activating");
+        transform.GetComponent<MeshRenderer> ().material = activeMat;
+
         transform.position = Vector3.MoveTowards(transform.position, center, 0.1f);
         transform.parent.GetComponent<DialController>().updateMask(true, ID);
 
@@ -59,6 +65,9 @@ public class knobControl : MonoBehaviour
 
     private void deactivate() {
         // Debug.Log("deactivating");
+
+        transform.GetComponent<MeshRenderer> ().material = inactiveMat;
+
         transform.position = Vector3.MoveTowards(transform.position, center, -0.1f);
         transform.parent.GetComponent<DialController>().updateMask(false, ID);
 

@@ -72,13 +72,13 @@ public class dialPoint : MonoBehaviour
         if (start < target) {
              while(start < target) {
                 start += rotateSpeed*Time.deltaTime;
-                transform.RotateAround(transform.parent.position, new Vector3(0, 0, 1), rotateSpeed*Time.deltaTime);
+                transform.RotateAround(transform.parent.position, new Vector3(1, 0, 1), rotateSpeed*Time.deltaTime);
                 yield return null;
             }
         } else {
             while(start > target) {
                 start -= rotateSpeed*Time.deltaTime;
-                transform.RotateAround(transform.parent.position, new Vector3(0, 0, 1), -1*rotateSpeed*Time.deltaTime);
+                transform.RotateAround(transform.parent.position, new Vector3(1, 0, 1), -1*rotateSpeed*Time.deltaTime);
                 yield return null;
             }
         }

@@ -8,6 +8,7 @@ public class DialController : MonoBehaviour
     public GameObject knobObject;
     public GameObject pointObject;
     public float distFromCenter;
+    public float stepsize;
     private int knobMask;
     public int[] correctKnobValues;
     private int correctKnobMask;
@@ -21,8 +22,10 @@ public class DialController : MonoBehaviour
         knobMask = 0;
         for (int i = 0; i < 8; i++) {
             GameObject knob = Instantiate(knobObject, transform);
-            knob.transform.position += new Vector3(0, distFromCenter, 0);
+            knob.transform.position += new Vector3(0, distFromCenter, 0.18f);
             knob.transform.RotateAround(transform.position, new Vector3(0, 0, 1), 45 * i);
+            knob.transform.RotateAround(transform.position, new Vector3(1, 0, 0), 45);
+
             knob.GetComponent<knobControl>().ID = i;
         }
         correctKnobMask = 0;
@@ -34,17 +37,19 @@ public class DialController : MonoBehaviour
 
 
         int keyPointsLeft = colorSequence.Length;
-        float distanceCounter = 0.05f;
+        float distanceCounter = 0.0f;
         int counter = 0;
         while (keyPointsLeft > 0) {
             
             int angle = 45 * correctKnobValues[counter%correctKnobValues.Length];
             GameObject point = Instantiate(pointObject, transform);
-            point.transform.position += new Vector3(0, distanceCounter, 0);
+            point.transform.position += new Vector3(0, distanceCounter, 0.075f);
             point.transform.RotateAround(transform.position, new Vector3(0, 0, 1), angle);
+            point.transform.RotateAround(transform.position, new Vector3(1, 0, 0), 45);
+
             point.GetComponent<dialPoint>().colorID = colorSequence[counter];
             counter++;
-            distanceCounter += 0.1f;
+            distanceCounter += stepsize;
             keyPointsLeft--;
         }
 
