@@ -83,9 +83,14 @@ public class GameController : MonoBehaviour
         controller.haltWalk = false;
     }
 
+    // figures out what center point player in rn so can figure out what should be able to do
+    // called at start() but also when enter or leave centers
     public void findNewCenter() {
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
         GameObject[] activeCenters = {null, null};
+
+        // for each center checks if player within range adds to activeCenters array
+        // player should never be in more than two centers 
         foreach(GameObject c in centers) {
             Vector2 currCenterVector = new Vector2(c.transform.position.x, c.transform.position.z);
             float distance = Vector2.Distance(currCenterVector, playerVector);
@@ -106,6 +111,8 @@ public class GameController : MonoBehaviour
         } else {
             float c1range = activeCenters[0].GetComponent<CenterPointControl>().startDistance;
             float c2range = activeCenters[1].GetComponent<CenterPointControl>().startDistance;
+
+            // if in two overlapping always puts you in bigger one
             if (c1range > c2range) {
                 CenterPoint = activeCenters[0].transform;
             } else {
