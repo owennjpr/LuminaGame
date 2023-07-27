@@ -30,9 +30,11 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        findNewCenter();
 
         player = GameObject.FindWithTag("Player");
+        playerVector = new Vector2(player.transform.position.x, player.transform.position.z);
+        
+        findNewCenter();
 
         fadeColor = fullScreenFade.color;
         DynamicFadeColor = DynamicFullScreenFade.color;
