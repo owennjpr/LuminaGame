@@ -18,7 +18,7 @@ public class knobControl : MonoBehaviour
     void Start()
     {
         active = false;
-        center = transform.parent.position;
+        center = transform.parent.position + new Vector3(0, -0.1f, 0.1f);;
         distFromCenter = Vector3.Distance(transform.position, center);
         direction = center - transform.position;
         mask = 1 << 8;
@@ -50,11 +50,11 @@ public class knobControl : MonoBehaviour
         // Debug.Log("activating");
         transform.GetComponent<MeshRenderer> ().material = activeMat;
 
-        transform.position = Vector3.MoveTowards(transform.position, center, 0.1f);
+        transform.position = Vector3.MoveTowards(transform.position, center, 0.05f);
         transform.parent.GetComponent<DialController>().updateMask(true, ID);
 
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, direction, distFromCenter -0.1f, mask);
+        hits = Physics.RaycastAll(transform.position, direction, distFromCenter -0.05f, mask);
 
         foreach(RaycastHit h in hits) {
             // Debug.Log(h.collider.gameObject.name + " was hit");
@@ -68,7 +68,7 @@ public class knobControl : MonoBehaviour
 
         transform.GetComponent<MeshRenderer> ().material = inactiveMat;
 
-        transform.position = Vector3.MoveTowards(transform.position, center, -0.1f);
+        transform.position = Vector3.MoveTowards(transform.position, center, -0.05f);
         transform.parent.GetComponent<DialController>().updateMask(false, ID);
 
         
@@ -85,7 +85,7 @@ public class knobControl : MonoBehaviour
     public void triggerSolve() {
         Debug.Log(ID);
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, direction, distFromCenter -0.1f, mask);
+        hits = Physics.RaycastAll(transform.position, direction, distFromCenter -0.05f, mask);
 
         foreach(RaycastHit h in hits) {
             h.collider.gameObject.GetComponent<dialPoint>().solve();

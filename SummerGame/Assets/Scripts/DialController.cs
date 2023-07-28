@@ -4,70 +4,130 @@ using UnityEngine;
 
 public class DialController : MonoBehaviour
 {
-    
+    private struct pointData {
+        public int[] positions;
+        public int[] colors;
+    };
+
     public GameObject knobObject;
     public GameObject pointObject;
     public float distFromCenter;
-    public float stepsize;
+    [SerializeField] private float stepsize;
     private int knobMask;
-    public int[] correctKnobValues;
+    [SerializeField] private int[] correctKnobValues;
     private int correctKnobMask;
-    public int[] colorSequence;
-
+    [SerializeField] private int[] colorSequence;
     private bool solved;
+    private Vector3 centerPos;
+
+    [SerializeField] private int[] knob0_positions;
+    [SerializeField] private int[] knob0_colors;
+
+    [SerializeField] private int[] knob1_positions;
+    [SerializeField] private int[] knob1_colors;
+
+    [SerializeField] private int[] knob2_positions;
+    [SerializeField] private int[] knob2_colors;
+
+    [SerializeField] private int[] knob3_positions;
+    [SerializeField] private int[] knob3_colors;
+
+    [SerializeField] private int[] knob4_positions;
+    [SerializeField] private int[] knob4_colors;
+
+    [SerializeField] private int[] knob5_positions;
+    [SerializeField] private int[] knob5_colors;
+
+    [SerializeField] private int[] knob6_positions;
+    [SerializeField] private int[] knob6_colors;
+
+    [SerializeField] private int[] knob7_positions;
+    [SerializeField] private int[] knob7_colors;
+
+
     // Start is called before the first frame update
     void Start()
     {
         solved = false;
         knobMask = 0;
-        for (int i = 0; i < 8; i++) {
-            GameObject knob = Instantiate(knobObject, transform);
-            knob.transform.position += new Vector3(0, distFromCenter, 0.18f);
-            knob.transform.RotateAround(transform.position, new Vector3(0, 0, 1), 45 * i);
-            knob.transform.RotateAround(transform.position, new Vector3(1, 0, 0), 45);
-
-            knob.GetComponent<knobControl>().ID = i;
-        }
         correctKnobMask = 0;
         foreach (int n in correctKnobValues) {
             int tempMask = 1 << n;
             correctKnobMask += tempMask;
         }
         
+        centerPos = transform.position + new Vector3(0, -0.1f, 0.1f);
 
-
-        int keyPointsLeft = colorSequence.Length;
-        float distanceCounter = 0.0f;
-        int counter = 0;
-        while (keyPointsLeft > 0) {
+        // int keyPointsLeft = colorSequence.Length;
+        // float distanceCounter = 0.0f;
+        // int counter = 0;
+        // while (keyPointsLeft > 0) {
             
-            int angle = 45 * correctKnobValues[counter%correctKnobValues.Length];
-            GameObject point = Instantiate(pointObject, transform);
-            point.transform.position += new Vector3(0, distanceCounter, 0.075f);
-            point.transform.RotateAround(transform.position, new Vector3(0, 0, 1), angle);
-            point.transform.RotateAround(transform.position, new Vector3(1, 0, 0), 45);
+        //     int angle = 45 * correctKnobValues[counter%correctKnobValues.Length];
+        //     GameObject point = Instantiate(pointObject, transform);
+        //     point.transform.position += new Vector3(0, distanceCounter, 0.075f);
+        //     point.transform.RotateAround(centerPos, new Vector3(0, 0, 1), angle);
+        //     point.transform.RotateAround(centerPos, new Vector3(1, 0, 0), 45);
 
-            point.GetComponent<dialPoint>().colorID = colorSequence[counter];
-            counter++;
-            distanceCounter += stepsize;
-            keyPointsLeft--;
-        }
-
-        // int numRandomPerKnob = colorSequence.Length/correctKnobValues.Length;
-        // // Debug.Log(numRandomPerKnob);
-        // for (int i = 0; i < 8; i++) {
-        //     int tempMask = correctKnobMask & (1 << i);
-        //     if ((tempMask) == 0) {
-        //         Debug.Log("can fill " + i);
-        //         PrevRange = 1;
-        //         for (int j = 0; j < numRandomPerKnob; j++) {
-        //             GameObject point = Instantiate(pointObject, transform);
-        //             point.transform.position += new Vector3(0, Random.Range(1, 5)/10f, 0);
-        //             point.transform.RotateAround(transform.position, new Vector3(0, 0, 1), 45*i);
-        //         }
-        //     }
+        //     point.GetComponent<dialPoint>().colorID = colorSequence[counter];
+        //     counter++;
+        //     distanceCounter += stepsize;
+        //     keyPointsLeft--;
         // }
-       
+
+        for (int i = 0; i < 8; i++) {
+            pointData currKnobData = getActiveKnobData(i);
+            int numPoints = currKnobData.positions.Length;
+            for (int j = 0; j < numPoints; j++) {
+                GameObject point = Instantiate(pointObject, transform);
+                point.transform.position += new Vector3(0, -0.1f, 0.1f);
+                point.transform.position += new Vector3(0, stepsize * currKnobData.positions[j], -0.05f);
+                point.transform.RotateAround(centerPos, new Vector3(0, 0, 1), 45*i);
+                point.transform.RotateAround(centerPos, new Vector3(1, 0, 0), 45);
+
+
+            }
+        }
+    }
+
+    private pointData getActiveKnobData(int i) {
+        pointData currKnobData = new pointData();
+        switch (i) {
+            case 0:
+                currKnobData.positions = knob0_positions;
+                currKnobData.colors = knob0_colors;
+                break;
+            case 1:
+                currKnobData.positions = knob1_positions;
+                currKnobData.colors = knob1_colors;
+                break;
+            case 2:
+                currKnobData.positions = knob2_positions;
+                currKnobData.colors = knob2_colors;
+                break;
+            case 3:
+                currKnobData.positions = knob3_positions;
+                currKnobData.colors = knob3_colors;
+                break;
+            case 4:
+                currKnobData.positions = knob4_positions;
+                currKnobData.colors = knob4_colors;
+                break;
+            case 5:
+                currKnobData.positions = knob5_positions;
+                currKnobData.colors = knob5_colors;
+                break;
+            case 6:
+                currKnobData.positions = knob6_positions;
+                currKnobData.colors = knob6_colors;
+                break;
+            case 7:
+                currKnobData.positions = knob7_positions;
+                currKnobData.colors = knob7_colors;
+                break;
+        }
+        return currKnobData;
+
     }
 
     // Update is called once per frame
