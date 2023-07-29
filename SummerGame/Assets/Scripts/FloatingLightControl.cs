@@ -115,7 +115,12 @@ public class FloatingLightControl : MonoBehaviour
         
         GameObject newLight = Instantiate(objectToSpawn, transform.position, transform.rotation, controller);
         GetComponent<Renderer>().enabled = false;
-        transform.parent.GetComponent<LightManager>().lightUsed(ID);
+        LightManager manager = transform.parent.GetComponent<LightManager>();
+            if (manager != null) {
+                manager.lightUsed(ID);
+            } else {
+                transform.parent.GetComponent<fixedLightSpawner>().lightUsed();
+        }
         newLight.GetComponent<ControlledLightMove>().Init(pathArray, speed, ID);
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
@@ -124,7 +129,12 @@ public class FloatingLightControl : MonoBehaviour
     private IEnumerator fireProjectile() {
         GameObject projectile = Instantiate(projectileToSpawn, transform.position, playerHand.rotation, controller);
         GetComponent<Renderer>().enabled = false;
-        transform.parent.GetComponent<LightManager>().lightUsed(ID);
+        LightManager manager = transform.parent.GetComponent<LightManager>();
+        if (manager != null) {
+            manager.lightUsed(ID);
+        } else {
+            transform.parent.GetComponent<fixedLightSpawner>().lightUsed();
+        }
         yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
 
@@ -136,7 +146,12 @@ public class FloatingLightControl : MonoBehaviour
             transform.localScale -= new Vector3(1, 1, 1) *Time.deltaTime;
             yield return null;
         }
-        transform.parent.GetComponent<LightManager>().lightUsed(ID);
+        LightManager manager = transform.parent.GetComponent<LightManager>();
+        if (manager != null) {
+            manager.lightUsed(ID);
+        } else {
+            transform.parent.GetComponent<fixedLightSpawner>().lightUsed();
+        }
         Destroy(gameObject);
     }
 }
