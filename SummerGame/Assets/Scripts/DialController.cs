@@ -58,33 +58,17 @@ public class DialController : MonoBehaviour
         
         centerPos = transform.position + new Vector3(0, -0.1f, 0.1f);
 
-        // int keyPointsLeft = colorSequence.Length;
-        // float distanceCounter = 0.0f;
-        // int counter = 0;
-        // while (keyPointsLeft > 0) {
-            
-        //     int angle = 45 * correctKnobValues[counter%correctKnobValues.Length];
-        //     GameObject point = Instantiate(pointObject, transform);
-        //     point.transform.position += new Vector3(0, distanceCounter, 0.075f);
-        //     point.transform.RotateAround(centerPos, new Vector3(0, 0, 1), angle);
-        //     point.transform.RotateAround(centerPos, new Vector3(1, 0, 0), 45);
-
-        //     point.GetComponent<dialPoint>().colorID = colorSequence[counter];
-        //     counter++;
-        //     distanceCounter += stepsize;
-        //     keyPointsLeft--;
-        // }
-
         for (int i = 0; i < 8; i++) {
             pointData currKnobData = getActiveKnobData(i);
             int numPoints = currKnobData.positions.Length;
             for (int j = 0; j < numPoints; j++) {
-                GameObject point = Instantiate(pointObject, transform);
+                Debug.Log(transform.position);
+                GameObject point = Instantiate(pointObject, transform.position, Quaternion.identity, transform);
                 point.transform.position += new Vector3(0, -0.1f, 0.1f);
-                point.transform.position += new Vector3(0, stepsize * currKnobData.positions[j], -0.05f);
+                point.transform.position += new Vector3(0, stepsize * currKnobData.positions[j] + 0.08f, 0);
                 point.transform.RotateAround(centerPos, new Vector3(0, 0, 1), 45*i);
                 point.transform.RotateAround(centerPos, new Vector3(1, 0, 0), 45);
-
+                point.GetComponent<dialPoint>().colorID = currKnobData.colors[j];
 
             }
         }
@@ -133,11 +117,11 @@ public class DialController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!solved && correctKnobMask == knobMask) {
-            solved = true;
-            handleSolved();
+        // if (!solved && correctKnobMask == knobMask) {
+        //     solved = true;
+        //     handleSolved();
             
-        }
+        // }
     }
 
     public void updateMask(bool activate, int knobID) {

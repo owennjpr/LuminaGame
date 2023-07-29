@@ -33,7 +33,21 @@ public class dialPoint : MonoBehaviour
     public void activate() {
         if (!solved) {
             active = true;
-            transform.GetComponent<MeshRenderer> ().material = activeMat;
+            // transform.GetComponent<MeshRenderer> ().material = activeMat;
+            switch (colorID) {
+                case 0:
+                    transform.GetComponent<MeshRenderer> ().material = color0;
+                    break;
+                case 1:
+                    transform.GetComponent<MeshRenderer> ().material = color1;
+                    break;
+                case 2:
+                    transform.GetComponent<MeshRenderer> ().material = color2;
+                    break;
+                case 3:
+                    transform.GetComponent<MeshRenderer> ().material = color3;
+                    break;
+            }
         }
     }
     public void deactivate() {
