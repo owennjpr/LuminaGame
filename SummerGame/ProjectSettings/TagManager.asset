@@ -9,6 +9,7 @@ TagManager:
   - breakable
   - Invisible Collider
   - floor
+  - lamp
   layers:
   - Default
   - TransparentFX

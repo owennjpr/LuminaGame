@@ -29,6 +29,9 @@ public class projectile : MonoBehaviour
         if (other.CompareTag("breakable")) {
             other.GetComponent<Collider>().transform.GetComponent<breakableObject>().hit();
             Destroy(gameObject);
+        } else if (other.CompareTag("lamp")) {
+            other.GetComponent<Collider>().transform.GetComponent<lamp>().hit();
+            Destroy(gameObject);
         } else if(other.CompareTag("floor")) {
             Destroy(gameObject);
         }
