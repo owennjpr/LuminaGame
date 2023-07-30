@@ -127,7 +127,7 @@ MonoBehaviour:
     type: 3}
   projectileToSpawn: {fileID: 4081845657238358150, guid: b89dd6c4f1df5b24885de379e89748d5,
     type: 3}
-  speed: 4
+  speed: 5
   mat1: {fileID: 2100000, guid: 49d06b3518151874c8d502847c8d44a6, type: 2}
   mat2: {fileID: 2100000, guid: d2a85a6443266b246a801aab52396a65, type: 2}
   mat3: {fileID: 2100000, guid: 2ff0ef9adc40e6148ae87b80c7df585c, type: 2}

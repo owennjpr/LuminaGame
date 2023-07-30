@@ -51,6 +51,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (CenterPoint == null) {
+            panicFindCenter();
+        }
         if (movingCenter) {
             centerVector = new Vector2(CenterPoint.position.x, CenterPoint.position.z);
         }
@@ -71,11 +74,39 @@ public class GameController : MonoBehaviour
         fullScreenFade.color = fadeColor;
     }
 
+    private void panicFindCenter() {
+        GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
+
+        foreach(GameObject c in centers) {
+            Vector2 currCenterVector = new Vector2(c.transform.position.x, c.transform.position.z);
+            float tempdistance = Vector2.Distance(currCenterVector, playerVector);
+            
+            if (tempdistance <= c.GetComponent<CenterPointControl>().endDistance) {
+                CenterPoint = c.transform;
+                fadeStartDistance = CenterPoint.gameObject.GetComponent<CenterPointControl>().startDistance;
+                fadeEndDistance = CenterPoint.gameObject.GetComponent<CenterPointControl>().endDistance;
+                fadeRange = fadeEndDistance - fadeStartDistance;
+
+                centerVector = new Vector2(CenterPoint.position.x, CenterPoint.position.z);
+                movingCenter = CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving;
+                if (!movingCenter) {
+                    StableCenterPoint = CenterPoint;
+                }
+                RenderSettings.fogDensity = 1.2f/fadeStartDistance;
+            }
+        }
+
+        if (CenterPoint == null) {
+            StartCoroutine(oobReturn());
+            CenterPoint = StableCenterPoint;
+        }
+    }
+
     private IEnumerator oobReturn() {
         controller.haltWalk = true;
         if (CenterPoint == StableCenterPoint) {
             controller.flipped = !(controller.flipped);
-            player.transform.position = Vector3.MoveTowards(player.transform.position, CenterPoint.position, 5);
+            player.transform.position = Vector3.MoveTowards(player.transform.position, CenterPoint.position, fadeRange/2);
         } else {
             Vector3 stablePos = StableCenterPoint.position;
             player.transform.position = stablePos + StableCenterPoint.GetComponent<CenterPointControl>().relativeSpawnPos;
