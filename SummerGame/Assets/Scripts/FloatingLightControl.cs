@@ -84,6 +84,7 @@ public class FloatingLightControl : MonoBehaviour
                             StartCoroutine(startSlowfall());
                             break;
                         case 2:
+                            StartCoroutine(startHighJump());
                             break;
                         case 3:
                             break;
@@ -154,4 +155,20 @@ public class FloatingLightControl : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    private IEnumerator startHighJump() {
+        controller.GetComponent<GameController>().highjump();
+        while (transform.localScale.x > 0) {
+            transform.localScale -= new Vector3(1, 1, 1) *Time.deltaTime;
+            yield return null;
+        }
+        LightManager manager = transform.parent.GetComponent<LightManager>();
+        if (manager != null) {
+            manager.lightUsed(ID);
+        } else {
+            transform.parent.GetComponent<fixedLightSpawner>().lightUsed();
+        }
+        Destroy(gameObject);
+    }
+
 }

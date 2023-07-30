@@ -14,7 +14,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
-        [SerializeField] private float m_JumpSpeed;
+        public float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
 
         [SerializeField] private MouseLook m_MouseLook;

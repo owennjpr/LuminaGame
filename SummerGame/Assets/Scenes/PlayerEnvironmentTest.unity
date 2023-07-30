@@ -11661,7 +11661,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1478332564485222, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_Name
-      value: FPSController
+      value: player controller
       objectReference: {fileID: 0}
     - target: {fileID: 1478332564485222, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_TagString
@@ -13386,6 +13386,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1849150251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9205954227593238099, guid: 15d2adcf0d1f7564aa12fd85448a77f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3180769007730878063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1948686776
 GameObject:
   m_ObjectHideFlags: 0
@@ -13975,6 +13987,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
+        type: 3}
+      propertyPath: highjumpMask
+      value: 
+      objectReference: {fileID: 1849150251}
     - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
         type: 3}
       propertyPath: slowfallMask
