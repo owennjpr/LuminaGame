@@ -7,10 +7,15 @@ public class lampManager : MonoBehaviour
     private int currMask;
     private int solutionMask;
     [SerializeField] private bool[] correctLamps;
-    
+    public GameObject solutionObject;
+    [SerializeField] private bool verticalDoorSolve;
+    [SerializeField] private float doorHeight;
+    private bool hasBeenSolved;
+
     // Start is called before the first frame update
     void Start()
     {
+        hasBeenSolved = false;
         currMask = 0;
         solutionMask = 0;
         for (int i = 0; i < correctLamps.Length; i++) {
@@ -27,8 +32,25 @@ public class lampManager : MonoBehaviour
         } else {
             currMask -= 1 << lampID;
         }
-        if (currMask == solutionMask) {
+        if ((currMask == solutionMask) && !hasBeenSolved) {
+            hasBeenSolved = true;
             Debug.Log("Correct Combination");
+            if (verticalDoorSolve) {
+                StartCoroutine(openVerticalDoor(doorHeight));
+            }
         }
+    }
+
+    private IEnumerator openVerticalDoor(float height) {
+        Transform doorTransform = solutionObject.transform;
+        Vector3 doorPosition = doorTransform.position;
+        float counter = height;
+        while (counter > 0.1) {
+            counter -= Time.deltaTime;
+            doorPosition -= new Vector3(0, Time.deltaTime, 0);
+            doorTransform.position = doorPosition;
+            yield return null;
+        }
+        
     }
 }
