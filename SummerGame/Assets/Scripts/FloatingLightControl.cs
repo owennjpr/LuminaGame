@@ -74,17 +74,23 @@ public class FloatingLightControl : MonoBehaviour
                     // Debug.Log("E");
                     StartCoroutine(spawnLight());
                     
-                } else if (Input.GetMouseButtonDown(0)) {
+                } else if (Input.GetMouseButtonDown(0) || Input.GetKeyDown("q")) {
                     Debug.Log(ID);
                     switch(ID) {
                         case 0:
-                            StartCoroutine(fireProjectile());
+                            if (controller.GetComponent<GameController>().hasYellowPower) {
+                                StartCoroutine(fireProjectile());
+                            }
                             break;
                         case 1:
-                            StartCoroutine(startSlowfall());
+                            if (controller.GetComponent<GameController>().hasBluePower) {
+                                StartCoroutine(startSlowfall());
+                            }
                             break;
                         case 2:
-                            StartCoroutine(startHighJump());
+                            if (controller.GetComponent<GameController>().hasPurplePower) {
+                                StartCoroutine(startHighJump());
+                            }
                             break;
                         case 3:
                             break;

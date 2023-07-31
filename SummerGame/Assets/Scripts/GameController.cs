@@ -33,6 +33,16 @@ public class GameController : MonoBehaviour
     private bool highjumpInUse;
     public Image highjumpMask;
     private Color highjumpColor;
+
+
+
+    // game progress markers
+    public bool hasYellowPower;
+    public bool hasBluePower;
+    public bool hasPurplePower;
+    public bool hasRedPower;
+    private int numPowersFound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +68,13 @@ public class GameController : MonoBehaviour
         highjumpInUse = false;
         highjumpColor = highjumpMask.color;
         highjumpColor.a = 0.0f;
+
+
+        hasYellowPower = false;
+        hasBluePower = false;
+        hasPurplePower = false;
+        hasRedPower = false;
+        numPowersFound = 0;
     }
 
     // Update is called once per frame
@@ -281,6 +298,29 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(slowfallDelay);
         if (slowfallInUse) {
             controller.m_GravityMultiplier = 0.2f;
+        }
+    }
+
+
+    public void newPowerFound() {
+        numPowersFound++;
+        switch (numPowersFound) {
+            case 1:
+                Debug.Log("Got Yellow");
+                hasYellowPower = true;
+                break;
+            case 2:
+                Debug.Log("Got Blue");
+                hasBluePower = true;
+                break;
+            case 3:
+                Debug.Log("Got Purple");
+                hasPurplePower = true;
+                break;
+            case 4:
+                Debug.Log("Got Red");
+                hasRedPower = true;
+                break;
         }
     }
 }
