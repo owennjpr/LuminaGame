@@ -10,6 +10,7 @@ public class magicCubeScript : MonoBehaviour
     private bool animationStarted;
     [SerializeField] private FirstPersonController playerControl;
     private GameController controller;
+    [SerializeField] private GameObject InvisibleWalls;
     
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class magicCubeScript : MonoBehaviour
         particleEffect.GetChild(1).GetComponent<ParticleSystem>().Stop();
         controller = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         
+        InvisibleWalls.SetActive(false);
         animationStarted = false;
     }
 
@@ -28,12 +30,17 @@ public class magicCubeScript : MonoBehaviour
         transform.eulerAngles += new Vector3(0, 1, 0) * Time.deltaTime * 25;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player") && !animationStarted) {
+    public void triggerStart() {
+        if (!animationStarted) {
             Debug.Log("Collided");
             animationStarted = true;
+            InvisibleWalls.SetActive(true);
             StartCoroutine(activateCube());
         }
+    }
+
+    public void clicked() {
+        StartCoroutine(ExpandVolume());
     }
 
     private IEnumerator activateCube() {
@@ -58,11 +65,20 @@ public class magicCubeScript : MonoBehaviour
         particleEffect.GetChild(0).GetComponent<ParticleSystem>().Stop();
 
         yield return new WaitForSeconds(5);
+        gameObject.layer = LayerMask.NameToLayer("Magic Cube");
+
+
+        
+
+    }
+
+
+    private IEnumerator ExpandVolume() {
         BoxCollider volumeCollider = transform.GetChild(1).GetComponent<BoxCollider>();
         Vector3 volumeSize = volumeCollider.size;
         playerControl.m_WalkSpeed = 0;
         playerControl.m_RunSpeed = 0;
-        while(volumeSize.x < 100) {
+        while(volumeSize.x < 40) {
             volumeSize += new Vector3(1, 1, 1) * Time.deltaTime * 15;
             volumeCollider.size = volumeSize;
             yield return null;
@@ -71,7 +87,7 @@ public class magicCubeScript : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         while(volumeSize.x > 1) {
-            volumeSize -= new Vector3(1, 1, 1) * Time.deltaTime * 50;
+            volumeSize -= new Vector3(1, 1, 1) * Time.deltaTime * 20;
             volumeCollider.size = volumeSize;
             yield return null;
         }
@@ -83,8 +99,7 @@ public class magicCubeScript : MonoBehaviour
             transform.localScale = myscale;
             yield return null;
         }
-
+        Destroy(InvisibleWalls);
         Destroy(gameObject);
-
     }
 }

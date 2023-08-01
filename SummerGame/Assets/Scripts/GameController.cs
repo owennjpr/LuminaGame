@@ -43,6 +43,10 @@ public class GameController : MonoBehaviour
     public bool hasRedPower;
     private int numPowersFound;
 
+    public bool paused;
+
+    [SerializeField] private GameObject pausemenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,11 +79,18 @@ public class GameController : MonoBehaviour
         hasPurplePower = false;
         hasRedPower = false;
         numPowersFound = 0;
+
+        paused = false;
+        pausemenu.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            pausePlay();
+        }
+        
         if (CenterPoint == null) {
             panicFindCenter();
         }
@@ -89,10 +100,9 @@ public class GameController : MonoBehaviour
         playerVector = new Vector2(player.transform.position.x, player.transform.position.z);
         
         float distance = Vector2.Distance(centerVector, playerVector);
-        // Debug.Log(distance);
+
         if (distance >= fadeStartDistance) {
             float x = (((distance - fadeStartDistance)/fadeRange));
-            // Debug.Log(x);
             fadeColor.a = Mathf.Min(x, 1.0f);
             if (x > 1.5f) {
                 StartCoroutine(oobReturn());
@@ -102,6 +112,19 @@ public class GameController : MonoBehaviour
         }
         fullScreenFade.color = fadeColor;
     }
+
+    private void pausePlay() {
+        if (!paused) {
+            pausemenu.SetActive(true);
+            Time.timeScale = 0;
+            paused = true;
+        } else {
+            pausemenu.SetActive(false);
+            Time.timeScale = 1;
+            paused = false;
+        }
+    }
+
 
     private void panicFindCenter() {
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");

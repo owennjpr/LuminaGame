@@ -28,6 +28,8 @@ public class PlayerRaycast : MonoBehaviour
             if(Input.GetMouseButtonDown(0)) {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Dial Control")) {
                     hit.collider.gameObject.GetComponent<knobControl>().clicked();
+                } else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Magic Cube")) {
+                    hit.collider.gameObject.GetComponent<magicCubeScript>().clicked();
                 }
             }
             

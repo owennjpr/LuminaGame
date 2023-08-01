@@ -28,14 +28,22 @@ public class projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("breakable")) {
             other.GetComponent<Collider>().transform.GetComponent<breakableObject>().hit();
-            Destroy(gameObject);
+            StartCoroutine(handleImpact());
         } else if (other.CompareTag("lamp")) {
             other.GetComponent<Collider>().transform.GetComponent<lamp>().hit();
-            Destroy(gameObject);
+            StartCoroutine(handleImpact());
         } else if(other.CompareTag("floor")) {
-            Destroy(gameObject);
+            StartCoroutine(handleImpact());
         }
         
+    }
+
+    private IEnumerator handleImpact() {
+        rb.velocity = new Vector3(0, 0, 0);
+        rb.useGravity = false;
+        GetComponent<Renderer>().enabled = false;
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 }
  

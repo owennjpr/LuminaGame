@@ -27,6 +27,7 @@ public class FloatingLightControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(fadeIn());
         idle_xMod = Random.Range(0.5f, 2.5f);
         idle_yMod = Random.Range(0.5f, 2.5f);
         idle_zMod = Random.Range(0.5f, 2.5f);
@@ -116,6 +117,16 @@ public class FloatingLightControl : MonoBehaviour
 
     public void playerClicked() {
         beingPulled = true;
+    }
+
+    private IEnumerator fadeIn() {
+        transform.localScale = new Vector3(0.0001f, 0.0001f, 0.0001f);
+        Vector3 myscale = transform.localScale;
+        while(myscale.x < 0.25f) {
+            myscale += new Vector3(1, 1, 1) * Time.deltaTime/2;
+            transform.localScale = myscale;
+            yield return null;
+        }
     }
 
     private IEnumerator spawnLight() {
