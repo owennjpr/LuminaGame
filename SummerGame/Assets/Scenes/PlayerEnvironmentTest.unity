@@ -25207,6 +25207,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f7667b1c4114a347bb807ae0040edeb, type: 3}
+--- !u!1001 &973009180758967501
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128614059857866722, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616343610042588479, guid: e905d89f3c468c54bbed39e9b77ee1c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Swaying Platform Initial
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e905d89f3c468c54bbed39e9b77ee1c5, type: 3}
 --- !u!1001 &1326459690807314938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25222,6 +25295,11 @@ PrefabInstance:
       objectReference: {fileID: 405926321}
     - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
         type: 3}
+      propertyPath: hasBluePower
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
+        type: 3}
       propertyPath: highjumpMask
       value: 
       objectReference: {fileID: 1849150251}
@@ -25235,6 +25313,16 @@ PrefabInstance:
       propertyPath: fullScreenFade
       value: 
       objectReference: {fileID: 995386473}
+    - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
+        type: 3}
+      propertyPath: hasPurplePower
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
+        type: 3}
+      propertyPath: hasYellowPower
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
         type: 3}
       propertyPath: DynamicFullScreenFade
