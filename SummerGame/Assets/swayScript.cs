@@ -50,14 +50,8 @@ public class swayScript : MonoBehaviour
             float y = Mathf.Sin(time / idle_yMod);
             float x = Mathf.Sin(time / idle_xMod);
             float z = Mathf.Sin (time / idle_zMod);
-            // transform.position = startPos + new Vector3(0.4f * x, 0.6f * y, 0.4f * z);
             rb.AddForce(new Vector3(2f * x, 1f * y, 2f * z));
         }
 
-        Debug.Log(transform.rotation.eulerAngles.magnitude);
-
-        if (transform.rotation.eulerAngles.magnitude > 45) {
-            transform.Rotate(transform.rotation.eulerAngles * Time.deltaTime);
-        }
     }
 }

@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
     public Image highjumpMask;
     private Color highjumpColor;
 
+    [SerializeField] private Image FallingMask;
+    public Vector3 playerSpawnPoint;
 
 
     // game progress markers
@@ -51,6 +53,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
 
+        playerSpawnPoint = new Vector3(0, -5, 0);
         player = GameObject.FindWithTag("Player");
         playerVector = new Vector2(player.transform.position.x, player.transform.position.z);
         
@@ -323,6 +326,30 @@ public class GameController : MonoBehaviour
             controller.m_GravityMultiplier = 0.2f;
         }
     }
+
+
+    public IEnumerator falling() {
+        
+        Color FallingMaskColor = FallingMask.color;
+        while (FallingMask.color.a < 1f) {
+            FallingMaskColor.a += Time.deltaTime * 2;
+            FallingMask.color = FallingMaskColor;
+            yield return null;
+        }
+        controller.haltWalk = true;
+        player.transform.position = playerSpawnPoint;
+        yield return new WaitForSeconds(0.1f);
+        controller.haltWalk = false;
+
+        while (FallingMask.color.a > 0f) {
+            FallingMaskColor.a -= Time.deltaTime * 1.5f;
+            FallingMask.color = FallingMaskColor;
+            yield return null;
+        }
+        
+    }
+
+
 
 
     public void newPowerFound() {
