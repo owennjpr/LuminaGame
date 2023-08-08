@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Image FallingMask;
     public Vector3 playerSpawnPoint;
+    [SerializeField] private Transform MainCenter;
 
 
     // game progress markers
@@ -238,6 +239,26 @@ public class GameController : MonoBehaviour
         }
         DynamicFadeColor.a = 0.0f;
     }
+
+    public IEnumerator manualFadeIN() {
+        float currAlpha = 0;
+        while (currAlpha < 1.0f) {
+            DynamicFadeColor.a = currAlpha;
+            DynamicFullScreenFade.color = DynamicFadeColor;
+            currAlpha += Time.deltaTime;
+            yield return null;
+        }
+        DynamicFadeColor.a = 1.0f;
+        Debug.Log("huh???");
+        controller.haltWalk = true;
+        yield return new WaitForSeconds(1f);
+        player.transform.position = MainCenter.position + new Vector3(0, 1.2f, 0);
+        findNewCenter();
+        yield return new WaitForSeconds(0.1f);
+        controller.haltWalk = false;
+    
+    }
+
 
     public void slowfall() {
         Debug.Log("Slowly falling");

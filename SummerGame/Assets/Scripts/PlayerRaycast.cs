@@ -35,7 +35,12 @@ public class PlayerRaycast : MonoBehaviour
             
             if (Input.GetMouseButtonDown(1)) {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Floating Light")) {
-                    hit.collider.gameObject.GetComponent<FloatingLightControl>().playerClicked();
+                    FloatingLightControl hitScript = hit.collider.gameObject.GetComponent<FloatingLightControl>();
+                    if (hitScript != null) {
+                        hitScript.playerClicked();
+                    } else  {
+                        hit.collider.gameObject.GetComponent<RedLightReturn>().playerClicked();
+                    }
                 }
             }
             rotation += 90 *Time.deltaTime;
