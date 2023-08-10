@@ -77,11 +77,11 @@ public class GameController : MonoBehaviour
         highjumpColor = highjumpMask.color;
         highjumpColor.a = 0.0f;
 
-
-        hasYellowPower = false;
-        hasBluePower = false;
-        hasPurplePower = false;
-        hasRedPower = false;
+        // UNCOMMENT THIS BACK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // hasYellowPower = false;
+        // hasBluePower = false;
+        // hasPurplePower = false;
+        // hasRedPower = false;
         numPowersFound = 0;
 
         paused = false;
