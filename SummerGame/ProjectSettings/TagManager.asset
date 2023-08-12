@@ -10,6 +10,7 @@ TagManager:
   - Invisible Collider
   - floor
   - lamp
+  - Save Point
   layers:
   - Default
   - TransparentFX

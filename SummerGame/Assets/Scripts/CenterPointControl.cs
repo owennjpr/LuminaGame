@@ -11,8 +11,9 @@ public class CenterPointControl : MonoBehaviour
     public GameController controller;
     public bool isMoving;
     public Vector3 relativeSpawnPos;
-    public GameObject particles;
-    public GameObject lights;
+    [SerializeField] private GameObject particles;
+    [SerializeField] private GameObject lights;
+    [SerializeField] private GameObject centerObjects;
     private Transform player;
 
     void Start() {
@@ -24,16 +25,22 @@ public class CenterPointControl : MonoBehaviour
         StartCollider.radius = startDistance - 1;
         EndCollider.radius = startDistance;
         player = GameObject.FindWithTag("Player").transform;
+
+        particles = transform.GetChild(2).gameObject;
+        lights = transform.GetChild(3).gameObject;
+        centerObjects = transform.GetChild(4).gameObject;
     }
 
     void Update() {
-        if (!isMoving && particles != null && lights != null) {
+        if (!isMoving && particles != null && lights != null && centerObjects != null) {
             if (Vector3.Distance(transform.position, player.position) > (endDistance + 10)) {
                 particles.SetActive(false);
                 lights.SetActive(false);
+                centerObjects.SetActive(false);
             } else {
                 particles.SetActive(true);
                 lights.SetActive(true);
+                centerObjects.SetActive(true);
             }
         }
     }

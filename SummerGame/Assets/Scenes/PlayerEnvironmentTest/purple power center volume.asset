@@ -1,66 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-880907263117667366
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
-  m_Name: ChromaticAberration
-  m_EditorClassIdentifier: 
-  active: 1
-  intensity:
-    m_OverrideState: 1
-    m_Value: 1
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Yellow power center volume
-  m_EditorClassIdentifier: 
-  components:
-  - {fileID: 4211596139015590754}
-  - {fileID: 5552868556147655014}
-  - {fileID: -880907263117667366}
---- !u!114 &4211596139015590754
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
-  m_Name: ColorAdjustments
-  m_EditorClassIdentifier: 
-  active: 1
-  postExposure:
-    m_OverrideState: 1
-    m_Value: 9
-  contrast:
-    m_OverrideState: 0
-    m_Value: 0
-  colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 1, g: 0.9698027, b: 0.6745283, a: 1}
-  hueShift:
-    m_OverrideState: 0
-    m_Value: 0
-  saturation:
-    m_OverrideState: 0
-    m_Value: 0
---- !u!114 &5552868556147655014
+--- !u!114 &-8924786898813768983
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,5 +45,65 @@ MonoBehaviour:
     m_Value: {fileID: 0}
     dimension: 1
   dirtIntensity:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-8740264754616725377
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: purple power center volume
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 4502855659081897697}
+  - {fileID: -8924786898813768983}
+  - {fileID: -8740264754616725377}
+--- !u!114 &4502855659081897697
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
+  m_Name: ColorAdjustments
+  m_EditorClassIdentifier: 
+  active: 1
+  postExposure:
+    m_OverrideState: 1
+    m_Value: 9
+  contrast:
+    m_OverrideState: 0
+    m_Value: 0
+  colorFilter:
+    m_OverrideState: 1
+    m_Value: {r: 0.8956292, g: 0.7764706, b: 1, a: 1}
+  hueShift:
+    m_OverrideState: 0
+    m_Value: 0
+  saturation:
     m_OverrideState: 0
     m_Value: 0

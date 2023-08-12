@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.SceneManagement;
 
 
 public class GameController : MonoBehaviour
@@ -22,7 +23,9 @@ public class GameController : MonoBehaviour
     private float fadeRange;
     private bool movingCenter;
 
+    //movement Ability variables
     public FirstPersonController controller;
+
     private bool slowfallActivated;
     private bool slowfallInUse;
     public Image slowfallMask;
@@ -33,8 +36,8 @@ public class GameController : MonoBehaviour
     private bool highjumpInUse;
     public Image highjumpMask;
     private Color highjumpColor;
-
     [SerializeField] private Image FallingMask;
+
     public Vector3 playerSpawnPoint;
     [SerializeField] private Transform MainCenter;
 
@@ -46,9 +49,10 @@ public class GameController : MonoBehaviour
     public bool hasRedPower;
     private int numPowersFound;
 
+    // pause menu
     public bool paused;
-
     [SerializeField] private GameObject pausemenu;
+    [SerializeField] private GameObject optionsmenu;
 
     // Start is called before the first frame update
     void Start()
@@ -86,6 +90,7 @@ public class GameController : MonoBehaviour
 
         paused = false;
         pausemenu.SetActive(false);
+        optionsmenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -117,17 +122,7 @@ public class GameController : MonoBehaviour
         fullScreenFade.color = fadeColor;
     }
 
-    private void pausePlay() {
-        if (!paused) {
-            pausemenu.SetActive(true);
-            Time.timeScale = 0;
-            paused = true;
-        } else {
-            pausemenu.SetActive(false);
-            Time.timeScale = 1;
-            paused = false;
-        }
-    }
+    
 
 
     private void panicFindCenter() {
@@ -258,7 +253,12 @@ public class GameController : MonoBehaviour
         controller.haltWalk = false;
     
     }
-
+    // -------------------------------------------------------------------------------------------
+    // PLAYER POWERS
+    // PLAYER POWERS
+    // PLAYER POWERS
+    // PLAYER POWERS
+    // -------------------------------------------------------------------------------------------
 
     public void slowfall() {
         Debug.Log("Slowly falling");
@@ -375,6 +375,11 @@ public class GameController : MonoBehaviour
 
     public void newPowerFound() {
         numPowersFound++;
+        if (numPowersFound - 2 >= 0) {
+            MainCenter.GetChild(numPowersFound - 2).gameObject.SetActive(false);
+        }
+        MainCenter.GetChild(numPowersFound - 1).gameObject.SetActive(true);
+
         switch (numPowersFound) {
             case 1:
                 Debug.Log("Got Yellow");
@@ -394,6 +399,47 @@ public class GameController : MonoBehaviour
                 break;
         }
     }
+
+    // -------------------------------------------------------------------------------------------
+    // PAUSE MENU FUNCTIONS
+    // PAUSE MENU FUNCTIONS
+    // PAUSE MENU FUNCTIONS
+    // -------------------------------------------------------------------------------------------
+
+    private void pausePlay() {
+        if (!paused) {
+            pausemenu.SetActive(true);
+            Time.timeScale = 0;
+            paused = true;
+        } else {
+            pausemenu.SetActive(false);
+            Time.timeScale = 1;
+            paused = false;
+        }
+    }
+
+    public void resume() {
+        pausemenu.SetActive(false);
+        Time.timeScale = 1;
+        paused = false;
+    }
+
+    public void options() {
+        pausemenu.SetActive(false);
+        optionsmenu.SetActive(true);
+    }
+
+    public void options_back() {
+        optionsmenu.SetActive(false);
+        pausemenu.SetActive(true);
+    }
+
+    public void exit() {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+
+
+
+
 }
-
-
