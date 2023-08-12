@@ -435,6 +435,7 @@ public class GameController : MonoBehaviour
     }
 
     public void exit() {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
     }
 
