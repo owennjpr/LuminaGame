@@ -39,6 +39,9 @@ public class MainMenu : MonoBehaviour
     {
         main.SetActive(false);
         play.SetActive(true);
+        if (!SaveData.hasSavedGame) {
+            play.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     public void main_options() 
@@ -72,14 +75,30 @@ public class MainMenu : MonoBehaviour
     }
 
     public void play_newgame() {
+        
+        if(SaveData.hasSavedGame) {
+            play.transform.GetChild(3).gameObject.SetActive(true);
+        } else {
+            start_newgame();
+        }
+    }
+
+    public void start_newgame() {
         play.SetActive(false);
         SaveData.spawnPoint = new Vector3(0, 2, 0);
-        SceneManager.LoadScene("MainWorld");
+        SaveData.isNewGame = true;
+        SaveData.hasSavedGame = true;
 
+        SceneManager.LoadScene("MainWorld");
+    }
+
+    public void play_not_overwriting() {
+        play.transform.GetChild(3).gameObject.SetActive(false);
     }
 
     public void play_continue() {
         play.SetActive(false);
+        SaveData.isNewGame = false;
         SceneManager.LoadScene("MainWorld");
     }
 

@@ -9,5 +9,7 @@ public static class SaveData
     public static bool hasPurplePower {get; set; }
     public static bool hasRedPower {get; set; }
     public static Vector3 spawnPoint {get; set; }
+    public static bool isNewGame {get; set; }
+    public static bool hasSavedGame {get; set; }
 
 }

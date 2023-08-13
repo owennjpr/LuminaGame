@@ -81,11 +81,10 @@ public class GameController : MonoBehaviour
         highjumpColor = highjumpMask.color;
         highjumpColor.a = 0.0f;
 
-        // UNCOMMENT THIS BACK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // hasYellowPower = false;
-        // hasBluePower = false;
-        // hasPurplePower = false;
-        // hasRedPower = false;
+        hasYellowPower = false;
+        hasBluePower = false;
+        hasPurplePower = false;
+        hasRedPower = false;
         numPowersFound = 0;
         
         readSaveData();
@@ -462,30 +461,36 @@ public class GameController : MonoBehaviour
 
 
     private void readSaveData() {
-        hasYellowPower = SaveData.hasYellowPower;
-        hasBluePower = SaveData.hasBluePower;
-        hasPurplePower = SaveData.hasPurplePower;
-        hasRedPower = SaveData.hasRedPower;
+        if (!SaveData.isNewGame) 
+        {
+            hasYellowPower = SaveData.hasYellowPower;
+            hasBluePower = SaveData.hasBluePower;
+            hasPurplePower = SaveData.hasPurplePower;
+            hasRedPower = SaveData.hasRedPower;
 
-        if (hasRedPower) {
-            numPowersFound = 4;
-        } else if (hasPurplePower) {
-            numPowersFound = 3;
-        } else if (hasBluePower) {
-            numPowersFound = 2;
-        } else if (hasYellowPower) {
-            numPowersFound = 1;
+            if (hasRedPower) {
+                numPowersFound = 4;
+            } else if (hasPurplePower) {
+                numPowersFound = 3;
+            } else if (hasBluePower) {
+                numPowersFound = 2;
+            } else if (hasYellowPower) {
+                numPowersFound = 1;
+            } else {
+                numPowersFound = 0;
+            }
+
+            if (numPowersFound > 0) {
+                MainCenter.GetChild(numPowersFound - 1).gameObject.SetActive(true);
+            }
         } else {
-            numPowersFound = 0;
+            SaveData.hasYellowPower = false;
+            SaveData.hasBluePower = false;
+            SaveData.hasPurplePower = false;
+            SaveData.hasRedPower = false;
         }
-
-        if (numPowersFound > 0) {
-            MainCenter.GetChild(numPowersFound - 1).gameObject.SetActive(true);
-        }
-        Debug.Log(SaveData.spawnPoint);
-
+        // Debug.Log(SaveData.spawnPoint);
         StartCoroutine(warpPlayer(SaveData.spawnPoint));
-        
     }
 
     private IEnumerator warpPlayer(Vector3 pos) {
