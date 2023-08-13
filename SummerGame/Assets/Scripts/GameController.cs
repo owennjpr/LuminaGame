@@ -54,11 +54,15 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject pausemenu;
     [SerializeField] private GameObject optionsmenu;
 
+
+    //Debugging
+    [SerializeField] private bool Debugging;
+
     // Start is called before the first frame update
     void Start()
     {
 
-        playerSpawnPoint = new Vector3(0, -5, 0);
+        playerSpawnPoint = new Vector3(0, 2, 0);
         player = GameObject.FindWithTag("Player");
         playerVector = new Vector2(player.transform.position.x, player.transform.position.z);
         
@@ -81,13 +85,17 @@ public class GameController : MonoBehaviour
         highjumpColor = highjumpMask.color;
         highjumpColor.a = 0.0f;
 
-        hasYellowPower = false;
-        hasBluePower = false;
-        hasPurplePower = false;
-        hasRedPower = false;
-        numPowersFound = 0;
+
+        if (!Debugging) {
+            hasYellowPower = false;
+            hasBluePower = false;
+            hasPurplePower = false;
+            hasRedPower = false;
+            numPowersFound = 0;
         
-        readSaveData();
+            readSaveData();
+        }
+        
         
         paused = false;
         pausemenu.SetActive(false);
