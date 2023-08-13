@@ -101,7 +101,9 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
             pausePlay();
         }
-        
+
+        // Debug.Log(CenterPoint.gameObject.name);
+
         if (CenterPoint == null) {
             panicFindCenter();
         }
@@ -115,7 +117,7 @@ public class GameController : MonoBehaviour
         if (distance >= fadeStartDistance) {
             float x = (((distance - fadeStartDistance)/fadeRange));
             fadeColor.a = Mathf.Min(x, 1.0f);
-            if (x > 1.5f) {
+            if (x > 1.5f & CenterPoint != null) {
                 StartCoroutine(oobReturn());
             }
         } else {
@@ -129,6 +131,7 @@ public class GameController : MonoBehaviour
 
     private void panicFindCenter() {
         
+        // Debug.Log("HELLOOOOOOOOOOO");
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
 
         foreach(GameObject c in centers) {
@@ -150,14 +153,13 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (CenterPoint == null) {
+        if (CenterPoint == null & StableCenterPoint != null) {
             StartCoroutine(oobReturn());
             CenterPoint = StableCenterPoint;
         }
     }
 
     private IEnumerator oobReturn() {
-        Debug.Log("WOAH");
         controller.haltWalk = true;
         if (CenterPoint == StableCenterPoint) {
             controller.flipped = !(controller.flipped);
@@ -223,7 +225,7 @@ public class GameController : MonoBehaviour
     public void checkFade() {
         if (fadeColor.a > 0.0f) {
             StartCoroutine(manualFade(fadeColor.a));
-            Debug.Log("Howdy");
+            // Debug.Log("Howdy");
         }
     }
 
@@ -248,7 +250,7 @@ public class GameController : MonoBehaviour
             yield return null;
         }
         DynamicFadeColor.a = 1.0f;
-        Debug.Log("huh???");
+        // Debug.Log("huh???");
         controller.haltWalk = true;
         yield return new WaitForSeconds(1f);
         player.transform.position = MainCenter.position + new Vector3(0, 1.2f, 0);
@@ -452,7 +454,7 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(savePos);
+        // Debug.Log(savePos);
         writeSaveData(savePos);
         SceneManager.LoadScene("Main Menu");
     }
@@ -477,7 +479,9 @@ public class GameController : MonoBehaviour
             numPowersFound = 0;
         }
 
-        //MainCenter.GetChild(numPowersFound - 1).gameObject.SetActive(true);
+        if (numPowersFound > 0) {
+            MainCenter.GetChild(numPowersFound - 1).gameObject.SetActive(true);
+        }
         Debug.Log(SaveData.spawnPoint);
 
         StartCoroutine(warpPlayer(SaveData.spawnPoint));
@@ -490,8 +494,9 @@ public class GameController : MonoBehaviour
         
         player.transform.position = pos;
         findNewCenter();
-        yield return new WaitForSeconds(0.1f);
         Debug.Log(player.transform.position);
+        yield return new WaitForSeconds(0.1f);
+        
         controller.haltWalk = false;
         
     }

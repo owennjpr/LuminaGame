@@ -26,9 +26,11 @@ public class CenterPointControl : MonoBehaviour
         EndCollider.radius = startDistance;
         player = GameObject.FindWithTag("Player").transform;
 
-        particles = transform.GetChild(2).gameObject;
-        lights = transform.GetChild(3).gameObject;
-        centerObjects = transform.GetChild(4).gameObject;
+        if (!isMoving) {
+            particles = transform.GetChild(2).gameObject;
+            lights = transform.GetChild(3).gameObject;
+            centerObjects = transform.GetChild(4).gameObject;
+        }
     }
 
     void Update() {

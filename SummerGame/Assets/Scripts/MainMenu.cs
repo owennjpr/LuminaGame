@@ -73,7 +73,7 @@ public class MainMenu : MonoBehaviour
 
     public void play_newgame() {
         play.SetActive(false);
-        SaveData.spawnPoint = new Vector3(-36, 2, -87.4f);
+        SaveData.spawnPoint = new Vector3(0, 2, 0);
         SceneManager.LoadScene("MainWorld");
 
     }
