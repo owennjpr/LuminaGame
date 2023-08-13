@@ -62,7 +62,7 @@ public class DialController : MonoBehaviour
             pointData currKnobData = getActiveKnobData(i);
             int numPoints = currKnobData.positions.Length;
             for (int j = 0; j < numPoints; j++) {
-                Debug.Log(transform.position);
+                // Debug.Log(transform.position);
                 GameObject point = Instantiate(pointObject, transform.position, Quaternion.identity, transform);
                 point.transform.position += new Vector3(0, -0.1f, 0.1f);
                 point.transform.position += new Vector3(0, stepsize * currKnobData.positions[j] + 0.08f, 0);

@@ -13,14 +13,14 @@ public class centerStartCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
-            Debug.Log("entering");
+            // Debug.Log("entering");
             control.updateCenterState();
             control.checkFade();
         }
     }
     private void OnTriggerExit(Collider other) {
         if (other.CompareTag("Player")) {
-            Debug.Log("exiting");
+            // Debug.Log("exiting");
             control.updateCenterState();
         }
     }

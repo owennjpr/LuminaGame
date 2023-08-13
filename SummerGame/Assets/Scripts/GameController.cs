@@ -87,7 +87,9 @@ public class GameController : MonoBehaviour
         // hasPurplePower = false;
         // hasRedPower = false;
         numPowersFound = 0;
-
+        
+        readSaveData();
+        
         paused = false;
         pausemenu.SetActive(false);
         optionsmenu.SetActive(false);
@@ -126,6 +128,7 @@ public class GameController : MonoBehaviour
 
 
     private void panicFindCenter() {
+        
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
 
         foreach(GameObject c in centers) {
@@ -154,6 +157,7 @@ public class GameController : MonoBehaviour
     }
 
     private IEnumerator oobReturn() {
+        Debug.Log("WOAH");
         controller.haltWalk = true;
         if (CenterPoint == StableCenterPoint) {
             controller.flipped = !(controller.flipped);
@@ -261,13 +265,13 @@ public class GameController : MonoBehaviour
     // -------------------------------------------------------------------------------------------
 
     public void slowfall() {
-        Debug.Log("Slowly falling");
+        // Debug.Log("Slowly falling");
         slowfallActivated = true;
         StartCoroutine(fadeinSlowfall());
     }
 
     public void highjump() {
-        Debug.Log("high jump");
+        // Debug.Log("high jump");
         highjumpActivated = true;
         controller.m_JumpSpeed = 22;
         slowfallDelay = 0.9f;
@@ -279,7 +283,7 @@ public class GameController : MonoBehaviour
 
     public void playerJumped() 
     {
-        Debug.Log("jumped");
+        // Debug.Log("jumped");
         if (slowfallActivated) {
             slowfallInUse = true;
             StartCoroutine(changeGrav());
@@ -293,7 +297,7 @@ public class GameController : MonoBehaviour
     
     public void playerLanded() 
     {
-        Debug.Log("landed");
+        // Debug.Log("landed");
         if (slowfallInUse) {
             slowfallActivated = false;
             slowfallInUse = false;
@@ -357,10 +361,10 @@ public class GameController : MonoBehaviour
             FallingMask.color = FallingMaskColor;
             yield return null;
         }
-        controller.haltWalk = true;
-        player.transform.position = playerSpawnPoint;
-        yield return new WaitForSeconds(0.1f);
-        controller.haltWalk = false;
+
+        StartCoroutine(warpPlayer(playerSpawnPoint));
+
+        yield return new WaitForSeconds(0.2f);
 
         while (FallingMask.color.a > 0f) {
             FallingMaskColor.a -= Time.deltaTime * 1.5f;
@@ -370,7 +374,7 @@ public class GameController : MonoBehaviour
         
     }
 
-
+    
 
 
     public void newPowerFound() {
@@ -411,10 +415,11 @@ public class GameController : MonoBehaviour
             pausemenu.SetActive(true);
             Time.timeScale = 0;
             paused = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+
         } else {
-            pausemenu.SetActive(false);
-            Time.timeScale = 1;
-            paused = false;
+            resume();
         }
     }
 
@@ -422,6 +427,8 @@ public class GameController : MonoBehaviour
         pausemenu.SetActive(false);
         Time.timeScale = 1;
         paused = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void options() {
@@ -436,11 +443,65 @@ public class GameController : MonoBehaviour
 
     public void exit() {
         Time.timeScale = 1;
+
+        Vector3 savePos = StableCenterPoint.position + StableCenterPoint.GetComponent<CenterPointControl>().relativeSpawnPos + new Vector3(0, 1, 0);
+        foreach (Transform child in StableCenterPoint.GetChild(4))
+        {
+            if (child.tag == "Save Point") {
+                savePos = playerSpawnPoint;
+                break;
+            }
+        }
+        Debug.Log(savePos);
+        writeSaveData(savePos);
         SceneManager.LoadScene("Main Menu");
     }
 
 
 
+    private void readSaveData() {
+        hasYellowPower = SaveData.hasYellowPower;
+        hasBluePower = SaveData.hasBluePower;
+        hasPurplePower = SaveData.hasPurplePower;
+        hasRedPower = SaveData.hasRedPower;
 
+        if (hasRedPower) {
+            numPowersFound = 4;
+        } else if (hasPurplePower) {
+            numPowersFound = 3;
+        } else if (hasBluePower) {
+            numPowersFound = 2;
+        } else if (hasYellowPower) {
+            numPowersFound = 1;
+        } else {
+            numPowersFound = 0;
+        }
+
+        //MainCenter.GetChild(numPowersFound - 1).gameObject.SetActive(true);
+        Debug.Log(SaveData.spawnPoint);
+
+        StartCoroutine(warpPlayer(SaveData.spawnPoint));
+        
+    }
+
+    private IEnumerator warpPlayer(Vector3 pos) {
+        controller.haltWalk = true;
+        yield return new WaitForSeconds(0.1f);
+        
+        player.transform.position = pos;
+        findNewCenter();
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log(player.transform.position);
+        controller.haltWalk = false;
+        
+    }
+
+    private void writeSaveData(Vector3 position) {
+        SaveData.hasYellowPower = hasYellowPower;
+        SaveData.hasBluePower = hasBluePower;
+        SaveData.hasPurplePower = hasPurplePower;
+        SaveData.hasRedPower = hasRedPower;
+        SaveData.spawnPoint = position;
+    }
 
 }

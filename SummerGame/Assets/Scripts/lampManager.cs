@@ -24,7 +24,7 @@ public class lampManager : MonoBehaviour
                 solutionMask += 1 << i;
             }
         }
-        Debug.Log(solutionMask);
+        // Debug.Log(solutionMask);
     }
 
     public void lampUpdated(int lampID, bool activating) {

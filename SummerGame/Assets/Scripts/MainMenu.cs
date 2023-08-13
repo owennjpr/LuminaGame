@@ -25,6 +25,8 @@ public class MainMenu : MonoBehaviour
 
         credits = transform.GetChild(3).gameObject;
         credits.SetActive(false);
+
+        
     }
 
     // Update is called once per frame
@@ -71,15 +73,19 @@ public class MainMenu : MonoBehaviour
 
     public void play_newgame() {
         play.SetActive(false);
+        SaveData.spawnPoint = new Vector3(-36, 2, -87.4f);
         SceneManager.LoadScene("MainWorld");
 
+    }
+
+    public void play_continue() {
+        play.SetActive(false);
+        SceneManager.LoadScene("MainWorld");
     }
 
     public void credits_back() {
         credits.SetActive(false);
         main.SetActive(true);
     }
-
-
 
 }
