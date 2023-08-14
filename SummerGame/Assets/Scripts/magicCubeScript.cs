@@ -11,6 +11,7 @@ public class magicCubeScript : MonoBehaviour
     [SerializeField] private FirstPersonController playerControl;
     private GameController controller;
     [SerializeField] private GameObject InvisibleWalls;
+    private bool hasbeenClicked;
     
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class magicCubeScript : MonoBehaviour
         
         InvisibleWalls.SetActive(false);
         animationStarted = false;
+        hasbeenClicked = false;
     }
 
     // Update is called once per frame
@@ -40,7 +42,11 @@ public class magicCubeScript : MonoBehaviour
     }
 
     public void clicked() {
-        StartCoroutine(ExpandVolume());
+        if (!hasbeenClicked) {
+            hasbeenClicked = true;
+            StartCoroutine(ExpandVolume());
+        }
+        
     }
 
     private IEnumerator activateCube() {
