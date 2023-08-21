@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
 
     public Vector3 playerSpawnPoint;
     [SerializeField] private Transform MainCenter;
-
+    
 
     // game progress markers
     public bool hasYellowPower;
@@ -49,10 +49,13 @@ public class GameController : MonoBehaviour
     public bool hasRedPower;
     private int numPowersFound;
 
-    // pause menu
+    // pause menu & other ui
     public bool paused;
     [SerializeField] private GameObject pausemenu;
     [SerializeField] private GameObject optionsmenu;
+    
+    [SerializeField] private popupText popup;
+
 
 
     //Debugging
@@ -396,18 +399,22 @@ public class GameController : MonoBehaviour
         switch (numPowersFound) {
             case 1:
                 Debug.Log("Got Yellow");
+                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED","Throw Yellow Lights to Interact With Objects" , 3));
                 hasYellowPower = true;
                 break;
             case 2:
                 Debug.Log("Got Blue");
+                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Blue Lights to Slow Your Fall", 3));
                 hasBluePower = true;
                 break;
             case 3:
                 Debug.Log("Got Purple");
+                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Purple Lights to Jump Higher", 3));
                 hasPurplePower = true;
                 break;
             case 4:
                 Debug.Log("Got Red");
+                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Red Lights to Do Something", 3));
                 hasRedPower = true;
                 break;
         }

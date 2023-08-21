@@ -12,6 +12,9 @@ public class magicCubeScript : MonoBehaviour
     private GameController controller;
     [SerializeField] private GameObject InvisibleWalls;
     private bool hasbeenClicked;
+
+    [SerializeField] private GameObject crosshair;
+
     
     // Start is called before the first frame update
     void Start()
@@ -84,6 +87,8 @@ public class magicCubeScript : MonoBehaviour
         Vector3 volumeSize = volumeCollider.size;
         playerControl.m_WalkSpeed = 0;
         playerControl.m_RunSpeed = 0;
+        crosshair.SetActive(false);
+
         while(volumeSize.x < 40) {
             volumeSize += new Vector3(1, 1, 1) * Time.deltaTime * 15;
             volumeCollider.size = volumeSize;
@@ -99,6 +104,8 @@ public class magicCubeScript : MonoBehaviour
         }
         playerControl.m_WalkSpeed = 5;
         playerControl.m_RunSpeed = 10;
+        crosshair.SetActive(true);
+
         Vector3 myscale = transform.localScale;
         while(myscale.x > 0.001) {
             myscale -= new Vector3(1, 1, 1) * Time.deltaTime /1.5f;
