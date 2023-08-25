@@ -35,7 +35,7 @@ public class lamp : MonoBehaviour
         lit = true;
         
     }
-    private IEnumerator shrinkLight() {
+    public IEnumerator shrinkLight() {
         // Debug.Log("hi");
         transform.parent.GetComponent<lampManager>().lampUpdated(localID, false);
         while(glowCube.localScale.x > 1f) {

@@ -33,24 +33,34 @@ public class lampManager : MonoBehaviour
 
     public void lampUpdated(int lampID, bool activating) {
         if (activating) {
-            currMask += 1 << lampID;
+            currMask += 1 << lampID; //what happens if trying to activate one that's already on?
+            Debug.Log(lampID);
         } else {
             currMask -= 1 << lampID;
         }
         if (isFivebyFive && activating) { //only needs to check if new lamp has been turned on
             //check row repeats
+            Debug.Log("is 5x5 and activating");
             int row = lampID / 5;
             for (int i = 0; i < 5; i++) {
-                if (((currMask & (1 << (row * 5 + i))) == 1) && ((row * 5 + i) != lampID)) { //should check if index i in row is on and also that on lamp was not just turned on
-                    currMask -= 1 << (row * 5 + i);
+                Debug.Log("in for loop row");
+                if (((currMask & (1 << (row * 5 + i))) == (1 << (row * 5 + i))) && ((row * 5 + i) != lampID)) { //should check if index i in row is on and also that on lamp was not just turned on
+                    currMask -= (1 << (row * 5 + i)); //I think something about this is not working? I added a "-1" and it didn't seem to change anything? Why? Idk?
+                    StartCoroutine(transform.GetChild((row * 5 + i)).GetComponent<lamp>().shrinkLight());
+                    Debug.Log("found two row");
                 }
             }
 
             //check col repeats
             int col = lampID % 5;
             for (int j = 0; j < 5; j++) {
-                if (((currMask & (1 << (5 * j + col))) == 1) && ((5 * j + col) != lampID)) { //should check if index i in row is on and also that on lamp was not just turned on
-                    currMask -= 1 << (5 * j + col);
+                Debug.Log("in for loop col");
+                Debug.Log(5 * j + col);
+                if (((currMask & (1 << (5 * j + col))) == (1 << (5 * j + col))) && ((5 * j + col) != lampID)) { //should check if index i in row is on and also that on lamp was not just turned on
+                    currMask -= (1 << (5 * j + col));
+                    StartCoroutine(transform.GetChild((5 * j + col)).GetComponent<lamp>().shrinkLight());
+                    // currMask -= 1 << 5;
+                    Debug.Log("found two col");
                 }
             }
 
