@@ -42,27 +42,33 @@ public class lampManager : MonoBehaviour
             //check row repeats
             Debug.Log("is 5x5 and activating");
             int row = lampID / 5;
+            int tempmask = currMask;
             for (int i = 0; i < 5; i++) {
-                Debug.Log("in for loop row");
-                if (((currMask & (1 << (row * 5 + i))) == (1 << (row * 5 + i))) && ((row * 5 + i) != lampID)) { //should check if index i in row is on and also that on lamp was not just turned on
-                    currMask -= (1 << (row * 5 + i)); //I think something about this is not working? I added a "-1" and it didn't seem to change anything? Why? Idk?
+                // Debug.Log("in for loop row");
+                if (((tempmask & (1 << (row * 5 + i))) == (1 << (row * 5 + i))) && ((row * 5 + i) != lampID)) { //should check if index i in row is on and also that on lamp was not just turned on
+                    Debug.Log((row * 5 + i));
+                    currMask -= (1 << (row * 5 + i));  //4->-2, 4->-3, 16->-15  100->10000100
+                    // currMask = currMask & ~(1 << (row * 5 + i)); //I think something about this is not working? I added a "-1" and it didn't seem to change anything? Why? Idk?
                     StartCoroutine(transform.GetChild((row * 5 + i)).GetComponent<lamp>().shrinkLight());
                     Debug.Log("found two row");
                 }
             }
 
+            Debug.Log(currMask);
+
             //check col repeats
             int col = lampID % 5;
             for (int j = 0; j < 5; j++) {
-                Debug.Log("in for loop col");
-                Debug.Log(5 * j + col);
-                if (((currMask & (1 << (5 * j + col))) == (1 << (5 * j + col))) && ((5 * j + col) != lampID)) { //should check if index i in row is on and also that on lamp was not just turned on
+                // Debug.Log("in for loop col");
+                // Debug.Log(5 * j + col);
+                if (((tempmask & (1 << (5 * j + col))) == (1 << (5 * j + col))) && ((5 * j + col) != lampID)) { //should check if index i in row is on and also that on lamp was not just turned on
                     currMask -= (1 << (5 * j + col));
                     StartCoroutine(transform.GetChild((5 * j + col)).GetComponent<lamp>().shrinkLight());
                     // currMask -= 1 << 5;
                     Debug.Log("found two col");
                 }
             }
+            Debug.Log(currMask);
 
             //check group repeats
             //going to need to hard code these in somehow
