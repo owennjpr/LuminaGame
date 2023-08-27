@@ -24,7 +24,7 @@ public class lamp : MonoBehaviour
         }
     }
 
-    private IEnumerator fillWithLight() {
+    public IEnumerator fillWithLight() {
         // Debug.Log("hi");
         glowCube.gameObject.SetActive(true);
         transform.parent.GetComponent<lampManager>().lampUpdated(localID, true);
