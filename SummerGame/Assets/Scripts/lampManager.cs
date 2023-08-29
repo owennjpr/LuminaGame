@@ -15,6 +15,7 @@ public class lampManager : MonoBehaviour
     [SerializeField] private float doorHeight;
     private bool hasBeenSolved;
     [SerializeField] private bool isFivebyFive;
+    [SerializeField] private bool isLogicGate;
 
     // Start is called before the first frame update
     void Start()
@@ -158,6 +159,29 @@ public class lampManager : MonoBehaviour
 
             //going to need to hard code these in somehow
             
+        }
+
+        if (isLogicGate && activating) { //only needs to check if new lamp has been turned on
+            if (lampID == 0 || lampID == 1) {
+                if (((currMask & 2) == 2) && (currMask & 1) == 0) {
+                    StartCoroutine(transform.GetChild(9).GetComponent<lamp>().fillWithLight());
+                }
+
+            } else if (lampID == 2 || lampID == 3) {
+                if (((currMask & (1 << 2)) == (1 << 2)) && (currMask & (1 << 3)) == 0) {
+                    StartCoroutine(transform.GetChild(10).GetComponent<lamp>().fillWithLight());
+                }
+
+            } else if (lampID == 4 || lampID == 5) {
+                if (((currMask & (1 << 4)) == (1 << 4)) && (currMask & (1 << 5)) == 0) {
+                    StartCoroutine(transform.GetChild(11).GetComponent<lamp>().fillWithLight());
+                }
+
+            }
+            if ((currMask & (7 << 9)) == (7 << 9)) {
+                StartCoroutine(transform.GetChild(12).GetComponent<lamp>().fillWithLight());
+            }
+
         }
 
         if ((currMask == solutionMask) && !hasBeenSolved) {
