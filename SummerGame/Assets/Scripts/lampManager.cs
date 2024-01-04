@@ -90,6 +90,7 @@ public class lampManager : MonoBehaviour
             // arr[1] = new int[4] { 2, 4, 6, 8 };
 
             //IDEA:   COULD MAKE ONE BIG ARRAY BC WOULD KNOW INDEX OF START OF EACH ONE WHICH COULD BE STORED IN ANOTHER ARRAY
+            // group0 just has index 0 in it because it just has the one
             int[] group1 = {1, 2, 6, 7, 11, 12, 13, 16, 17, 18, 22, 23};
             int[] group2 = {3, 4, 8, 9, 14};
             int[] group3 = {5, 10, 15, 20, 21};
@@ -100,24 +101,24 @@ public class lampManager : MonoBehaviour
             // for (int group = 1; group < 5; group++) {
                 // Debug.Log(all[group][0][0]);
                 // string name = ("group" + group);
-                for (int i = 0; i < group1.Length; i++) {
-                    for (int j = 0; j < group1.Length; j++) {
-                        Debug.Log(group1[i] + ", " + group1[j]);
-                        if ((group1[i] != group1[j]) && ((tempmask & (1 << group1[i])) == (1 << group1[i])) && ((tempmask & (1 << group1[j])) == (1 << group1[j]))) {
-                            // Debug.Log(group1[i] + ", " + group1[j]);
-                            if (group1[i] != lampID) {
-                                StartCoroutine(transform.GetChild(group1[i]).GetComponent<lamp>().shrinkLight());
-                            } else {
-                                StartCoroutine(transform.GetChild(group1[j]).GetComponent<lamp>().shrinkLight());
-                            }
+            for (int i = 0; i < group1.Length; i++) {
+                for (int j = i + 1; j < group1.Length; j++) {
+                    Debug.Log("GROUP 1: " + group1[i] + ", " + group1[j]);
+                    if ((group1[i] != group1[j]) && ((tempmask & (1 << group1[i])) == (1 << group1[i])) && ((tempmask & (1 << group1[j])) == (1 << group1[j]))) {
+                         Debug.Log("TWOOO IN GROUP 1: " + group1[i] + ", " + group1[j]);
+                        if (group1[i] != lampID) {
+                            StartCoroutine(transform.GetChild(group1[i]).GetComponent<lamp>().shrinkLight());
+                        } else {
+                            StartCoroutine(transform.GetChild(group1[j]).GetComponent<lamp>().shrinkLight());
                         }
                     }
                 }
+            }
             // }
 
             for (int i = 0; i < group2.Length; i++) {
                 for (int j = 0; j < group2.Length; j++) {
-                    Debug.Log(group2[i] + ", " + group2[j]);
+                    //Debug.Log(group2[i] + ", " + group2[j]);
                     if ((group2[i] != group2[j]) && ((tempmask & (1 << group2[i])) == (1 << group2[i])) && ((tempmask & (1 << group2[j])) == (1 << group2[j]))) {
                         // Debug.Log(group2[i] + ", " + group2[j]);
                         if (group2[i] != lampID) {
@@ -131,7 +132,7 @@ public class lampManager : MonoBehaviour
 
             for (int i = 0; i < group3.Length; i++) {
                 for (int j = 0; j < group3.Length; j++) {
-                    Debug.Log(group3[i] + ", " + group3[j]);
+                    //Debug.Log(group3[i] + ", " + group3[j]);
                     if ((group3[i] != group3[j]) && ((tempmask & (1 << group3[i])) == (1 << group3[i])) && ((tempmask & (1 << group3[j])) == (1 << group3[j]))) {
                         // Debug.Log(group2[i] + ", " + group2[j]);
                         if (group3[i] != lampID) {
@@ -145,7 +146,7 @@ public class lampManager : MonoBehaviour
 
             for (int i = 0; i < group4.Length; i++) {
                 for (int j = 0; j < group4.Length; j++) {
-                    Debug.Log(group4[i] + ", " + group4[j]);
+                    //Debug.Log(group4[i] + ", " + group4[j]);
                     if ((group4[i] != group4[j]) && ((tempmask & (1 << group4[i])) == (1 << group4[i])) && ((tempmask & (1 << group4[j])) == (1 << group4[j]))) {
                         // Debug.Log(group2[i] + ", " + group2[j]);
                         if (group4[i] != lampID) {
