@@ -61,4 +61,11 @@ public class ControlledLightMove : MonoBehaviour
         }
     }
 
+    public Vector3 getDestination() {
+        
+        Debug.Log("Getting destination");
+        
+        return pathArray[pathLength-1];
+    }
+
 }

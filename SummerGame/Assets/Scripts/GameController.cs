@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour
     private float fadeRange;
     private bool movingCenter;
 
+    private bool warping;
+
     //movement Ability variables
     public FirstPersonController controller;
 
@@ -36,7 +38,7 @@ public class GameController : MonoBehaviour
     private bool highjumpInUse;
     public Image highjumpMask;
     private Color highjumpColor;
-    [SerializeField] private Image FallingMask;
+    [SerializeField] private Image LightMask;
 
     public Vector3 playerSpawnPoint;
     [SerializeField] private Transform MainCenter;
@@ -69,6 +71,8 @@ public class GameController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerVector = new Vector2(player.transform.position.x, player.transform.position.z);
         
+        warping = false;
+
         findNewCenter();
 
         fadeColor = fullScreenFade.color;
@@ -114,7 +118,7 @@ public class GameController : MonoBehaviour
 
         // Debug.Log(CenterPoint.gameObject.name);
 
-        if (CenterPoint == null) {
+        if (CenterPoint == null & !warping) {
             panicFindCenter();
         }
         if (movingCenter) {
@@ -127,7 +131,8 @@ public class GameController : MonoBehaviour
         if (distance >= fadeStartDistance) {
             float x = (((distance - fadeStartDistance)/fadeRange));
             fadeColor.a = Mathf.Min(x, 1.0f);
-            if (x > 1.5f & CenterPoint != null) {
+            if (x > 1.5f & CenterPoint != null & !warping) {
+                // Debug.Log("returnn");
                 StartCoroutine(oobReturn());
             }
         } else {
@@ -141,7 +146,7 @@ public class GameController : MonoBehaviour
 
     private void panicFindCenter() {
         
-        // Debug.Log("HELLOOOOOOOOOOO");
+        Debug.Log("HELLOOOOOOOOOOO");
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
 
         foreach(GameObject c in centers) {
@@ -170,6 +175,7 @@ public class GameController : MonoBehaviour
     }
 
     private IEnumerator oobReturn() {
+        
         controller.haltWalk = true;
         if (CenterPoint == StableCenterPoint) {
             controller.flipped = !(controller.flipped);
@@ -228,10 +234,47 @@ public class GameController : MonoBehaviour
         movingCenter = CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving;
         if (!movingCenter) {
             StableCenterPoint = CenterPoint;
+        } else {
+            StartCoroutine(teleportToDestination());
         }
         RenderSettings.fogDensity = 1.2f/fadeStartDistance;
     }
     
+    public IEnumerator teleportToDestination() {
+        // Debug.Log("in a mover");
+        yield return new WaitForSeconds(3.0f);
+        if (CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving & !warping) {
+            float distance = Vector2.Distance(centerVector, playerVector);
+            
+            if(fadeEndDistance >= distance) {
+                warping = true;
+
+                Vector3 destination = CenterPoint.parent.GetComponent<ControlledLightMove>().getDestination();
+                
+                Color LightMaskColor = LightMask.color;
+                while (LightMask.color.a < 1f) {
+                    LightMaskColor.a += Time.deltaTime * 1.5f;
+                    LightMask.color = LightMaskColor;
+                    yield return null;
+                }
+
+                StartCoroutine(warpPlayer(destination));
+                yield return new WaitForSeconds(0.2f);
+                warping = false;
+                while (LightMask.color.a > 0f) {
+                    LightMaskColor.a -= Time.deltaTime * 1.5f;
+                    LightMask.color = LightMaskColor;
+                    yield return null;
+                }
+                foreach (Transform child in transform) {
+                    Destroy(child.gameObject);
+                }
+            }
+        }
+
+    }
+
+
     public void checkFade() {
         if (fadeColor.a > 0.0f) {
             StartCoroutine(manualFade(fadeColor.a));
@@ -367,10 +410,10 @@ public class GameController : MonoBehaviour
 
     public IEnumerator falling() {
         
-        Color FallingMaskColor = FallingMask.color;
-        while (FallingMask.color.a < 1f) {
-            FallingMaskColor.a += Time.deltaTime * 2;
-            FallingMask.color = FallingMaskColor;
+        Color LightMaskColor = LightMask.color;
+        while (LightMask.color.a < 1f) {
+            LightMaskColor.a += Time.deltaTime * 2;
+            LightMask.color = LightMaskColor;
             yield return null;
         }
 
@@ -378,9 +421,9 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        while (FallingMask.color.a > 0f) {
-            FallingMaskColor.a -= Time.deltaTime * 1.5f;
-            FallingMask.color = FallingMaskColor;
+        while (LightMask.color.a > 0f) {
+            LightMaskColor.a -= Time.deltaTime * 1.5f;
+            LightMask.color = LightMaskColor;
             yield return null;
         }
         

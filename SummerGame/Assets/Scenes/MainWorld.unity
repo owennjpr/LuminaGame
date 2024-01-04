@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.172768, g: 0.21589169, b: 0.29782546, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10508,7 +10508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459910588280752, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 270
+      value: -53.9
       objectReference: {fileID: 0}
     - target: {fileID: 4459910588280752, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10516,7 +10516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459910588280752, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -142.7
+      value: -149.7
       objectReference: {fileID: 0}
     - target: {fileID: 4459910588280752, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30982,15 +30982,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4704467318043762753, guid: 15d2adcf0d1f7564aa12fd85448a77f5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 930168604}
-    - targetCorrespondingSourceObject: {fileID: 4704467318043762753, guid: 15d2adcf0d1f7564aa12fd85448a77f5,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2135118386}
     - targetCorrespondingSourceObject: {fileID: 4704467318043762753, guid: 15d2adcf0d1f7564aa12fd85448a77f5,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 349274998}
+    - targetCorrespondingSourceObject: {fileID: 4704467318043762753, guid: 15d2adcf0d1f7564aa12fd85448a77f5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 930168604}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15d2adcf0d1f7564aa12fd85448a77f5, type: 3}
 --- !u!224 &911990739 stripped
@@ -33811,6 +33811,11 @@ PrefabInstance:
       propertyPath: Debugging
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
+        type: 3}
+      propertyPath: LightMask
+      value: 
+      objectReference: {fileID: 1910200936}
     - target: {fileID: 1582688087457770922, guid: e9f230168a44ef444aa4b5fa9c8111f6,
         type: 3}
       propertyPath: pausemenu
@@ -70586,7 +70591,7 @@ GameObject:
   - component: {fileID: 1910200937}
   - component: {fileID: 1910200936}
   m_Layer: 5
-  m_Name: FallingScreenCover
+  m_Name: LightScreenCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
