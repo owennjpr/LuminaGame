@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
 
 
 
-    //Debugging
+    //Debugging toggle
     [SerializeField] private bool Debugging;
 
     // Start is called before the first frame update
@@ -146,7 +146,7 @@ public class GameController : MonoBehaviour
 
     private void panicFindCenter() {
         
-        Debug.Log("HELLOOOOOOOOOOO");
+        Debug.Log("panic find new center");
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
 
         foreach(GameObject c in centers) {
@@ -172,6 +172,8 @@ public class GameController : MonoBehaviour
             StartCoroutine(oobReturn());
             CenterPoint = StableCenterPoint;
         }
+
+        Debug.Log("new center " + CenterPoint.gameObject.name);
     }
 
     private IEnumerator oobReturn() {
@@ -238,6 +240,7 @@ public class GameController : MonoBehaviour
             StartCoroutine(teleportToDestination());
         }
         RenderSettings.fogDensity = 1.2f/fadeStartDistance;
+        Debug.Log("new center " + CenterPoint.gameObject.name);
     }
     
     public IEnumerator teleportToDestination() {
