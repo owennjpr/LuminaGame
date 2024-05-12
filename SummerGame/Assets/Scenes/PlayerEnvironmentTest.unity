@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.101960786, g: 0.13725491, b: 0.21568628, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
@@ -23307,17 +23307,17 @@ PrefabInstance:
     - target: {fileID: 20793941622941012, guid: 93e39505c6f8cf0459bb096efac0ff1f,
         type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.21698111
+      value: 0.9716981
       objectReference: {fileID: 0}
     - target: {fileID: 20793941622941012, guid: 93e39505c6f8cf0459bb096efac0ff1f,
         type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.13786349
+      value: 0.6777232
       objectReference: {fileID: 0}
     - target: {fileID: 20793941622941012, guid: 93e39505c6f8cf0459bb096efac0ff1f,
         type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.10337308
+      value: 0.5454343
       objectReference: {fileID: 0}
     - target: {fileID: 81728176105487214, guid: 93e39505c6f8cf0459bb096efac0ff1f,
         type: 3}
@@ -23333,6 +23333,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HeadBob.HorizontalBobRange
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143481341568393798, guid: 93e39505c6f8cf0459bb096efac0ff1f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23706,6 +23711,7 @@ MonoBehaviour:
   activeMat: {fileID: 2100000, guid: d2a85a6443266b246a801aab52396a65, type: 2}
   playerControl: {fileID: 809858154}
   InvisibleWalls: {fileID: 1361158089}
+  crosshair: {fileID: 0}
 --- !u!65 &1301155108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26416,6 +26422,8 @@ MonoBehaviour:
   verticalDoorSolve: 1
   revealLightSolve: 0
   doorHeight: 5
+  isFivebyFive: 0
+  isLogicGate: 0
 --- !u!1 &2090627977
 GameObject:
   m_ObjectHideFlags: 0
