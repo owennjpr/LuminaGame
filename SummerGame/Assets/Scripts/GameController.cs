@@ -243,12 +243,14 @@ public class GameController : MonoBehaviour
         Debug.Log("new center " + CenterPoint.gameObject.name);
     }
     
+    // when the player is in a moving light
     public IEnumerator teleportToDestination() {
         // Debug.Log("in a mover");
         yield return new WaitForSeconds(3.0f);
         if (CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving & !warping) {
             float distance = Vector2.Distance(centerVector, playerVector);
             
+            //if the player is still in range after 3 seconds, start the teleport
             if(fadeEndDistance >= distance) {
                 warping = true;
 
@@ -264,6 +266,22 @@ public class GameController : MonoBehaviour
                 StartCoroutine(warpPlayer(destination));
                 yield return new WaitForSeconds(0.2f);
                 warping = false;
+
+                Vector3 directionToCenter = CenterPoint.position - transform.position;
+                //directoinToCenter.y = 0f;
+
+                Quaternion targetRotation = Quaternion.LookRotation(directionToCenter);
+
+                Quaternion rotationDifference = targetRotation * Quaternion.Inverse(transform.rotation);
+
+                Vector3 angleDifference = rotationDifference.eulerAngles;
+                Debug.Log(angleDifference);
+                // Vector3 cross = Vector3.Cross(transform.forward, directionToCenter);
+                // float sign = (cross.y < 0) ? -1f : 1f;
+                
+                // angleDifference *= -1f;
+
+                // controller.adjustmentVector = angleDifference;
                 while (LightMask.color.a > 0f) {
                     LightMaskColor.a -= Time.deltaTime * 1.5f;
                     LightMask.color = LightMaskColor;
@@ -554,6 +572,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(warpPlayer(SaveData.spawnPoint));
     }
 
+    //teleport the player by overriding the walk controller
     private IEnumerator warpPlayer(Vector3 pos) {
         controller.haltWalk = true;
         yield return new WaitForSeconds(0.1f);

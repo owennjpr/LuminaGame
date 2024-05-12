@@ -48,6 +48,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
         public bool haltWalk;
         public bool flipped;
+        public Vector3 adjustmentVector;
         private GameController gameControl;
         // public float offsetAngle;
         // Use this for initialization
@@ -65,6 +66,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
             flipped = false;
             gameControl = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+            adjustmentVector = new Vector3(0, 0, 0);
         }
 
 
@@ -253,13 +255,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void RotateView()
         {
             m_MouseLook.LookRotation (transform, m_Camera.transform);
+            var adjustment = new Vector3(0, 0, 0);
             if (flipped) {
-                transform.rotation = Quaternion.Euler(new Vector3(
-                        transform.eulerAngles.x,
-                        transform.eulerAngles.y + 180,
-                        transform.eulerAngles.z
-                    ));
+
+                adjustment.y += 180;
             } 
+            adjustment += adjustmentVector;
+            transform.rotation = Quaternion.Euler(new Vector3(
+                        transform.eulerAngles.x,
+                        transform.eulerAngles.y,
+                        transform.eulerAngles.z) + adjustment);
+
+            
+            
+        }
+
+        public void lookAtCenter(Transform target) {
 
         }
 
