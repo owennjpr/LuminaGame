@@ -267,21 +267,15 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 warping = false;
 
-                Vector3 directionToCenter = CenterPoint.position - transform.position;
-                //directoinToCenter.y = 0f;
+                Vector3 directionToCenter = CenterPoint.position - player.transform.position;
 
                 Quaternion targetRotation = Quaternion.LookRotation(directionToCenter);
 
-                Quaternion rotationDifference = targetRotation * Quaternion.Inverse(transform.rotation);
+                float rotationDifference = targetRotation.eulerAngles.y - player.transform.rotation.eulerAngles.y;
 
-                Vector3 angleDifference = rotationDifference.eulerAngles;
-                Debug.Log(angleDifference);
-                // Vector3 cross = Vector3.Cross(transform.forward, directionToCenter);
-                // float sign = (cross.y < 0) ? -1f : 1f;
-                
-                // angleDifference *= -1f;
-
-                // controller.adjustmentVector = angleDifference;
+                Debug.Log("target: " + targetRotation.eulerAngles.y + "current: " + player.transform.rotation.eulerAngles.y + "difference: " + rotationDifference);
+    
+                controller.adjustmentVector = new Vector3(0, rotationDifference, 0);
                 while (LightMask.color.a > 0f) {
                     LightMaskColor.a -= Time.deltaTime * 1.5f;
                     LightMask.color = LightMaskColor;

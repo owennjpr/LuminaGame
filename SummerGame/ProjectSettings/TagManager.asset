@@ -11,6 +11,7 @@ TagManager:
   - floor
   - lamp
   - Save Point
+  - moving platform
   layers:
   - Default
   - TransparentFX

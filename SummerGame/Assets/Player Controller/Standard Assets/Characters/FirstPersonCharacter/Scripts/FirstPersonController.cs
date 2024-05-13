@@ -270,9 +270,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             
         }
 
-        public void lookAtCenter(Transform target) {
-
-        }
 
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -290,5 +287,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+
     }
 }

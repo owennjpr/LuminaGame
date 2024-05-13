@@ -14,6 +14,8 @@ public class swayScript : MonoBehaviour
     private Rigidbody rb;
 
     private bool outOfRange;
+    private Vector3 currforce;
+    private movingPlatformTrigger childCollider;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,8 @@ public class swayScript : MonoBehaviour
         time = 0;
         startPos = transform.position;
         outOfRange = false;
+        currforce = new Vector3(0, 0, 0);
+        childCollider = transform.GetChild(0).GetComponent<movingPlatformTrigger>();
 
     }
 
@@ -50,8 +54,16 @@ public class swayScript : MonoBehaviour
             float y = Mathf.Sin(time / idle_yMod);
             float x = Mathf.Sin(time / idle_xMod);
             float z = Mathf.Sin (time / idle_zMod);
-            rb.AddForce(new Vector3(2f * x, 1f * y, 2f * z));
+            currforce = new Vector3(2f * x, 1f * y, 2f * z);
+            childCollider.currforce = currforce;
+            rb.AddForce(currforce);
         }
 
     }
+
+    // private void OnTriggerStay(Collider other) {
+    //     if (other.gameObject.tag == "Player") {
+    //         Debug.Log("YAYAYAYYA");
+    //     }
+    // }
 }
