@@ -14,21 +14,23 @@ public class swayScript : MonoBehaviour
     private Rigidbody rb;
 
     private bool outOfRange;
-    private Vector3 currforce;
-    private movingPlatformTrigger childCollider;
+    private Vector3 currForce;
+    public movingPlatformTrigger childCollider;
+
+    public float multiplier;
     
     // Start is called before the first frame update
     void Start()
     {
 
         rb = GetComponent<Rigidbody>();
-        idle_xMod = Random.Range(0.5f, 2.5f);
-        idle_yMod = Random.Range(0.5f, 2.5f);
-        idle_zMod = Random.Range(0.5f, 2.5f);
-        time = 0;
+        idle_xMod = Random.Range(0.5f, 2f);
+        idle_yMod = Random.Range(0.5f, 1.5f);
+        idle_zMod = Random.Range(0.5f, 2f);
+        time = Random.Range(0, 30);
         startPos = transform.position;
         outOfRange = false;
-        currforce = new Vector3(0, 0, 0);
+        currForce = new Vector3(0, 0, 0);
         childCollider = transform.GetChild(0).GetComponent<movingPlatformTrigger>();
 
     }
@@ -48,16 +50,20 @@ public class swayScript : MonoBehaviour
         }
 
         if (outOfRange) {
-            transform.position = Vector3.MoveTowards(transform.position, startPos, Time.deltaTime);
+            currForce = (startPos - transform.position).normalized;
         } else {
             
             float y = Mathf.Sin(time / idle_yMod);
             float x = Mathf.Sin(time / idle_xMod);
             float z = Mathf.Sin (time / idle_zMod);
-            currforce = new Vector3(2f * x, 1f * y, 2f * z);
-            childCollider.currforce = currforce;
-            rb.AddForce(currforce);
+        // currTransform = new Vector3(x, y, z);
+        // transform.position = startPos + currTransform;
+            currForce = new Vector3(2f * x, 1f * y, 2f * z);
+            // childCollider.currforce = currforce;
+            
         }
+
+        rb.velocity = currForce * multiplier;
 
     }
 
