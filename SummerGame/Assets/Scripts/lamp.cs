@@ -26,23 +26,27 @@ public class lamp : MonoBehaviour
 
     public IEnumerator fillWithLight() {
         Debug.Log("filling with light: " + localID);
-        glowCube.gameObject.SetActive(true);
-        transform.parent.GetComponent<lampManager>().lampUpdated(localID, true);
-        while(glowCube.localScale.x < 17f) {
-            glowCube.localScale += new Vector3(1f, 1f, 1f) * 75 * Time.deltaTime;
-            yield return null;
+        if (!lit) {
+            glowCube.gameObject.SetActive(true);
+            transform.parent.GetComponent<lampManager>().lampUpdated(localID, true);
+            while(glowCube.localScale.x < 17f) {
+                glowCube.localScale += new Vector3(1f, 1f, 1f) * 75 * Time.deltaTime;
+                yield return null;
+            }
+            lit = true;
         }
-        lit = true;
         
     }
     public IEnumerator shrinkLight() {
         Debug.Log("shrinking light: " + localID);
-        transform.parent.GetComponent<lampManager>().lampUpdated(localID, false);
-        while(glowCube.localScale.x > 1f) {
-            glowCube.localScale -= new Vector3(1f, 1f, 1f) * 75 * Time.deltaTime;
-            yield return null;
+        if (lit) {
+            transform.parent.GetComponent<lampManager>().lampUpdated(localID, false);
+            while(glowCube.localScale.x > 1f) {
+                glowCube.localScale -= new Vector3(1f, 1f, 1f) * 75 * Time.deltaTime;
+                yield return null;
+            }
+            glowCube.gameObject.SetActive(false);
+            lit = false;
         }
-        glowCube.gameObject.SetActive(false);
-        lit = false;
     }
 }

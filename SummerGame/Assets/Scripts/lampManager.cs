@@ -170,9 +170,8 @@ public class lampManager : MonoBehaviour
                     if (((currMask & 2) == 2) && (currMask & 1) == 0) {
                         Debug.Log("IN IF FOR LEFT LIGHTS  " + currMask);
                         StartCoroutine(transform.GetChild(9).GetComponent<lamp>().fillWithLight());
-
-                        // IMPORTANT: when I have it shrink without checking that it was already on it changed currmask number, need to check that it was on before shrinking
-                        // StartCoroutine(transform.GetChild(6).GetComponent<lamp>().shrinkLight());
+                        StartCoroutine(transform.GetChild(6).GetComponent<lamp>().shrinkLight());
+                        
                         Debug.Log("END OF IF  " + currMask);
 
                     } else if ((currMask & 1) == 1){
@@ -186,7 +185,7 @@ public class lampManager : MonoBehaviour
                 } else if (lampID == 2 || lampID == 3) {
                     if (((currMask & (1 << 2)) == (1 << 2)) && (currMask & (1 << 3)) == 0) {
                         StartCoroutine(transform.GetChild(10).GetComponent<lamp>().fillWithLight());
-                        // StartCoroutine(transform.GetChild(7).GetComponent<lamp>().shrinkLight());
+                        StartCoroutine(transform.GetChild(7).GetComponent<lamp>().shrinkLight());
                     } else if ((currMask & (1 << 3)) == 1){
                         StartCoroutine(transform.GetChild(7).GetComponent<lamp>().fillWithLight());
                         StartCoroutine(transform.GetChild(10).GetComponent<lamp>().shrinkLight());
@@ -198,7 +197,7 @@ public class lampManager : MonoBehaviour
                 } else if (lampID == 4 || lampID == 5) {
                     if (((currMask & (1 << 4)) == (1 << 4)) && (currMask & (1 << 5)) == 0) {
                         StartCoroutine(transform.GetChild(11).GetComponent<lamp>().fillWithLight());
-                        // StartCoroutine(transform.GetChild(8).GetComponent<lamp>().shrinkLight());
+                        StartCoroutine(transform.GetChild(8).GetComponent<lamp>().shrinkLight());
                     } else if ((currMask & (1 << 5)) == 1){
                         StartCoroutine(transform.GetChild(8).GetComponent<lamp>().fillWithLight());
                         StartCoroutine(transform.GetChild(11).GetComponent<lamp>().shrinkLight());
@@ -208,12 +207,16 @@ public class lampManager : MonoBehaviour
                     }
 
                 } 
-                
-            // IMPORTANT: Crashes right as I try to turn the last correct one on, o
 
-            if ((currMask & (7 << 9)) == (7 << 9)) {
+
+            if (((currMask & 22) == 22) && (lampID != 12)) {
+                
                 StartCoroutine(transform.GetChild(12).GetComponent<lamp>().fillWithLight());
             }
+
+        
+
+
 
         }
 
