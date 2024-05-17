@@ -26,7 +26,8 @@ public class GameController : MonoBehaviour
     private bool warping;
 
     //movement Ability variables
-    public FirstPersonController controller;
+    public PlayerMovement controller;
+    public PlayerCam cameraController;
 
     private bool slowfallActivated;
     private bool slowfallInUse;
@@ -62,7 +63,7 @@ public class GameController : MonoBehaviour
 
     //Debugging toggle
     [SerializeField] private bool Debugging;
-
+    // public Transform targetSphere;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,7 +81,8 @@ public class GameController : MonoBehaviour
         DynamicFadeColor.a = 0.0f;
         fadeColor.a = 0.0f;
         
-        controller = player.GetComponent<FirstPersonController>();
+        controller = player.GetComponent<PlayerMovement>();
+        cameraController = GameObject.FindWithTag("MainCamera").GetComponent<PlayerCam>();
         slowfallActivated = false;
         slowfallInUse = false;
         slowfallMaskColor = slowfallMask.color;
@@ -115,6 +117,11 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
             pausePlay();
         }
+
+        // if (Input.GetKeyDown("r")) {
+        //     Debug.Log("rrr");
+        //     turnTowardsTarget(targetSphere);
+        // }
 
         // Debug.Log(CenterPoint.gameObject.name);
 
@@ -178,9 +185,11 @@ public class GameController : MonoBehaviour
 
     private IEnumerator oobReturn() {
         
-        controller.haltWalk = true;
+        // controller.haltWalk = true;
         if (CenterPoint == StableCenterPoint) {
-            controller.flipped = !(controller.flipped);
+            // controller.flipped = !(controller.flipped);
+            // turnTowardsTarget(CenterPoint);
+            cameraController.yOverride += 180;
             player.transform.position = Vector3.MoveTowards(player.transform.position, CenterPoint.position, fadeRange/2);
         } else {
             Vector3 stablePos = StableCenterPoint.position;
@@ -188,7 +197,7 @@ public class GameController : MonoBehaviour
         }
         
         yield return new WaitForSeconds(0.05f);
-        controller.haltWalk = false;
+        // controller.haltWalk = false;
     }
 
     // figures out what center point player in rn so can figure out what should be able to do
@@ -267,15 +276,8 @@ public class GameController : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 warping = false;
 
-                Vector3 directionToCenter = CenterPoint.position - player.transform.position;
-
-                Quaternion targetRotation = Quaternion.LookRotation(directionToCenter);
-
-                float rotationDifference = targetRotation.eulerAngles.y - player.transform.rotation.eulerAngles.y;
-
-                Debug.Log("target: " + targetRotation.eulerAngles.y + "current: " + player.transform.rotation.eulerAngles.y + "difference: " + rotationDifference);
-    
-                controller.adjustmentVector = new Vector3(0, rotationDifference, 0);
+                turnTowardsTarget(CenterPoint);
+                
                 while (LightMask.color.a > 0f) {
                     LightMaskColor.a -= Time.deltaTime * 1.5f;
                     LightMask.color = LightMaskColor;
@@ -289,6 +291,19 @@ public class GameController : MonoBehaviour
 
     }
 
+    private void turnTowardsTarget(Transform target) {
+        
+        Vector3 directionToTarget = target.position - player.transform.position;
+
+        Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+
+        float yRotationDifference = targetRotation.eulerAngles.y - player.transform.GetChild(1).rotation.eulerAngles.y;
+        // float xRotationDifference = targetRotation.eulerAngles.x - cameraController.transform.rotation.eulerAngles.x;
+        // Debug.Log("target: " + targetRotation.eulerAngles.y + "current: " + player.transform.rotation.eulerAngles.y + "difference: " + rotationDifference);
+    
+        cameraController.yOverride += yRotationDifference;
+        // cameraController.xOverride += xRotationDifference;
+    }
 
     public void checkFade() {
         if (fadeColor.a > 0.0f) {
@@ -319,12 +334,12 @@ public class GameController : MonoBehaviour
         }
         DynamicFadeColor.a = 1.0f;
         // Debug.Log("huh???");
-        controller.haltWalk = true;
+        // controller.haltWalk = true;
         yield return new WaitForSeconds(1f);
         player.transform.position = MainCenter.position + new Vector3(0, 1.2f, 0);
         findNewCenter();
         yield return new WaitForSeconds(0.1f);
-        controller.haltWalk = false;
+        // controller.haltWalk = false;
     
     }
     // -------------------------------------------------------------------------------------------
@@ -343,7 +358,7 @@ public class GameController : MonoBehaviour
     public void highjump() {
         // Debug.Log("high jump");
         highjumpActivated = true;
-        controller.m_JumpSpeed = 22;
+        controller.jumpForce = 22;
         slowfallDelay = 0.9f;
 
         StartCoroutine(fadeinHighJump());
@@ -377,7 +392,7 @@ public class GameController : MonoBehaviour
 
         if (highjumpInUse) {
             highjumpInUse = false;
-            controller.m_JumpSpeed = 10;
+            controller.jumpForce = 15;
             slowfallDelay = 0.5f;
         }
     }
@@ -399,7 +414,7 @@ public class GameController : MonoBehaviour
     }
 
     private IEnumerator fadeoutSlowfall() {
-        controller.m_GravityMultiplier = 2;
+        controller.gravityMultiplier = 2;
         while (slowfallMask.color.a > 0) {
             slowfallMaskColor.a -= Time.deltaTime;
             slowfallMask.color = slowfallMaskColor;
@@ -418,7 +433,7 @@ public class GameController : MonoBehaviour
     private IEnumerator changeGrav() {
         yield return new WaitForSeconds(slowfallDelay);
         if (slowfallInUse) {
-            controller.m_GravityMultiplier = 0.2f;
+            controller.gravityMultiplier = 0.2f;
         }
     }
 
@@ -568,7 +583,7 @@ public class GameController : MonoBehaviour
 
     //teleport the player by overriding the walk controller
     private IEnumerator warpPlayer(Vector3 pos) {
-        controller.haltWalk = true;
+        // controller.haltWalk = true;
         yield return new WaitForSeconds(0.1f);
         
         player.transform.position = pos;
@@ -576,7 +591,7 @@ public class GameController : MonoBehaviour
         Debug.Log(player.transform.position);
         yield return new WaitForSeconds(0.1f);
         
-        controller.haltWalk = false;
+        // controller.haltWalk = false;
         
     }
 
