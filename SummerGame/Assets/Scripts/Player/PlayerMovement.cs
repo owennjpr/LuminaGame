@@ -18,9 +18,23 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump;
     public Transform orientation;
 
+    private ConstantForce cForce;
     public float gravityMultiplier;
-
+    private Vector3 gravDirection;
     private bool sprinting;
+    private float horizontalInput;
+    private float verticalInput;
+    private Vector3 moveDirection;
+
+    private Rigidbody rb;
+    
+
+    [Header("Light Powers")]
+    public GameController gameController;
+    public bool readyToSlowfall;
+    public bool slowfallInUse;
+    public float slowfallMultiplier;
+    public float slowfallDelay;
 
 
     [Header("Keybinds")]
@@ -29,22 +43,18 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask ground;
-    private bool grounded;
+    public bool grounded;
 
-
-
-    private float horizontalInput;
-    private float verticalInput;
-
-    private Vector3 moveDirection;
-
-    private Rigidbody rb;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cForce = GetComponent<ConstantForce>();
+        gravDirection = new Vector3(0, -9.81f, 0);
+        cForce.force = gravDirection * gravityMultiplier;
         rb.freezeRotation = true;
         canJump = true;
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
     }
 
     private void MyInput() {
@@ -78,6 +88,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
+        if (slowfallInUse && grounded) {
+            slowfallInUse = false;
+            readyToSlowfall = false;
+            StartCoroutine(gameController.fadeoutSlowfall());
+        }
         MyInput();
         if (grounded) {
             rb.drag = groundDrag;
@@ -89,6 +104,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate() {
         MovePlayer();
+        if (!slowfallInUse) {
+            gravityMultiplier = 3;
+        }
+        cForce.force = gravDirection * gravityMultiplier;
     }
 
     private void SpeedControl() {
@@ -103,9 +122,31 @@ public class PlayerMovement : MonoBehaviour
     private void Jump() {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        if (readyToSlowfall) {
+            
+            readyToSlowfall = false;
+            StartCoroutine(changeGrav(slowfallDelay));
+        }
     }
 
     private void ResetJump() {
         canJump = true;
     }
+
+    public void readySlowfall() {
+        readyToSlowfall = true;
+        if (grounded) {
+            slowfallInUse = false;
+        } else {
+            StartCoroutine(changeGrav(0.25f));
+        }
+    }
+
+        private IEnumerator changeGrav(float delay) {
+        yield return new WaitForSeconds(delay);
+        slowfallInUse = true;
+        gravityMultiplier = slowfallMultiplier;
+
+    }
+
 }

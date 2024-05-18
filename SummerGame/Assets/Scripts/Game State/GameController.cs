@@ -29,11 +29,9 @@ public class GameController : MonoBehaviour
     public PlayerMovement controller;
     public PlayerCam cameraController;
 
-    private bool slowfallActivated;
-    private bool slowfallInUse;
     public Image slowfallMask;
     private Color slowfallMaskColor;
-    private float slowfallDelay;
+    private bool slowfallMaskActive;
 
     private bool highjumpActivated;
     private bool highjumpInUse;
@@ -83,11 +81,10 @@ public class GameController : MonoBehaviour
         
         controller = player.GetComponent<PlayerMovement>();
         cameraController = GameObject.FindWithTag("MainCamera").GetComponent<PlayerCam>();
-        slowfallActivated = false;
-        slowfallInUse = false;
+        // slowfallActivated = false;
         slowfallMaskColor = slowfallMask.color;
         slowfallMaskColor.a = 0.0f;
-        slowfallDelay = 0.5f;
+        slowfallMaskActive = false;
 
         highjumpActivated = false;
         highjumpInUse = false;
@@ -351,56 +348,62 @@ public class GameController : MonoBehaviour
 
     public void slowfall() {
         // Debug.Log("Slowly falling");
-        slowfallActivated = true;
+        // slowfallActivated = true;
         StartCoroutine(fadeinSlowfall());
+        controller.readySlowfall();
     }
 
     public void highjump() {
         // Debug.Log("high jump");
         highjumpActivated = true;
         controller.jumpForce = 22;
-        slowfallDelay = 0.9f;
+        // slowfallDelay = 0.9f;
 
         StartCoroutine(fadeinHighJump());
 
     }
 
 
-    public void playerJumped() 
-    {
-        // Debug.Log("jumped");
-        if (slowfallActivated) {
-            slowfallInUse = true;
-            StartCoroutine(changeGrav());
-        }
-        if (highjumpActivated) {
-            StartCoroutine(fadeoutHighJump());
-            highjumpActivated = false;
-            highjumpInUse = true;
-        }
-    }
+    // public void playerJumped() 
+    // {
+    //     // Debug.Log("jumped");
+    //     if (slowfallActivated) {
+    //         slowfallInUse = true;
+    //         StartCoroutine(changeGrav());
+    //     }
+    //     if (highjumpActivated) {
+    //         StartCoroutine(fadeoutHighJump());
+    //         highjumpActivated = false;
+    //         highjumpInUse = true;
+    //     }
+    // }
     
-    public void playerLanded() 
-    {
-        // Debug.Log("landed");
-        if (slowfallInUse) {
-            slowfallActivated = false;
-            slowfallInUse = false;
+    // public void playerLanded() 
+    // {
+    //     // Debug.Log("landed");
+    //     if (slowfallInUse) {
+    //         slowfallActivated = false;
+    //         slowfallInUse = false;
 
-            StartCoroutine(fadeoutSlowfall());
-        }
+    //         StartCoroutine(fadeoutSlowfall());
+    //     }
 
-        if (highjumpInUse) {
-            highjumpInUse = false;
-            controller.jumpForce = 15;
-            slowfallDelay = 0.5f;
-        }
-    }
+    //     if (highjumpInUse) {
+    //         highjumpInUse = false;
+    //         controller.jumpForce = 15;
+    //         slowfallDelay = 0.5f;
+    //     }
+    // }
 
     private IEnumerator fadeinSlowfall() {
-        while (slowfallMask.color.a < 0.10f) {
-            slowfallMaskColor.a += Time.deltaTime;
-            slowfallMask.color = slowfallMaskColor;
+        if (!slowfallMaskActive) {
+            slowfallMaskActive = true;
+            while (slowfallMask.color.a < 0.10f) {
+                slowfallMaskColor.a += Time.deltaTime;
+                slowfallMask.color = slowfallMaskColor;
+                yield return null;
+            }
+        } else {
             yield return null;
         }
     }
@@ -413,11 +416,16 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private IEnumerator fadeoutSlowfall() {
-        controller.gravityMultiplier = 2;
-        while (slowfallMask.color.a > 0) {
-            slowfallMaskColor.a -= Time.deltaTime;
-            slowfallMask.color = slowfallMaskColor;
+    public IEnumerator fadeoutSlowfall() {
+        if (slowfallMaskActive) {
+            slowfallMaskActive = false;
+            controller.gravityMultiplier = 3;
+            while (slowfallMask.color.a > 0) {
+                slowfallMaskColor.a -= Time.deltaTime;
+                slowfallMask.color = slowfallMaskColor;
+                yield return null;
+            }
+        } else {
             yield return null;
         }
     }
@@ -427,13 +435,6 @@ public class GameController : MonoBehaviour
             highjumpColor.a -= Time.deltaTime/2;
             highjumpMask.color = highjumpColor;
             yield return null;
-        }
-    }
-
-    private IEnumerator changeGrav() {
-        yield return new WaitForSeconds(slowfallDelay);
-        if (slowfallInUse) {
-            controller.gravityMultiplier = 0.2f;
         }
     }
 

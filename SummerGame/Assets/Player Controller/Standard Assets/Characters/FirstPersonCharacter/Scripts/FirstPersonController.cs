@@ -88,7 +88,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
-                gameControl.playerLanded();
+                // gameControl.playerLanded();
             }
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
@@ -135,7 +135,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
-                    gameControl.playerJumped();
+                    // gameControl.playerJumped();
                 }
             }
             else
