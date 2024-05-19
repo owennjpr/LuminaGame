@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour
     private Color slowfallMaskColor;
     private bool slowfallMaskActive;
 
-    private bool highjumpActivated;
+    private bool highJumpMaskActive;
     private bool highjumpInUse;
     public Image highjumpMask;
     private Color highjumpColor;
@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
         slowfallMaskColor.a = 0.0f;
         slowfallMaskActive = false;
 
-        highjumpActivated = false;
+        highJumpMaskActive = false;
         highjumpInUse = false;
         highjumpColor = highjumpMask.color;
         highjumpColor.a = 0.0f;
@@ -355,10 +355,8 @@ public class GameController : MonoBehaviour
 
     public void highjump() {
         // Debug.Log("high jump");
-        highjumpActivated = true;
-        controller.jumpForce = 22;
         // slowfallDelay = 0.9f;
-
+        controller.readyHighJump();
         StartCoroutine(fadeinHighJump());
 
     }
@@ -409,9 +407,14 @@ public class GameController : MonoBehaviour
     }
 
     private IEnumerator fadeinHighJump() {
-        while (highjumpMask.color.a < 0.25f) {
-            highjumpColor.a += Time.deltaTime;
-            highjumpMask.color = highjumpColor;
+        if (!highJumpMaskActive) {
+            highJumpMaskActive = true; 
+            while (highjumpMask.color.a < 0.25f) {
+                highjumpColor.a += Time.deltaTime;
+                highjumpMask.color = highjumpColor;
+                yield return null;
+            }
+        } else {
             yield return null;
         }
     }
@@ -430,10 +433,15 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private IEnumerator fadeoutHighJump() {
-        while (highjumpMask.color.a > 0) {
-            highjumpColor.a -= Time.deltaTime/2;
-            highjumpMask.color = highjumpColor;
+    public IEnumerator fadeoutHighJump() {
+        if (highJumpMaskActive) {
+            highJumpMaskActive = false;
+            while (highjumpMask.color.a > 0) {
+                highjumpColor.a -= Time.deltaTime/2;
+                highjumpMask.color = highjumpColor;
+                yield return null;
+            }
+        } else {
             yield return null;
         }
     }

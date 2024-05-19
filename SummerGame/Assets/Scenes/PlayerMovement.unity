@@ -336,18 +336,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abde09c644ea4d4db231f493ec3d504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
-  sprintSpeed: 13
-  groundDrag: 10
+  walkSpeed: 6
+  sprintSpeed: 10
+  groundDrag: 5
   jumpForce: 15
   jumpCooldown: 0.25
-  airMultiplier: 0.3
+  airMultiplier: 0.2
   orientation: {fileID: 1451983858}
   gravityMultiplier: 3
-  readyToSlowfall: 0
-  slowfallInUse: 0
+  gameController: {fileID: 0}
   slowfallMultiplier: 0.25
-  slowfallDelay: 0.35
+  slowfallDelay: 0.4
+  highJumpPower: 30
+  highJumpInUse: 0
   jumpKey: 32
   playerHeight: 2
   ground:
@@ -800,7 +801,7 @@ PrefabInstance:
     - target: {fileID: 1345522702269642163, guid: 7c03a37512ec77b48b3fcc4157ec9a23,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1345522702269642163, guid: 7c03a37512ec77b48b3fcc4157ec9a23,
         type: 3}
@@ -1640,7 +1641,7 @@ PrefabInstance:
     - target: {fileID: 4704467318043762753, guid: 15d2adcf0d1f7564aa12fd85448a77f5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4704467318043762753, guid: 15d2adcf0d1f7564aa12fd85448a77f5,
         type: 3}

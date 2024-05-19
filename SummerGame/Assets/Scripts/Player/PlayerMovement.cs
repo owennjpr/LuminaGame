@@ -31,10 +31,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Light Powers")]
     public GameController gameController;
-    public bool readyToSlowfall;
-    public bool slowfallInUse;
+    private bool readyToSlowfall;
+    private bool slowfallInUse;
     public float slowfallMultiplier;
     public float slowfallDelay;
+
+    public float highJumpPower;
+    private bool readyToHighJump;
+    private bool highJumpInUse; 
 
 
     [Header("Keybinds")]
@@ -65,6 +69,11 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+
+        if (canJump && grounded) {
+            highJumpInUse = false;
+        }
+
         if(Input.GetKey(KeyCode.LeftShift)) {
             sprinting = true;
             speedMultiplier = sprintSpeed;
@@ -121,11 +130,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump() {
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-        if (readyToSlowfall) {
-            
+
+        float jumpMult = 0;
+        if (readyToHighJump) {
+            jumpMult = highJumpPower;
+            readyToHighJump = false;
+            highJumpInUse = true;
+            StartCoroutine(gameController.fadeoutHighJump());
+        } else {
+            jumpMult = jumpForce;
+        }
+
+        rb.AddForce(transform.up * jumpMult, ForceMode.Impulse);
+        
+        if (readyToSlowfall) {    
             readyToSlowfall = false;
-            StartCoroutine(changeGrav(slowfallDelay));
+            float delay = slowfallDelay;
+            if (highJumpInUse) {
+                delay += 0.5f;
+            }
+            StartCoroutine(changeGrav(delay));
         }
     }
 
@@ -146,7 +170,10 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(delay);
         slowfallInUse = true;
         gravityMultiplier = slowfallMultiplier;
+    }
 
+    public void readyHighJump() {
+        readyToHighJump = true;
     }
 
 }
