@@ -10094,6 +10094,7 @@ MonoBehaviour:
   activeMat: {fileID: 2100000, guid: 49d06b3518151874c8d502847c8d44a6, type: 2}
   playerControl: {fileID: 0}
   InvisibleWalls: {fileID: 6502795359724385508}
+  crosshair: {fileID: 0}
 --- !u!1 &8628051622794602569
 GameObject:
   m_ObjectHideFlags: 0
@@ -10271,7 +10272,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0a51c4e24671f014ab887e118fbfe968,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a51c4e24671f014ab887e118fbfe968,
         type: 3}
@@ -10342,6 +10343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 0a51c4e24671f014ab887e118fbfe968,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8143710011712545758, guid: 0a51c4e24671f014ab887e118fbfe968,
         type: 3}

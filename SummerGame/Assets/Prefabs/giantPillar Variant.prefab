@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2524379544307835114}
   - component: {fileID: 8164531002173515735}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: detailHitbox (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2420809654983742816}
   - component: {fileID: 5019646353093534008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: detailHitbox (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2947804391237079331}
   - component: {fileID: 1010598193526071423}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: detailHitbox (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7702262831095942358}
   - component: {fileID: 611115387626727652}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: detailHitbox (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8913564115783744041}
   - component: {fileID: 1283143452016990901}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: detailHitbox (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3460078664784652274}
   - component: {fileID: 8082884752382277132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: detailHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2811869724600442885}
   - component: {fileID: 6553903502040320286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: detailHitbox (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8488636001456106118}
   - component: {fileID: 6171122141815270457}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: detailHitbox (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,6 +487,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: b083a1d0a01bfb84fbb25b68b48364ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: b083a1d0a01bfb84fbb25b68b48364ec,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -541,6 +546,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: giantPillar Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b083a1d0a01bfb84fbb25b68b48364ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: b083a1d0a01bfb84fbb25b68b48364ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

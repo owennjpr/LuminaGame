@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276788, g: 0.21589147, b: 0.29782534, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -211,6 +211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -335,7 +340,7 @@ GameObject:
   - component: {fileID: 16761493}
   - component: {fileID: 16761492}
   - component: {fileID: 16761491}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +431,7 @@ GameObject:
   - component: {fileID: 17063085}
   - component: {fileID: 17063084}
   - component: {fileID: 17063083}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +606,7 @@ GameObject:
   - component: {fileID: 27805114}
   - component: {fileID: 27805116}
   - component: {fileID: 27805115}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(0.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1225,6 +1230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5462d09ca69ca2b4a95135fc721956eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childCollider: {fileID: 0}
+  multiplier: 0
 --- !u!1001 &66908871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1297,6 +1304,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeirdRock
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1664,6 +1676,114 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 73362462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &74793260
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1000078739387178782, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000078739387178782, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.21568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000078739387178782, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.13725491
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000078739387178782, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.101960786
+      objectReference: {fileID: 0}
+    - target: {fileID: 2173316790250088931, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: cameraPosition
+      value: 
+      objectReference: {fileID: 121912138}
+    - target: {fileID: 3921047277977932038, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 1566020626}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537683167468875256, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384567059365583, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8936728925085054652, guid: e3a417305d843f342a55fea5ba1605a5,
+        type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 574005488}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3a417305d843f342a55fea5ba1605a5, type: 3}
 --- !u!4 &87005945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8486076796704670840, guid: 7c03a37512ec77b48b3fcc4157ec9a23,
@@ -1764,7 +1884,7 @@ GameObject:
   - component: {fileID: 88770906}
   - component: {fileID: 88770905}
   - component: {fileID: 88770904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2210,6 +2330,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 36f4dc6673ef8f14da59119fc739a197,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: 36f4dc6673ef8f14da59119fc739a197,
         type: 3}
       propertyPath: m_Convex
@@ -2425,7 +2550,7 @@ GameObject:
   - component: {fileID: 121018004}
   - component: {fileID: 121018006}
   - component: {fileID: 121018005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(200.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2505,6 +2630,12 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+--- !u!4 &121912138 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8315879425943100133, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610833560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &123348276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,7 +2647,7 @@ GameObject:
   - component: {fileID: 123348279}
   - component: {fileID: 123348278}
   - component: {fileID: 123348277}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-500.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2607,7 +2738,7 @@ GameObject:
   - component: {fileID: 124323518}
   - component: {fileID: 124323517}
   - component: {fileID: 124323516}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2866,7 +2997,7 @@ GameObject:
   - component: {fileID: 140683866}
   - component: {fileID: 140683865}
   - component: {fileID: 140683864}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(400.00, 0.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2957,7 +3088,7 @@ GameObject:
   - component: {fileID: 141550307}
   - component: {fileID: 141550306}
   - component: {fileID: 141550305}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3183,7 +3314,7 @@ GameObject:
   - component: {fileID: 142798342}
   - component: {fileID: 142798341}
   - component: {fileID: 142798340}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(600.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3358,7 +3489,7 @@ GameObject:
   - component: {fileID: 155382503}
   - component: {fileID: 155382502}
   - component: {fileID: 155382501}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-600.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4764,6 +4895,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BetterRock6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 062b951d0f6bd4fc182e764ca5bcd125,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5045,7 +5181,7 @@ GameObject:
   - component: {fileID: 200386281}
   - component: {fileID: 200386280}
   - component: {fileID: 200386279}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5136,7 +5272,7 @@ GameObject:
   - component: {fileID: 205992251}
   - component: {fileID: 205992250}
   - component: {fileID: 205992249}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5233,7 +5369,7 @@ GameObject:
   - component: {fileID: 209297873}
   - component: {fileID: 209297872}
   - component: {fileID: 209297871}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5844,7 +5980,7 @@ GameObject:
   - component: {fileID: 241362223}
   - component: {fileID: 241362222}
   - component: {fileID: 241362221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(300.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6019,7 +6155,7 @@ GameObject:
   - component: {fileID: 248026069}
   - component: {fileID: 248026071}
   - component: {fileID: 248026070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-100.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6362,6 +6498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5462d09ca69ca2b4a95135fc721956eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childCollider: {fileID: 0}
+  multiplier: 0
 --- !u!1 &281386452 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 281855664364225751, guid: 837cb546e36fd3d499df9b3ff5463fc6,
@@ -6494,7 +6632,7 @@ GameObject:
   - component: {fileID: 291481163}
   - component: {fileID: 291481162}
   - component: {fileID: 291481161}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(500.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7601,7 +7739,7 @@ GameObject:
   - component: {fileID: 331298532}
   - component: {fileID: 331298531}
   - component: {fileID: 331298530}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(500.00, 0.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7769,6 +7907,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruin3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5db70fd77b064894a845fd9f27e8e384,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7928,12 +8071,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2954182451210616095, guid: 710bfa766d6858d4a8cc19184c085831,
     type: 3}
   m_PrefabInstance: {fileID: 337112434}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &337370809 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9223372036854775806, guid: d25533f50ad31ea4da3a524ded74c692,
-    type: 3}
-  m_PrefabInstance: {fileID: 537205028811398115}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &337973233 stripped
 Transform:
@@ -8111,7 +8248,7 @@ GameObject:
   - component: {fileID: 346108414}
   - component: {fileID: 346108416}
   - component: {fileID: 346108415}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8505,7 +8642,7 @@ GameObject:
   - component: {fileID: 350376986}
   - component: {fileID: 350376985}
   - component: {fileID: 350376984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(200.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8680,7 +8817,7 @@ GameObject:
   - component: {fileID: 352288641}
   - component: {fileID: 352288643}
   - component: {fileID: 352288642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(0.00, -300.00, -600.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9004,7 +9141,7 @@ GameObject:
   - component: {fileID: 362641536}
   - component: {fileID: 362641535}
   - component: {fileID: 362641534}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-600.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9179,7 +9316,7 @@ GameObject:
   - component: {fileID: 371052714}
   - component: {fileID: 371052713}
   - component: {fileID: 371052712}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9668,7 +9805,7 @@ GameObject:
   - component: {fileID: 389514432}
   - component: {fileID: 389514434}
   - component: {fileID: 389514433}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-100.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9759,7 +9896,7 @@ GameObject:
   - component: {fileID: 390885950}
   - component: {fileID: 390885949}
   - component: {fileID: 390885948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9850,7 +9987,7 @@ GameObject:
   - component: {fileID: 391283215}
   - component: {fileID: 391283214}
   - component: {fileID: 391283213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(100.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10391,7 +10528,7 @@ GameObject:
   - component: {fileID: 407854369}
   - component: {fileID: 407854371}
   - component: {fileID: 407854370}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10566,7 +10703,7 @@ GameObject:
   - component: {fileID: 420445777}
   - component: {fileID: 420445776}
   - component: {fileID: 420445775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(400.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10753,7 +10890,7 @@ GameObject:
   - component: {fileID: 428941619}
   - component: {fileID: 428941618}
   - component: {fileID: 428941617}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-500.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11011,7 +11148,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1478332564485222, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player (Old)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1478332564485222, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1478332564485222, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_TagString
@@ -11023,7 +11164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459910588280752, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 271.8
+      value: 9.13
       objectReference: {fileID: 0}
     - target: {fileID: 4459910588280752, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11031,7 +11172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459910588280752, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -141
+      value: 1.91
       objectReference: {fileID: 0}
     - target: {fileID: 4459910588280752, guid: 93e39505c6f8cf0459bb096efac0ff1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11125,7 +11266,7 @@ GameObject:
   - component: {fileID: 461905465}
   - component: {fileID: 461905464}
   - component: {fileID: 461905463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11350,7 +11491,7 @@ GameObject:
   - component: {fileID: 467105344}
   - component: {fileID: 467105343}
   - component: {fileID: 467105342}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12144,7 +12285,7 @@ GameObject:
   - component: {fileID: 495243159}
   - component: {fileID: 495243158}
   - component: {fileID: 495243157}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(400.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12403,7 +12544,7 @@ GameObject:
   - component: {fileID: 500598508}
   - component: {fileID: 500598507}
   - component: {fileID: 500598506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-400.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12494,7 +12635,7 @@ GameObject:
   - component: {fileID: 501795335}
   - component: {fileID: 501795334}
   - component: {fileID: 501795333}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(300.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12946,7 +13087,7 @@ GameObject:
   - component: {fileID: 528917170}
   - component: {fileID: 528917169}
   - component: {fileID: 528917168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1300.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13436,6 +13577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: small floating island 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 36f4dc6673ef8f14da59119fc739a197,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: 36f4dc6673ef8f14da59119fc739a197,
         type: 3}
@@ -14123,7 +14269,7 @@ GameObject:
   - component: {fileID: 599066058}
   - component: {fileID: 599066057}
   - component: {fileID: 599066056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14460,7 +14606,7 @@ GameObject:
   - component: {fileID: 623278206}
   - component: {fileID: 623278205}
   - component: {fileID: 623278204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14822,6 +14968,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 5 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a4462e5a994acd549bf77d35e8cbe216,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14844,7 +14995,7 @@ GameObject:
   - component: {fileID: 632587208}
   - component: {fileID: 632587207}
   - component: {fileID: 632587206}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14935,7 +15086,7 @@ GameObject:
   - component: {fileID: 635142561}
   - component: {fileID: 635142560}
   - component: {fileID: 635142559}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-500.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15026,7 +15177,7 @@ GameObject:
   - component: {fileID: 636611791}
   - component: {fileID: 636611793}
   - component: {fileID: 636611792}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15174,6 +15325,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93480129cd3db57449a4022eefe0d639,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15217,7 +15373,7 @@ GameObject:
   - component: {fileID: 643851444}
   - component: {fileID: 643851443}
   - component: {fileID: 643851442}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15913,7 +16069,7 @@ Transform:
   - {fileID: 218042800}
   - {fileID: 1258802158}
   - {fileID: 662883035}
-  - {fileID: 337370809}
+  - {fileID: 537205028811398116}
   m_Father: {fileID: 1708380814}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16038,6 +16194,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16092,7 +16253,7 @@ GameObject:
   - component: {fileID: 688838786}
   - component: {fileID: 688838788}
   - component: {fileID: 688838787}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(0.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16344,6 +16505,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BetterRock1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 37762152d356b410dac6bba039f07d0d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16482,7 +16648,7 @@ GameObject:
   - component: {fileID: 703677040}
   - component: {fileID: 703677042}
   - component: {fileID: 703677041}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-600.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16861,7 +17027,7 @@ GameObject:
   - component: {fileID: 714708160}
   - component: {fileID: 714708159}
   - component: {fileID: 714708158}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16952,7 +17118,7 @@ GameObject:
   - component: {fileID: 718646023}
   - component: {fileID: 718646022}
   - component: {fileID: 718646021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(200.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21889,7 +22055,7 @@ GameObject:
   - component: {fileID: 725290720}
   - component: {fileID: 725290719}
   - component: {fileID: 725290718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22076,7 +22242,7 @@ GameObject:
   - component: {fileID: 747316364}
   - component: {fileID: 747316363}
   - component: {fileID: 747316362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22277,7 +22443,7 @@ GameObject:
   - component: {fileID: 756079399}
   - component: {fileID: 756079398}
   - component: {fileID: 756079397}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22639,7 +22805,7 @@ GameObject:
   - component: {fileID: 760514823}
   - component: {fileID: 760514822}
   - component: {fileID: 760514821}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(500.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22806,6 +22972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeirdRock (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23161,7 +23332,7 @@ GameObject:
   - component: {fileID: 805976853}
   - component: {fileID: 805976855}
   - component: {fileID: 805976854}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -600.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23510,7 +23681,7 @@ GameObject:
   - component: {fileID: 838415046}
   - component: {fileID: 838415045}
   - component: {fileID: 838415044}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-100.00, 0.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23836,7 +24007,7 @@ GameObject:
   - component: {fileID: 845793765}
   - component: {fileID: 845793764}
   - component: {fileID: 845793763}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(0.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24156,7 +24327,7 @@ GameObject:
   - component: {fileID: 856225695}
   - component: {fileID: 856225694}
   - component: {fileID: 856225693}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24247,7 +24418,7 @@ GameObject:
   - component: {fileID: 857914402}
   - component: {fileID: 857914401}
   - component: {fileID: 857914400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-300.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24338,7 +24509,7 @@ GameObject:
   - component: {fileID: 859924715}
   - component: {fileID: 859924714}
   - component: {fileID: 859924713}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(500.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24821,7 +24992,7 @@ GameObject:
   - component: {fileID: 869110556}
   - component: {fileID: 869110558}
   - component: {fileID: 869110557}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-100.00, -300.00, -600.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25178,6 +25349,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93480129cd3db57449a4022eefe0d639,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25200,7 +25376,7 @@ GameObject:
   - component: {fileID: 883493615}
   - component: {fileID: 883493614}
   - component: {fileID: 883493613}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25303,7 +25479,7 @@ GameObject:
   - component: {fileID: 886917266}
   - component: {fileID: 886917265}
   - component: {fileID: 886917264}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25471,6 +25647,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25525,7 +25706,7 @@ GameObject:
   - component: {fileID: 889515006}
   - component: {fileID: 889515005}
   - component: {fileID: 889515004}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25944,7 +26125,7 @@ GameObject:
   - component: {fileID: 894406439}
   - component: {fileID: 894406438}
   - component: {fileID: 894406437}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26111,6 +26292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: small floating island 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 83320a42f65a30b4fab18cd4c36ae851,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26567,6 +26753,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeirdRock (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32450,7 +32641,7 @@ GameObject:
   - component: {fileID: 941664113}
   - component: {fileID: 941664112}
   - component: {fileID: 941664111}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32735,6 +32926,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32789,7 +32985,7 @@ GameObject:
   - component: {fileID: 949328100}
   - component: {fileID: 949328099}
   - component: {fileID: 949328098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32880,7 +33076,7 @@ GameObject:
   - component: {fileID: 954253356}
   - component: {fileID: 954253355}
   - component: {fileID: 954253354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33601,6 +33797,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a4462e5a994acd549bf77d35e8cbe216,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33868,7 +34069,7 @@ GameObject:
   - component: {fileID: 989361350}
   - component: {fileID: 989361349}
   - component: {fileID: 989361348}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34205,6 +34406,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34259,7 +34465,7 @@ GameObject:
   - component: {fileID: 1006451318}
   - component: {fileID: 1006451317}
   - component: {fileID: 1006451316}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(200.00, 0.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44686,6 +44892,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruinWall2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a19d5c49d69b51c44bf297a3eda762aa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -45022,7 +45233,7 @@ GameObject:
   - component: {fileID: 1048221033}
   - component: {fileID: 1048221032}
   - component: {fileID: 1048221031}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45226,6 +45437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeirdRock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45743,7 +45959,7 @@ GameObject:
   - component: {fileID: 1081457070}
   - component: {fileID: 1081457069}
   - component: {fileID: 1081457068}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45855,7 +46071,7 @@ GameObject:
   - component: {fileID: 1084737797}
   - component: {fileID: 1084737799}
   - component: {fileID: 1084737798}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46045,7 +46261,7 @@ GameObject:
   - component: {fileID: 1099402740}
   - component: {fileID: 1099402739}
   - component: {fileID: 1099402738}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46529,7 +46745,7 @@ GameObject:
   - component: {fileID: 1118046374}
   - component: {fileID: 1118046373}
   - component: {fileID: 1118046372}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(100.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46867,6 +47083,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: b30bdb53e78be754ea9b88ef62342f35,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: b30bdb53e78be754ea9b88ef62342f35,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: b30bdb53e78be754ea9b88ef62342f35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46922,10 +47148,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: b30bdb53e78be754ea9b88ef62342f35,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b30bdb53e78be754ea9b88ef62342f35,
         type: 3}
       propertyPath: m_Name
       value: ruinStairs1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b30bdb53e78be754ea9b88ef62342f35,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: b30bdb53e78be754ea9b88ef62342f35,
         type: 3}
@@ -46956,6 +47192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: b30bdb53e78be754ea9b88ef62342f35,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47280,6 +47521,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruinPillar1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e2844cb23c783814ead003bdd0b2f51d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47334,7 +47580,7 @@ GameObject:
   - component: {fileID: 1160644219}
   - component: {fileID: 1160644218}
   - component: {fileID: 1160644217}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(100.00, 0.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47654,7 +47900,7 @@ GameObject:
   - component: {fileID: 1164281288}
   - component: {fileID: 1164281287}
   - component: {fileID: 1164281286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(400.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49140,7 +49386,7 @@ GameObject:
   - component: {fileID: 1211992074}
   - component: {fileID: 1211992076}
   - component: {fileID: 1211992075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49444,7 +49690,7 @@ GameObject:
   - component: {fileID: 1226157377}
   - component: {fileID: 1226157376}
   - component: {fileID: 1226157375}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-300.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49611,6 +49857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BetterRock3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67cca3b532d034b0f81ae4257e4271a8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49885,7 +50136,7 @@ GameObject:
   - component: {fileID: 1243969535}
   - component: {fileID: 1243969537}
   - component: {fileID: 1243969536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(100.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50047,6 +50298,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 6cbc533cf6dd9dc4ca75213448deb3fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 6cbc533cf6dd9dc4ca75213448deb3fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6cbc533cf6dd9dc4ca75213448deb3fb,
         type: 3}
@@ -50403,7 +50664,7 @@ GameObject:
   - component: {fileID: 1265854777}
   - component: {fileID: 1265854776}
   - component: {fileID: 1265854775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-400.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50506,7 +50767,7 @@ GameObject:
   - component: {fileID: 1277569753}
   - component: {fileID: 1277569752}
   - component: {fileID: 1277569751}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-500.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50597,7 +50858,7 @@ GameObject:
   - component: {fileID: 1278853047}
   - component: {fileID: 1278853046}
   - component: {fileID: 1278853045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1300.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50688,7 +50949,7 @@ GameObject:
   - component: {fileID: 1279893671}
   - component: {fileID: 1279893670}
   - component: {fileID: 1279893669}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51455,6 +51716,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -51509,7 +51775,7 @@ GameObject:
   - component: {fileID: 1311654003}
   - component: {fileID: 1311654002}
   - component: {fileID: 1311654001}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51676,6 +51942,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BetterRock5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fee8db1c3d3bc4daeb280e5ae6189ad0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52228,7 +52499,7 @@ GameObject:
   - component: {fileID: 1335736265}
   - component: {fileID: 1335736264}
   - component: {fileID: 1335736263}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-600.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52541,7 +52812,7 @@ GameObject:
   - component: {fileID: 1354305856}
   - component: {fileID: 1354305855}
   - component: {fileID: 1354305854}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53101,6 +53372,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 4 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93480129cd3db57449a4022eefe0d639,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53243,6 +53519,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruinPillar2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f97a971034508045bb6e9e4135a05da,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53374,6 +53655,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53394,7 +53680,7 @@ GameObject:
   - component: {fileID: 1395229230}
   - component: {fileID: 1395229229}
   - component: {fileID: 1395229228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(500.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54019,7 +54305,7 @@ GameObject:
   - component: {fileID: 1438319227}
   - component: {fileID: 1438319226}
   - component: {fileID: 1438319225}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55332,7 +55618,7 @@ GameObject:
   - component: {fileID: 1478541931}
   - component: {fileID: 1478541930}
   - component: {fileID: 1478541929}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55578,6 +55864,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 36f4dc6673ef8f14da59119fc739a197,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: 36f4dc6673ef8f14da59119fc739a197,
         type: 3}
       propertyPath: m_Convex
@@ -55611,7 +55902,7 @@ GameObject:
   - component: {fileID: 1490516272}
   - component: {fileID: 1490516271}
   - component: {fileID: 1490516270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-400.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55702,7 +55993,7 @@ GameObject:
   - component: {fileID: 1492502976}
   - component: {fileID: 1492502975}
   - component: {fileID: 1492502974}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56090,7 +56381,7 @@ GameObject:
   - component: {fileID: 1511932929}
   - component: {fileID: 1511932928}
   - component: {fileID: 1511932927}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(0.00, 0.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56697,7 +56988,7 @@ GameObject:
   - component: {fileID: 1531412723}
   - component: {fileID: 1531412722}
   - component: {fileID: 1531412721}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56788,7 +57079,7 @@ GameObject:
   - component: {fileID: 1533124574}
   - component: {fileID: 1533124576}
   - component: {fileID: 1533124575}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56879,7 +57170,7 @@ GameObject:
   - component: {fileID: 1534811083}
   - component: {fileID: 1534811082}
   - component: {fileID: 1534811081}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-400.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57365,6 +57656,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 5 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a4462e5a994acd549bf77d35e8cbe216,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57626,6 +57922,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeirdRock (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58150,6 +58451,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1555394725}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1566020626 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 517002149397547646, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610833560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1566431924
 GameObject:
   m_ObjectHideFlags: 0
@@ -58161,7 +58468,7 @@ GameObject:
   - component: {fileID: 1566431927}
   - component: {fileID: 1566431926}
   - component: {fileID: 1566431925}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, 100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58252,7 +58559,7 @@ GameObject:
   - component: {fileID: 1570118639}
   - component: {fileID: 1570118638}
   - component: {fileID: 1570118637}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58511,7 +58818,7 @@ GameObject:
   - component: {fileID: 1581076446}
   - component: {fileID: 1581076448}
   - component: {fileID: 1581076447}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-100.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58934,6 +59241,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -59238,26 +59550,66 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -7308718804694308083, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -7146521406498821007, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6792889981931915972, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -6093592463355912122, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -5568371526223589888, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -5293936662160175238, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -4960584510277547667, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4906838889796845047, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -3778644264426962316, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -1461304994638716399, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -59273,6 +59625,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -516098083770646512, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Name
@@ -59298,21 +59655,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 3559817854460706613, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4059279300811166479, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 4356877828898064976, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5008022236170083033, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 5194334309628646677, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7202271454713460447, guid: 278f5b9fcb61760488971bedf126619a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 8416272007918961125, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017328541939089309, guid: 278f5b9fcb61760488971bedf126619a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8856916482769721425, guid: 278f5b9fcb61760488971bedf126619a, type: 3}
@@ -59571,6 +59953,79 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000002, y: 2, z: 1.9999998}
   m_Center: {x: 0.0000019073486, y: -0.0000038146973, z: -0.000015258789}
+--- !u!1001 &1610833560
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973393286185892958, guid: a27ec4483fd44f04c9148c316e6ffe4f,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a27ec4483fd44f04c9148c316e6ffe4f, type: 3}
 --- !u!1 &1611925597
 GameObject:
   m_ObjectHideFlags: 0
@@ -59582,7 +60037,7 @@ GameObject:
   - component: {fileID: 1611925600}
   - component: {fileID: 1611925599}
   - component: {fileID: 1611925598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(600.00, 0.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60232,6 +60687,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruin2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7e1d052c8dcddb44ca918748028c0189,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60419,7 +60879,7 @@ GameObject:
   - component: {fileID: 1644376605}
   - component: {fileID: 1644376604}
   - component: {fileID: 1644376603}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60666,6 +61126,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60720,7 +61185,7 @@ GameObject:
   - component: {fileID: 1657045556}
   - component: {fileID: 1657045555}
   - component: {fileID: 1657045554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60904,6 +61369,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -61030,6 +61500,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -61084,7 +61559,7 @@ GameObject:
   - component: {fileID: 1677304402}
   - component: {fileID: 1677304401}
   - component: {fileID: 1677304400}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61259,7 +61734,7 @@ GameObject:
   - component: {fileID: 1684185141}
   - component: {fileID: 1684185140}
   - component: {fileID: 1684185139}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61427,6 +61902,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruinWall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a473085debffc9488e598212231b890,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -61524,6 +62004,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d289ccf27680ab14999e6774216104a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: d289ccf27680ab14999e6774216104a5,
         type: 3}
       propertyPath: m_Convex
@@ -61551,7 +62036,7 @@ GameObject:
   - component: {fileID: 1705469720}
   - component: {fileID: 1705469719}
   - component: {fileID: 1705469718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63082,6 +63567,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ruinPlatform2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9a5268ffa86579c4d9bb51cbcf50d3a9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -63212,6 +63702,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -63266,7 +63761,7 @@ GameObject:
   - component: {fileID: 1740640907}
   - component: {fileID: 1740640906}
   - component: {fileID: 1740640905}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(300.00, 0.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63703,7 +64198,7 @@ GameObject:
   - component: {fileID: 1769641760}
   - component: {fileID: 1769641759}
   - component: {fileID: 1769641758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(600.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64044,6 +64539,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -64316,7 +64816,7 @@ GameObject:
   - component: {fileID: 1782883921}
   - component: {fileID: 1782883920}
   - component: {fileID: 1782883919}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64840,7 +65340,7 @@ GameObject:
   - component: {fileID: 1788678163}
   - component: {fileID: 1788678162}
   - component: {fileID: 1788678161}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64937,7 +65437,7 @@ GameObject:
   - component: {fileID: 1795698741}
   - component: {fileID: 1795698740}
   - component: {fileID: 1795698739}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65279,7 +65779,7 @@ GameObject:
   - component: {fileID: 1808720983}
   - component: {fileID: 1808720982}
   - component: {fileID: 1808720981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65707,7 +66207,7 @@ GameObject:
   - component: {fileID: 1817634667}
   - component: {fileID: 1817634666}
   - component: {fileID: 1817634665}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(600.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65980,6 +66480,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -66110,6 +66615,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeirdRock (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66268,6 +66778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: big floating island
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 134ad4dfaa98a9048a6a874adff6ad79,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66666,7 +67181,7 @@ GameObject:
   - component: {fileID: 1838070251}
   - component: {fileID: 1838070250}
   - component: {fileID: 1838070249}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-300.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67098,7 +67613,7 @@ GameObject:
   - component: {fileID: 1857633406}
   - component: {fileID: 1857633405}
   - component: {fileID: 1857633404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-100.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67606,6 +68121,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: small floating island 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d289ccf27680ab14999e6774216104a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: d289ccf27680ab14999e6774216104a5,
         type: 3}
@@ -73281,6 +73801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5462d09ca69ca2b4a95135fc721956eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childCollider: {fileID: 0}
+  multiplier: 0
 --- !u!54 &1958995007
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -73319,7 +73841,7 @@ GameObject:
   - component: {fileID: 1960364799}
   - component: {fileID: 1960364798}
   - component: {fileID: 1960364797}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73699,6 +74221,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WeirdRock (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74453,6 +74980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: small floating island 3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 83320a42f65a30b4fab18cd4c36ae851,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -74634,7 +75166,7 @@ GameObject:
   - component: {fileID: 2005120302}
   - component: {fileID: 2005120301}
   - component: {fileID: 2005120300}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(400.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74722,6 +75254,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 675174773}
     m_Modifications:
+    - target: {fileID: -9203324390398772745, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -8867477870038081954, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74802,6 +75339,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -8551654070373378105, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8455728280606582528, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -8270237889823493819, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74827,11 +75379,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -7648502956408741331, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -7628274954807177987, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f66cc7c5e03f9a8449273ea896b3b20f, type: 2}
+    - target: {fileID: -7515429101286732190, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7395704305543789238, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -7385189512676675294, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74842,6 +75414,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -7271449666460269675, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6792889981931915972, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -6763858364670572316, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -6673802680727711063, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74862,6 +75454,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -5754060345647867467, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -5569043992460113364, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -5363424281805771908, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74897,6 +75499,16 @@ PrefabInstance:
       propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4960584510277547667, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4906838889796845047, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -4791300549530949414, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74917,6 +75529,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -4133703932355585839, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4058879426038799192, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -3856571041627856340, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74932,11 +75554,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -3778644264426962316, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3540495426589365078, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3410185793394415013, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -3195828791156449804, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -3137722172632951806, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -2947538861075970057, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74947,11 +75589,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -2874765826992384646, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2764512629625626004, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2519092360280523269, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -2473424575180118478, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -2181743766629440291, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2045257923548263128, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2040254050740271484, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -1891630423312683343, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -1806680513116206669, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74962,6 +75639,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -1599826595754709761, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -1558721567721526513, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -1461304994638716399, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -74987,11 +75674,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -652209905907201759, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -466329591000292508, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -383518810844267698, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: -208595431880416365, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 26844662620191305, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 152955310288243915, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 281855664364225751, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 327064008815436722, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -75037,6 +75759,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 1502877291743220047, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1512191506632812556, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -75047,6 +75774,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 1835210009659533079, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1957819986760629781, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -75067,16 +75799,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 2596957926113402938, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455292422214010178, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3559817854460706613, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4059279300811166479, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f66cc7c5e03f9a8449273ea896b3b20f, type: 2}
+    - target: {fileID: 4103881766339141800, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4321514657177891973, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 4356877828898064976, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504409719310791647, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4876285997155681295, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -75087,6 +75849,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 5194334309628646677, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252682845850649624, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014503084441653313, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248574976466802116, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6272350532052637613, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -75107,21 +75889,66 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 7045030354117346258, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103153012782714218, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7152520436077478166, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 7333631254909853010, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7841272781267861279, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f66cc7c5e03f9a8449273ea896b3b20f, type: 2}
+    - target: {fileID: 7917349904687423284, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7975042476016782316, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8009987137999418058, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485173162082002552, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8567717000986892130, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 8578709097331664583, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8616184511030011274, guid: 837cb546e36fd3d499df9b3ff5463fc6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -75132,6 +75959,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
+    - target: {fileID: 9017328541939089309, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141816029861474070, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217234437682292332, guid: 837cb546e36fd3d499df9b3ff5463fc6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8856916482769721425, guid: 837cb546e36fd3d499df9b3ff5463fc6, type: 3}
@@ -75288,7 +76130,7 @@ GameObject:
   - component: {fileID: 2015963200}
   - component: {fileID: 2015963199}
   - component: {fileID: 2015963198}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75797,7 +76639,7 @@ GameObject:
   - component: {fileID: 2027681628}
   - component: {fileID: 2027681630}
   - component: {fileID: 2027681629}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(0.00, -300.00, -500.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80869,7 +81711,7 @@ GameObject:
   - component: {fileID: 2033486258}
   - component: {fileID: 2033486257}
   - component: {fileID: 2033486256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-100.00, 0.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80960,7 +81802,7 @@ GameObject:
   - component: {fileID: 2035718702}
   - component: {fileID: 2035718701}
   - component: {fileID: 2035718700}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81777,7 +82619,7 @@ GameObject:
   - component: {fileID: 2062367800}
   - component: {fileID: 2062367799}
   - component: {fileID: 2062367798}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(300.00, 0.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81868,7 +82710,7 @@ GameObject:
   - component: {fileID: 2068764038}
   - component: {fileID: 2068764037}
   - component: {fileID: 2068764036}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82352,7 +83194,7 @@ GameObject:
   - component: {fileID: 2090121515}
   - component: {fileID: 2090121514}
   - component: {fileID: 2090121513}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82443,7 +83285,7 @@ GameObject:
   - component: {fileID: 2091923589}
   - component: {fileID: 2091923588}
   - component: {fileID: 2091923587}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, -100.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82606,6 +83448,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeirdRock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82660,7 +83507,7 @@ GameObject:
   - component: {fileID: 2108194739}
   - component: {fileID: 2108194738}
   - component: {fileID: 2108194737}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(600.00, 0.00, -300.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82751,7 +83598,7 @@ GameObject:
   - component: {fileID: 2114665324}
   - component: {fileID: 2114665323}
   - component: {fileID: 2114665322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, -400.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83116,7 +83963,7 @@ GameObject:
   - component: {fileID: 2137481487}
   - component: {fileID: 2137481486}
   - component: {fileID: 2137481485}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-300.00, -300.00, 0.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83207,7 +84054,7 @@ GameObject:
   - component: {fileID: 2139247872}
   - component: {fileID: 2139247871}
   - component: {fileID: 2139247870}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain_(-1300.00, -300.00, -200.00)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83559,6 +84406,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d25533f50ad31ea4da3a524ded74c692, type: 3}
+--- !u!4 &537205028811398116 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3972883565777712131, guid: d25533f50ad31ea4da3a524ded74c692,
+    type: 3}
+  m_PrefabInstance: {fileID: 537205028811398115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!135 &678298419614100345
 SphereCollider:
   m_ObjectHideFlags: 0
