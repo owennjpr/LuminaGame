@@ -6,11 +6,11 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     [Header("Movement")]
+    private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
     public float groundDrag;
 
-    private float speedMultiplier;
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     private ConstantForce cForce;
     public float gravityMultiplier;
     private Vector3 gravDirection;
-    private bool sprinting;
     private float horizontalInput;
     private float verticalInput;
     private Vector3 moveDirection;
@@ -49,7 +48,18 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask ground;
     public bool grounded;
 
-    
+    [Header("Slope Handling")]
+    public float maxSlopeAngle;
+    private RaycastHit slopeHit;
+    private bool exitingSlope;
+
+    public MovementState state;
+    public enum MovementState {
+        walking,
+        sprinting,
+        air
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -73,23 +83,34 @@ public class PlayerMovement : MonoBehaviour
         if (canJump && grounded) {
             highJumpInUse = false;
         }
-
-        if(Input.GetKey(KeyCode.LeftShift)) {
-            sprinting = true;
-            speedMultiplier = sprintSpeed;
-        } else {
-            sprinting = false;
-            speedMultiplier = walkSpeed;
-        }
     }
 
+    private void StateHandler() {
+        if(grounded && Input.GetKey(KeyCode.LeftShift)) {
+            state = MovementState.sprinting;
+            moveSpeed = sprintSpeed;
+        } else if (grounded) {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        } else {
+            state = MovementState.air;
+        }
+    }
     private void MovePlayer() {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        //slope check
+        if (OnSlope()) {
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 10, ForceMode.Force);
+            if (rb.velocity.y > 0) {
+                rb.AddForce(Vector3.down * 80, ForceMode.Force);
+            }
+        }
+
         if (grounded) {
-            rb.AddForce(moveDirection.normalized * speedMultiplier * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         } else {
-            rb.AddForce(moveDirection.normalized * speedMultiplier * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
         
     }
@@ -103,12 +124,14 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(gameController.fadeoutSlowfall());
         }
         MyInput();
+        StateHandler();
+        SpeedControl();
         if (grounded) {
             rb.drag = groundDrag;
         } else {
             rb.drag = 0;
         }
-        SpeedControl();
+       
     }
 
     private void FixedUpdate() {
@@ -116,19 +139,32 @@ public class PlayerMovement : MonoBehaviour
         if (!slowfallInUse) {
             gravityMultiplier = 3;
         }
-        cForce.force = gravDirection * gravityMultiplier;
+
+        if (OnSlope()) {
+            cForce.force = gravDirection * 0f;
+        } else {
+            cForce.force = gravDirection * gravityMultiplier;
+        }
+        
     }
 
     private void SpeedControl() {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if (OnSlope() && !exitingSlope) {
+            if (rb.velocity.magnitude > moveSpeed) {
+                rb.velocity = rb.velocity.normalized * moveSpeed;
+            }
+        } else {    
+            Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVel.magnitude > speedMultiplier) {
-            Vector3 limitedVel = flatVel.normalized * speedMultiplier;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            if (flatVel.magnitude > moveSpeed) {
+                Vector3 limitedVel = flatVel.normalized * moveSpeed;
+                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            }
         }
     }
 
     private void Jump() {
+        exitingSlope = true;
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         float jumpMult = 0;
@@ -155,7 +191,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void ResetJump() {
         canJump = true;
+        exitingSlope = false;
     }
+
+    private bool OnSlope() {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f)) {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < maxSlopeAngle && angle != 0;
+        } else {
+            return false;
+        }
+
+    }
+
+    private Vector3 GetSlopeMoveDirection() {
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
 
     public void readySlowfall() {
         readyToSlowfall = true;

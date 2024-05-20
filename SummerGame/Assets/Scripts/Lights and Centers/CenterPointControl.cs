@@ -30,22 +30,23 @@ public class CenterPointControl : MonoBehaviour
             particles = transform.GetChild(2).gameObject;
             lights = transform.GetChild(3).gameObject;
             centerObjects = transform.GetChild(4).gameObject;
+            deactivate();
         }
     }
 
-    void Update() {
-        if (!isMoving && particles != null && lights != null && centerObjects != null) {
-            if (Vector3.Distance(transform.position, player.position) > (endDistance + 10)) {
-                particles.SetActive(false);
-                lights.SetActive(false);
-                centerObjects.SetActive(false);
-            } else {
-                particles.SetActive(true);
-                lights.SetActive(true);
-                centerObjects.SetActive(true);
-            }
-        }
-    }
+    // void Update() {
+    //     if (!isMoving && particles != null && lights != null && centerObjects != null) {
+    //         if (Vector3.Distance(transform.position, player.position) > (endDistance + 10)) {
+    //             particles.SetActive(false);
+    //             lights.SetActive(false);
+    //             centerObjects.SetActive(false);
+    //         } else {
+    //             particles.SetActive(true);
+    //             lights.SetActive(true);
+    //             centerObjects.SetActive(true);
+    //         }
+    //     }
+    // }
 
     public void updateCenterState() {
         controller.findNewCenter();
@@ -55,4 +56,19 @@ public class CenterPointControl : MonoBehaviour
         controller.checkFade();
     }
     
+    public void activate() {
+        if (!isMoving && particles != null && lights != null && centerObjects != null) {
+            particles.SetActive(true);
+            lights.SetActive(true);
+            centerObjects.SetActive(true);
+        }
+    }
+
+    public void deactivate() {
+        if (!isMoving && particles != null && lights != null && centerObjects != null) {
+            particles.SetActive(false);
+            lights.SetActive(false);
+            centerObjects.SetActive(false);
+        }
+    }
 }

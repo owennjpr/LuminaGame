@@ -36,6 +36,12 @@ public class FloatingLightControl : MonoBehaviour
         controller = GameObject.FindWithTag("GameController").transform;
         startPos = transform.position;
         playerHand = GameObject.FindWithTag("MainCamera").transform.GetChild(0);
+        
+        if(Physics.Raycast(transform.position, Vector3.down, 0.5f, LayerMask.NameToLayer("ground"))) {
+            Debug.Log("Light Spawned inside an object");
+            disappear();
+        }
+
     }
 
 
@@ -56,7 +62,7 @@ public class FloatingLightControl : MonoBehaviour
             case 3:
             transform.GetComponent<MeshRenderer> ().material = mat4;
                 break;
-        }
+        }        
     }
 
     // Update is called once per frame
@@ -85,12 +91,12 @@ public class FloatingLightControl : MonoBehaviour
                             break;
                         case 1:
                             if (controller.GetComponent<GameController>().hasBluePower) {
-                                StartCoroutine(startSlowfall());
+                                startSlowfall();
                             }
                             break;
                         case 2:
                             if (controller.GetComponent<GameController>().hasPurplePower) {
-                                StartCoroutine(startHighJump());
+                                startHighJump();
                             }
                             break;
                         case 3:
@@ -158,23 +164,17 @@ public class FloatingLightControl : MonoBehaviour
 
     }
 
-    private IEnumerator startSlowfall() {
+    private void startSlowfall() {
         controller.GetComponent<GameController>().slowfall();
-        while (transform.localScale.x > 0) {
-            transform.localScale -= new Vector3(1, 1, 1) *Time.deltaTime;
-            yield return null;
-        }
-        LightManager manager = transform.parent.GetComponent<LightManager>();
-        if (manager != null) {
-            manager.lightUsed(ID);
-        } else {
-            transform.parent.GetComponent<fixedLightSpawner>().lightUsed();
-        }
-        Destroy(gameObject);
+        StartCoroutine(disappear());
     }
 
-    private IEnumerator startHighJump() {
+    private void startHighJump() {
         controller.GetComponent<GameController>().highjump();
+        StartCoroutine(disappear());
+    }
+
+    private IEnumerator disappear() {
         while (transform.localScale.x > 0) {
             transform.localScale -= new Vector3(1, 1, 1) *Time.deltaTime;
             yield return null;

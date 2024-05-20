@@ -34,7 +34,6 @@ public class GameController : MonoBehaviour
     private bool slowfallMaskActive;
 
     private bool highJumpMaskActive;
-    private bool highjumpInUse;
     public Image highjumpMask;
     private Color highjumpColor;
     [SerializeField] private Image LightMask;
@@ -87,7 +86,6 @@ public class GameController : MonoBehaviour
         slowfallMaskActive = false;
 
         highJumpMaskActive = false;
-        highjumpInUse = false;
         highjumpColor = highjumpMask.color;
         highjumpColor.a = 0.0f;
 
@@ -178,6 +176,7 @@ public class GameController : MonoBehaviour
         }
 
         Debug.Log("new center " + CenterPoint.gameObject.name);
+
     }
 
     private IEnumerator oobReturn() {
@@ -200,6 +199,15 @@ public class GameController : MonoBehaviour
     // figures out what center point player in rn so can figure out what should be able to do
     // called at start() but also when enter or leave centers
     public void findNewCenter() {
+        //stop rendering current centerpoint
+        Transform oldCenter = null;
+        if (StableCenterPoint != null) {
+            oldCenter = StableCenterPoint;
+        }
+        // if (CenterPoint != null && CenterPoint != StableCenterPoint) {
+        //     CenterPoint.GetComponent<CenterPointControl>().deactivate();
+        // }
+        
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
         GameObject[] activeCenters = {null, null};
 
@@ -247,6 +255,13 @@ public class GameController : MonoBehaviour
         }
         RenderSettings.fogDensity = 1.2f/fadeStartDistance;
         Debug.Log("new center " + CenterPoint.gameObject.name);
+        
+        if (oldCenter != null && oldCenter != CenterPoint) {
+            oldCenter.GetComponent<CenterPointControl>().deactivate();
+        }
+        if (StableCenterPoint != null) {
+            StableCenterPoint.GetComponent<CenterPointControl>().activate();
+        }
     }
     
     // when the player is in a moving light
