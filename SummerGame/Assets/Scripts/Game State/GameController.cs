@@ -254,7 +254,7 @@ public class GameController : MonoBehaviour
             StartCoroutine(teleportToDestination());
         }
         RenderSettings.fogDensity = 1.2f/fadeStartDistance;
-        Debug.Log("new center " + CenterPoint.gameObject.name);
+        // Debug.Log("new center " + CenterPoint.gameObject.name);
         
         if (oldCenter != null && oldCenter != CenterPoint) {
             oldCenter.GetComponent<CenterPointControl>().deactivate();

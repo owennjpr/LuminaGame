@@ -185,6 +185,9 @@ MonoBehaviour:
   controller: {fileID: 0}
   isMoving: 1
   relativeSpawnPos: {x: 0, y: 0, z: 0}
+  particles: {fileID: 0}
+  lights: {fileID: 0}
+  centerObjects: {fileID: 0}
 --- !u!1 &1340519483149600821
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +201,7 @@ GameObject:
   - component: {fileID: 8771551064801820253}
   - component: {fileID: 6145627559233268609}
   - component: {fileID: 2850728878367583381}
-  - component: {fileID: -1346975066042483555}
+  - component: {fileID: 3334640620511471704}
   m_Layer: 0
   m_Name: MovingSphere
   m_TagString: Untagged
@@ -309,7 +312,9 @@ MonoBehaviour:
   mat2: {fileID: 2100000, guid: d2a85a6443266b246a801aab52396a65, type: 2}
   mat3: {fileID: 2100000, guid: 2ff0ef9adc40e6148ae87b80c7df585c, type: 2}
   mat4: {fileID: 2100000, guid: 115b73a7edcb9f448b477350699fbb94, type: 2}
---- !u!54 &-1346975066042483555
+  particleObj: {fileID: 2531317231557795765, guid: 3c9abdfc7eff32042b6bac22328f7876,
+    type: 3}
+--- !u!54 &3334640620511471704
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -332,7 +337,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

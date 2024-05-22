@@ -13,7 +13,7 @@ public class centerEndCollider : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if (other.CompareTag("Player")) {
-            Debug.Log("exiting center " + control.gameObject.name);
+            // Debug.Log("exiting center " + control.gameObject.name);
             control.updateCenterState();
             control.checkFade();
         }

@@ -218,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-        private IEnumerator changeGrav(float delay) {
+    private IEnumerator changeGrav(float delay) {
         yield return new WaitForSeconds(delay);
         slowfallInUse = true;
         gravityMultiplier = slowfallMultiplier;

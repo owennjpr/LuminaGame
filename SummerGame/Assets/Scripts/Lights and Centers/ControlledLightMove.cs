@@ -14,12 +14,16 @@ public class ControlledLightMove : MonoBehaviour
     public Material mat2;
     public Material mat3;
     public Material mat4;
+
+    private bool insideObject;
+    public GameObject particleObj;
     
     // Start is called before the first frame update
     void Awake()
     {
         // Debug.Log("Hello World");
         currIndex = 0;
+        insideObject = false;
     }
 
     // Update is called once per frame
@@ -38,9 +42,17 @@ public class ControlledLightMove : MonoBehaviour
                 }
             }
         }
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, 0.25f, LayerMask.NameToLayer("ground"), QueryTriggerInteraction.Ignore);
+        if (hits.Length != 0) {
+            Debug.Log(hits);
+        }
+        
     }
 
     public void Init(Vector3[] inputPath, float movSpeed, int lightID) {
+        
+        // Debug.Log("initializing light");
         pathArray = inputPath;
         speed = movSpeed;
         pathLength = pathArray.Length;
@@ -67,5 +79,22 @@ public class ControlledLightMove : MonoBehaviour
         
         return pathArray[pathLength-1];
     }
+
+    // void OnTriggerEnter(Collider other) {
+    //     Debug.Log(other.gameObject.name);   
+    //     if (!insideObject && ! other.isTrigger && other.gameObject.tag != "Player") {
+    //         insideObject = true;
+    //         Instantiate(particleObj, transform.position, Quaternion.identity);
+    //     }
+         
+
+    // }
+
+    // void OnTriggerExit(Collider other) {
+    //     if (insideObject && ! other.isTrigger && other.gameObject.tag != "Player") {
+    //         insideObject = false;
+    //         Instantiate(particleObj, transform.position, Quaternion.identity);
+    //     }
+    // }
 
 }
