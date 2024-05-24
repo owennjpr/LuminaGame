@@ -14,9 +14,12 @@ public class ControlledLightMove : MonoBehaviour
     public Material mat2;
     public Material mat3;
     public Material mat4;
+    private int colorId;
 
     private bool insideObject;
     public GameObject particleObj;
+
+    public LayerMask groundLayer;
     
     // Start is called before the first frame update
     void Awake()
@@ -43,11 +46,20 @@ public class ControlledLightMove : MonoBehaviour
             }
         }
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, 0.25f, LayerMask.NameToLayer("ground"), QueryTriggerInteraction.Ignore);
-        if (hits.Length != 0) {
-            Debug.Log(hits);
+        bool objCheck = Physics.CheckSphere(transform.position, 0.1f, groundLayer);
+        if (objCheck && !insideObject) {
+            instantiateParticles();
+            insideObject = true;
+        } else if (!objCheck && insideObject) {
+            instantiateParticles();
+            insideObject = false;
         }
         
+    }
+
+    private void instantiateParticles() {
+        GameObject particles = Instantiate(particleObj, transform.position, Quaternion.identity);
+        particles.GetComponent<particleSelfDestruct>().setColor(colorId);
     }
 
     public void Init(Vector3[] inputPath, float movSpeed, int lightID) {
@@ -57,6 +69,7 @@ public class ControlledLightMove : MonoBehaviour
         speed = movSpeed;
         pathLength = pathArray.Length;
         currPoint = pathArray[0];
+        colorId = lightID;
         switch (lightID) {
             case 0:
             transform.GetComponent<MeshRenderer> ().material = mat1;

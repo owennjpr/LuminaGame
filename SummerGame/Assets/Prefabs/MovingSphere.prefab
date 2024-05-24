@@ -314,6 +314,9 @@ MonoBehaviour:
   mat4: {fileID: 2100000, guid: 115b73a7edcb9f448b477350699fbb94, type: 2}
   particleObj: {fileID: 2531317231557795765, guid: 3c9abdfc7eff32042b6bac22328f7876,
     type: 3}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!54 &3334640620511471704
 Rigidbody:
   m_ObjectHideFlags: 0
