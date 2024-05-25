@@ -57,6 +57,13 @@ public class GameController : MonoBehaviour
     [SerializeField] private popupText popup;
 
 
+    // colors
+    private Color yellowColor;
+    private Color blueColor;
+    private Color purpleColor;
+    private Color redColor;
+
+
 
     //Debugging toggle
     [SerializeField] private bool Debugging;
@@ -102,8 +109,15 @@ public class GameController : MonoBehaviour
         
         
         paused = false;
+        cameraController.paused = false;
         pausemenu.SetActive(false);
         optionsmenu.SetActive(false);
+
+
+        yellowColor = new Color(1f, 0.95f, 0.7f);
+        blueColor = new Color(0.7f, 1f, 1f);
+        purpleColor = new Color(0.9f, 0.7f, 1f);
+        redColor = new Color(1f, 0.7f, 0.7f);
     }
 
     // Update is called once per frame
@@ -275,9 +289,25 @@ public class GameController : MonoBehaviour
             if(fadeEndDistance >= distance) {
                 warping = true;
 
-                Vector3 destination = CenterPoint.parent.GetComponent<ControlledLightMove>().getDestination();
+                var (destination, currColorID) = CenterPoint.parent.GetComponent<ControlledLightMove>().getDestinationAndColor();
                 
-                Color LightMaskColor = LightMask.color;
+
+                Color LightMaskColor = Color.white;
+                switch (currColorID) {
+                    case 0:
+                        LightMaskColor = yellowColor;
+                        break;
+                    case 1:
+                        LightMaskColor = blueColor;
+                        break;
+                    case 2:
+                        LightMaskColor = purpleColor;
+                        break;
+                    case 3:
+                        LightMaskColor = redColor;
+                        break;
+                }
+                LightMaskColor.a = 0f;
                 while (LightMask.color.a < 1f) {
                     LightMaskColor.a += Time.deltaTime * 1.5f;
                     LightMask.color = LightMaskColor;
@@ -528,6 +558,7 @@ public class GameController : MonoBehaviour
             pausemenu.SetActive(true);
             Time.timeScale = 0;
             paused = true;
+            cameraController.paused = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
 
@@ -540,6 +571,7 @@ public class GameController : MonoBehaviour
         pausemenu.SetActive(false);
         Time.timeScale = 1;
         paused = false;
+        cameraController.paused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

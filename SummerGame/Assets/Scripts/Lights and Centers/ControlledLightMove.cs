@@ -86,11 +86,11 @@ public class ControlledLightMove : MonoBehaviour
         }
     }
 
-    public Vector3 getDestination() {
+    public (Vector3, int) getDestinationAndColor() {
         
         Debug.Log("Getting destination");
         
-        return pathArray[pathLength-1];
+        return (pathArray[pathLength-1], colorId);
     }
 
     // void OnTriggerEnter(Collider other) {

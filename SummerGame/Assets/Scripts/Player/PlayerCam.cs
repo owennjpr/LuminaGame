@@ -17,6 +17,8 @@ public class PlayerCam : MonoBehaviour
     public float xOverride;
     public float yOverride;
 
+    public bool paused;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +31,14 @@ public class PlayerCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.fixedDeltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * sensY;
-
+        float mouseX, mouseY;
+        if (paused) {
+            mouseX = 0f;
+            mouseY = 0f;
+        } else {
+            mouseX = Input.GetAxisRaw("Mouse X") * Time.fixedDeltaTime * sensX;
+            mouseY = Input.GetAxisRaw("Mouse Y") * Time.fixedDeltaTime * sensY;
+        }
         yRotation += mouseX;
         xRotation -= mouseY;
         // Debug.Log(yRotation);        
