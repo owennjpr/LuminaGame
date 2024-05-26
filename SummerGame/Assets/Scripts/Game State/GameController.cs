@@ -49,6 +49,16 @@ public class GameController : MonoBehaviour
     public bool hasRedPower;
     private int numPowersFound;
 
+    public GameObject DialUIElems;
+    public ZoneState currZone;
+    public enum ZoneState {
+        SouthZone,
+        WestZone,
+        EastZone,
+        NorthZone,
+        EndingZone
+    }
+
     // pause menu & other ui
     public bool paused;
     [SerializeField] private GameObject pausemenu;
@@ -62,6 +72,7 @@ public class GameController : MonoBehaviour
     private Color blueColor;
     private Color purpleColor;
     private Color redColor;
+
 
 
 
@@ -103,6 +114,7 @@ public class GameController : MonoBehaviour
             hasPurplePower = false;
             hasRedPower = false;
             numPowersFound = 0;
+            currZone = ZoneState.SouthZone;
         
             readSaveData();
         }
@@ -407,37 +419,6 @@ public class GameController : MonoBehaviour
     }
 
 
-    // public void playerJumped() 
-    // {
-    //     // Debug.Log("jumped");
-    //     if (slowfallActivated) {
-    //         slowfallInUse = true;
-    //         StartCoroutine(changeGrav());
-    //     }
-    //     if (highjumpActivated) {
-    //         StartCoroutine(fadeoutHighJump());
-    //         highjumpActivated = false;
-    //         highjumpInUse = true;
-    //     }
-    // }
-    
-    // public void playerLanded() 
-    // {
-    //     // Debug.Log("landed");
-    //     if (slowfallInUse) {
-    //         slowfallActivated = false;
-    //         slowfallInUse = false;
-
-    //         StartCoroutine(fadeoutSlowfall());
-    //     }
-
-    //     if (highjumpInUse) {
-    //         highjumpInUse = false;
-    //         controller.jumpForce = 15;
-    //         slowfallDelay = 0.5f;
-    //     }
-    // }
-
     private IEnumerator fadeinSlowfall() {
         if (!slowfallMaskActive) {
             slowfallMaskActive = true;
@@ -522,27 +503,31 @@ public class GameController : MonoBehaviour
             MainCenter.GetChild(numPowersFound - 2).gameObject.SetActive(false);
         }
         MainCenter.GetChild(numPowersFound - 1).gameObject.SetActive(true);
-
+        clearDialUI();
         switch (numPowersFound) {
             case 1:
                 Debug.Log("Got Yellow");
                 StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED","Throw Yellow Lights to Interact With Objects" , 3));
                 hasYellowPower = true;
+                currZone = ZoneState.WestZone;
                 break;
             case 2:
                 Debug.Log("Got Blue");
                 StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Blue Lights to Slow Your Fall", 3));
                 hasBluePower = true;
+                currZone = ZoneState.EastZone;
                 break;
             case 3:
                 Debug.Log("Got Purple");
                 StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Purple Lights to Jump Higher", 3));
                 hasPurplePower = true;
+                currZone = ZoneState.NorthZone;
                 break;
             case 4:
                 Debug.Log("Got Red");
                 StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Red Lights to Do Something", 3));
                 hasRedPower = true;
+                currZone = ZoneState.EndingZone;
                 break;
         }
     }
@@ -602,7 +587,20 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
+    // -------------------------------------------
+    // Game State
+    // -------------------------------------------
 
+    public void AddNewDialToUI(int id) {
+        Debug.Log("adding new ui element");
+        DialUIElems.transform.GetChild(id).gameObject.SetActive(true);
+    }
+
+    private void clearDialUI() {
+        for (int i = 0; i < DialUIElems.transform.childCount; i++) {
+            DialUIElems.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
 
     private void readSaveData() {
         if (!SaveData.isNewGame) 
@@ -614,14 +612,19 @@ public class GameController : MonoBehaviour
 
             if (hasRedPower) {
                 numPowersFound = 4;
+                currZone = ZoneState.EndingZone;
             } else if (hasPurplePower) {
                 numPowersFound = 3;
+                currZone = ZoneState.NorthZone;
             } else if (hasBluePower) {
                 numPowersFound = 2;
+                currZone = ZoneState.EastZone;
             } else if (hasYellowPower) {
                 numPowersFound = 1;
+                currZone = ZoneState.WestZone;
             } else {
                 numPowersFound = 0;
+                currZone = ZoneState.SouthZone;
             }
 
             if (numPowersFound > 0) {
