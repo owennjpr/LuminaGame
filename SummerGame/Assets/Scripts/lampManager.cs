@@ -163,6 +163,11 @@ public class lampManager : MonoBehaviour
         }
 
         if (isLogicGate) { //only needs to check if new lamp has been turned on
+
+
+        // if it's 6,7,8 then we need to know its a lamp triangle
+
+
             // if (activating) {
                 // Debug.Log("IN BIG IFFFFFFFFF  ");
                 // NEED TO MAKE IT SO THAT IF TRY TO HIT ONE OF ONES NOT IN BOTTOM ROW THEN CAN"T TURN ON
