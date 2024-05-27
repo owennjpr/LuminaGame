@@ -55,23 +55,24 @@ public class DialController : MonoBehaviour
             int tempMask = 1 << n;
             correctKnobMask += tempMask;
         }
+        Debug.Log(correctKnobMask);
         
         centerPos = transform.position + new Vector3(0, -0.1f, 0.1f);
 
-        for (int i = 0; i < 8; i++) {
-            pointData currKnobData = getActiveKnobData(i);
-            int numPoints = currKnobData.positions.Length;
-            for (int j = 0; j < numPoints; j++) {
-                // Debug.Log(transform.position);
-                GameObject point = Instantiate(pointObject, transform.position, Quaternion.identity, transform);
-                point.transform.position += new Vector3(0, -0.1f, 0.1f);
-                point.transform.position += new Vector3(0, stepsize * currKnobData.positions[j] + 0.08f, 0);
-                point.transform.RotateAround(centerPos, new Vector3(0, 0, 1), 45*i);
-                point.transform.RotateAround(centerPos, new Vector3(1, 0, 0), 45);
-                point.GetComponent<dialPoint>().colorID = currKnobData.colors[j];
+        // for (int i = 0; i < 8; i++) {
+        //     pointData currKnobData = getActiveKnobData(i);
+        //     int numPoints = currKnobData.positions.Length;
+        //     for (int j = 0; j < numPoints; j++) {
+        //         // Debug.Log(transform.position);
+        //         GameObject point = Instantiate(pointObject, transform.position, Quaternion.identity, transform);
+        //         point.transform.position += new Vector3(0, -0.1f, 0.1f);
+        //         point.transform.position += new Vector3(0, stepsize * currKnobData.positions[j] + 0.08f, 0);
+        //         point.transform.RotateAround(centerPos, new Vector3(0, 0, 1), 45*i);
+        //         point.transform.RotateAround(centerPos, new Vector3(1, 0, 0), 45);
+        //         point.GetComponent<dialPoint>().colorID = currKnobData.colors[j];
 
-            }
-        }
+        //     }
+        // }
     }
 
     private pointData getActiveKnobData(int i) {
