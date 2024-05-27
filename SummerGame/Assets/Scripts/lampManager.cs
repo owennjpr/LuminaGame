@@ -171,52 +171,84 @@ public class lampManager : MonoBehaviour
             // if (activating) {
                 // Debug.Log("IN BIG IFFFFFFFFF  ");
                 // NEED TO MAKE IT SO THAT IF TRY TO HIT ONE OF ONES NOT IN BOTTOM ROW THEN CAN"T TURN ON
-                if (lampID == 0 || lampID == 1) {
-                    if (((currMask & 2) == 2) && (currMask & 1) == 0) {
-                        Debug.Log("IN IF FOR LEFT LIGHTS  " + currMask);
-                        StartCoroutine(transform.GetChild(9).GetComponent<lamp>().fillWithLight());
-                        StartCoroutine(transform.GetChild(6).GetComponent<lamp>().shrinkLight());
-                        
-                        Debug.Log("END OF IF  " + currMask);
 
-                    } else if ((currMask & 1) == 1){
-                        StartCoroutine(transform.GetChild(6).GetComponent<lamp>().fillWithLight());
-                        StartCoroutine(transform.GetChild(9).GetComponent<lamp>().shrinkLight());
-                    } else {
-                        StartCoroutine(transform.GetChild(6).GetComponent<lamp>().shrinkLight());
-                        StartCoroutine(transform.GetChild(9).GetComponent<lamp>().shrinkLight());
+                
+                // StartCoroutine(transform.GetChild(10).GetComponent<LightCircle>().fillWithLight());
+
+
+
+
+                if (lampID == 0 || lampID == 1) {
+
+                    if ((currMask & 1) == 0) {
+                        StartCoroutine(transform.GetChild(6).GetComponent<LightTriangle>().shrinkLight());
+                    } else if ((currMask & 1) == 1) {
+                        StartCoroutine(transform.GetChild(6).GetComponent<LightTriangle>().fillWithLight());
                     }
+                    // if (((currMask & 2) == 2) && (currMask & 1) == 0) {
+                    //     Debug.Log("IN IF FOR LEFT LIGHTS  " + currMask);
+                    //     // StartCoroutine(transform.GetChild(9).GetComponent<LightCircle>().fillWithLight());
+                    //     StartCoroutine(transform.GetChild(6).GetComponent<LightTriangle>().shrinkLight());
+                        
+                    //     Debug.Log("END OF IF  " + currMask);
+
+                    // } else if ((currMask & 1) == 1){
+                    //     StartCoroutine(transform.GetChild(6).GetComponent<LightTriangle>().fillWithLight());
+                    //     // StartCoroutine(transform.GetChild(9).GetComponent<LightCircle>().shrinkLight());
+                    // } else {
+                    //     StartCoroutine(transform.GetChild(6).GetComponent<LightTriangle>().shrinkLight());
+                    //     // StartCoroutine(transform.GetChild(9).GetComponent<LightCircle>().shrinkLight());
+                    // }
 
                 } else if (lampID == 2 || lampID == 3) {
-                    if (((currMask & (1 << 2)) == (1 << 2)) && (currMask & (1 << 3)) == 0) {
-                        StartCoroutine(transform.GetChild(10).GetComponent<lamp>().fillWithLight());
-                        StartCoroutine(transform.GetChild(7).GetComponent<lamp>().shrinkLight());
-                    } else if ((currMask & (1 << 3)) == 1){
-                        StartCoroutine(transform.GetChild(7).GetComponent<lamp>().fillWithLight());
-                        StartCoroutine(transform.GetChild(10).GetComponent<lamp>().shrinkLight());
-                    } else {
-                        StartCoroutine(transform.GetChild(7).GetComponent<lamp>().shrinkLight());
-                        StartCoroutine(transform.GetChild(10).GetComponent<lamp>().shrinkLight());
+                    // Debug.Log("HEERERERER 11111111111 " + currMask + " " + (1 << 3) + " " + (currMask & (1 << 3)));
+                    if ((currMask & (1 << 3)) == 0) {
+                        // Debug.Log("HEERERERER 2222222222222");
+                        StartCoroutine(transform.GetChild(7).GetComponent<LightTriangle>().shrinkLight());
+                    } else if ((currMask & (1 << 3)) == (1 << 3)) {
+                        // Debug.Log("HEERERERER 3333333333333");
+                        StartCoroutine(transform.GetChild(7).GetComponent<LightTriangle>().fillWithLight());
                     }
+                    // if (((currMask & (1 << 2)) == (1 << 2)) && (currMask & (1 << 3)) == 0) {
+                    //     // StartCoroutine(transform.GetChild(10).GetComponent<LightCircle>().fillWithLight());
+                    //     StartCoroutine(transform.GetChild(7).GetComponent<LightTriangle>().shrinkLight());
+                    // } else if ((currMask & (1 << 3)) == 1){
+                    //     StartCoroutine(transform.GetChild(7).GetComponent<LightTriangle>().fillWithLight());
+                    //     // StartCoroutine(transform.GetChild(10).GetComponent<LightCircle>().shrinkLight());
+                    // } else {
+                    //     StartCoroutine(transform.GetChild(7).GetComponent<LightTriangle>().shrinkLight());
+                    //     // StartCoroutine(transform.GetChild(10).GetComponent<LightCircle>().shrinkLight());
+                    // }
 
                 } else if (lampID == 4 || lampID == 5) {
-                    if (((currMask & (1 << 4)) == (1 << 4)) && (currMask & (1 << 5)) == 0) {
-                        StartCoroutine(transform.GetChild(11).GetComponent<lamp>().fillWithLight());
-                        StartCoroutine(transform.GetChild(8).GetComponent<lamp>().shrinkLight());
-                    } else if ((currMask & (1 << 5)) == 1){
-                        StartCoroutine(transform.GetChild(8).GetComponent<lamp>().fillWithLight());
-                        StartCoroutine(transform.GetChild(11).GetComponent<lamp>().shrinkLight());
-                    } else {
-                        StartCoroutine(transform.GetChild(8).GetComponent<lamp>().shrinkLight());
-                        StartCoroutine(transform.GetChild(11).GetComponent<lamp>().shrinkLight());
+                    Debug.Log("HEERERERER 11111111111 " + currMask);
+                    if ((currMask & (1 << 5)) == 0) {
+                        Debug.Log("HEERERERER 2222222222222");
+                        // StartCoroutine(transform.GetChild(8).GetComponent<LightTriangle>().shrinkLight());
+                    } else if ((currMask & (1 << 5)) == (1 << 5)) {
+                        Debug.Log("HEERERERER 3333333333333");
+                        // StartCoroutine(transform.GetChild(8).GetComponent<LightTriangle>().fillWithLight());
                     }
+                    // if (((currMask & (1 << 4)) == (1 << 4)) && (currMask & (1 << 5)) == 0) {
+                    //     // StartCoroutine(transform.GetChild(11).GetComponent<LightCircle>().fillWithLight());
+                    //     StartCoroutine(transform.GetChild(8).GetComponent<LightTriangle>().shrinkLight());
+                    // } else if ((currMask & (1 << 5)) == 1){
+                    //     StartCoroutine(transform.GetChild(8).GetComponent<LightTriangle>().fillWithLight());
+                    //     // StartCoroutine(transform.GetChild(11).GetComponent<LightCircle>().shrinkLight());
+                    // } else {
+                    //     StartCoroutine(transform.GetChild(8).GetComponent<LightTriangle>().shrinkLight());
+                    //     // StartCoroutine(transform.GetChild(11).GetComponent<LightCircle>().shrinkLight());
+                    // }
 
                 } 
 
 
+
+
+
             if (((currMask & 22) == 22) && (lampID != 12)) {
                 
-                StartCoroutine(transform.GetChild(12).GetComponent<lamp>().fillWithLight());
+                // StartCoroutine(transform.GetChild(12).GetComponent<LightCircle>().fillWithLight());
             }
 
         

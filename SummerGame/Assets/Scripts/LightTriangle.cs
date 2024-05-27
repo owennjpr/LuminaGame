@@ -29,7 +29,7 @@ public class LightTriangle : MonoBehaviour
         if (!lit) {
             glowTri.gameObject.SetActive(true);
             transform.parent.GetComponent<lampManager>().lampUpdated(localID, true);
-            while(glowTri.localScale.x < 17f) {
+            while(glowTri.localScale.x < 1f) {
                 glowTri.localScale += new Vector3(1f, 1f, 1f) * 75 * Time.deltaTime;
                 yield return null;
             }
