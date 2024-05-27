@@ -29,8 +29,8 @@ public class LightCircle : MonoBehaviour
         if (!lit) {
             glowCirc.gameObject.SetActive(true);
             transform.parent.GetComponent<lampManager>().lampUpdated(localID, true);
-            while(glowCirc.localScale.x < 17f) {
-                glowCirc.localScale += new Vector3(1f, 1f, 1f) * 75 * Time.deltaTime;
+            while(glowCirc.localScale.x < 0.5f) {
+                glowCirc.localScale += new Vector3(0.5f, 0.5f, 0.5f) * 75 * Time.deltaTime;
                 yield return null;
             }
             lit = true;
