@@ -26,7 +26,7 @@ public class RedLightReturn : MonoBehaviour
         time = 0;
         controller = GameObject.FindWithTag("GameController").transform;
         startPos = transform.position;
-        playerHand = GameObject.FindWithTag("Player").transform.GetChild(0).GetChild(0);
+        playerHand = GameObject.FindWithTag("MainCamera").transform.GetChild(0);
         clicked = false;
         
     }

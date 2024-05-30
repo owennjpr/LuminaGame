@@ -7,6 +7,7 @@ public class projectile : MonoBehaviour
     private Rigidbody rb;
     public float speed;
     private float timer;
+    public LayerMask ground;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +27,14 @@ public class projectile : MonoBehaviour
 
     // Update is called once per frame
     private void OnTriggerEnter(Collider other) {
+
         if (other.CompareTag("breakable")) {
             other.GetComponent<Collider>().transform.GetComponent<breakableObject>().hit();
             StartCoroutine(handleImpact());
         } else if (other.CompareTag("lamp")) {
             other.GetComponent<Collider>().transform.GetComponent<lamp>().hit();
             StartCoroutine(handleImpact());
-        } else if(other.CompareTag("floor")) {
+        } else if (other.gameObject.layer == LayerMask.NameToLayer("ground")) {
             StartCoroutine(handleImpact());
         }
         

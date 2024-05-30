@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276788, g: 0.21589147, b: 0.29782534, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 16761491}
   m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 17063083}
   m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -684,7 +684,7 @@ GameObject:
   - component: {fileID: 27805115}
   m_Layer: 10
   m_Name: Terrain_(0.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1346,17 +1346,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8f86c844f62a34128b681bd689e57bd7,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f86c844f62a34128b681bd689e57bd7,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 10.76
+      value: 16.14
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f86c844f62a34128b681bd689e57bd7,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 18.8
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f86c844f62a34128b681bd689e57bd7,
         type: 3}
@@ -1366,7 +1366,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8f86c844f62a34128b681bd689e57bd7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 42.46
+      value: 88.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8f86c844f62a34128b681bd689e57bd7,
         type: 3}
@@ -1425,10 +1425,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f86c844f62a34128b681bd689e57bd7,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 57930117}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f86c844f62a34128b681bd689e57bd7,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 57930116}
   m_SourcePrefab: {fileID: 100100000, guid: 8f86c844f62a34128b681bd689e57bd7, type: 3}
 --- !u!4 &57930114 stripped
@@ -1470,20 +1466,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &57930117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57930115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5462d09ca69ca2b4a95135fc721956eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  childCollider: {fileID: 0}
-  multiplier: 0
 --- !u!1001 &66908871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2138,7 +2120,7 @@ GameObject:
   - component: {fileID: 88770904}
   m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2804,7 +2786,7 @@ GameObject:
   - component: {fileID: 121018005}
   m_Layer: 10
   m_Name: Terrain_(200.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2901,7 +2883,7 @@ GameObject:
   - component: {fileID: 123348277}
   m_Layer: 10
   m_Name: Terrain_(-500.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2992,7 +2974,7 @@ GameObject:
   - component: {fileID: 124323516}
   m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3251,7 +3233,7 @@ GameObject:
   - component: {fileID: 140683864}
   m_Layer: 10
   m_Name: Terrain_(400.00, 0.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3342,7 +3324,7 @@ GameObject:
   - component: {fileID: 141550305}
   m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3568,7 +3550,7 @@ GameObject:
   - component: {fileID: 142798340}
   m_Layer: 10
   m_Name: Terrain_(600.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3743,7 +3725,7 @@ GameObject:
   - component: {fileID: 155382501}
   m_Layer: 10
   m_Name: Terrain_(-600.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5486,7 +5468,7 @@ GameObject:
   - component: {fileID: 200386279}
   m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5577,7 +5559,7 @@ GameObject:
   - component: {fileID: 205992249}
   m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5674,7 +5656,7 @@ GameObject:
   - component: {fileID: 209297871}
   m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6289,7 +6271,7 @@ GameObject:
   - component: {fileID: 241362221}
   m_Layer: 10
   m_Name: Terrain_(300.00, 0.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6464,7 +6446,7 @@ GameObject:
   - component: {fileID: 248026070}
   m_Layer: 10
   m_Name: Terrain_(-100.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -6748,10 +6730,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 67cca3b532d034b0f81ae4257e4271a8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 253206373}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 67cca3b532d034b0f81ae4257e4271a8,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 253206372}
   m_SourcePrefab: {fileID: 100100000, guid: 67cca3b532d034b0f81ae4257e4271a8, type: 3}
 --- !u!4 &253206370 stripped
@@ -6793,20 +6771,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &253206373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253206371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5462d09ca69ca2b4a95135fc721956eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  childCollider: {fileID: 0}
-  multiplier: 0
 --- !u!1 &281386452 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 281855664364225751, guid: 837cb546e36fd3d499df9b3ff5463fc6,
@@ -6941,7 +6905,7 @@ GameObject:
   - component: {fileID: 291481161}
   m_Layer: 10
   m_Name: Terrain_(500.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8048,7 +8012,7 @@ GameObject:
   - component: {fileID: 331298530}
   m_Layer: 10
   m_Name: Terrain_(500.00, 0.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8557,7 +8521,7 @@ GameObject:
   - component: {fileID: 346108415}
   m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -8963,7 +8927,7 @@ GameObject:
   - component: {fileID: 350376984}
   m_Layer: 10
   m_Name: Terrain_(200.00, 0.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9138,7 +9102,7 @@ GameObject:
   - component: {fileID: 352288642}
   m_Layer: 10
   m_Name: Terrain_(0.00, -300.00, -600.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9462,7 +9426,7 @@ GameObject:
   - component: {fileID: 362641534}
   m_Layer: 10
   m_Name: Terrain_(-600.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9637,7 +9601,7 @@ GameObject:
   - component: {fileID: 371052712}
   m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10126,7 +10090,7 @@ GameObject:
   - component: {fileID: 389514433}
   m_Layer: 10
   m_Name: Terrain_(-100.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10217,7 +10181,7 @@ GameObject:
   - component: {fileID: 390885948}
   m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10308,7 +10272,7 @@ GameObject:
   - component: {fileID: 391283213}
   m_Layer: 10
   m_Name: Terrain_(100.00, 0.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11017,7 +10981,7 @@ GameObject:
   - component: {fileID: 407854370}
   m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11192,7 +11156,7 @@ GameObject:
   - component: {fileID: 420445775}
   m_Layer: 10
   m_Name: Terrain_(400.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11270,6 +11234,12 @@ Transform:
   m_Father: {fileID: 1178946028}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &423933250 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3972883565777712131, guid: d25533f50ad31ea4da3a524ded74c692,
+    type: 3}
+  m_PrefabInstance: {fileID: 537205028811398115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &427110149 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114386913375398758, guid: 93e39505c6f8cf0459bb096efac0ff1f,
@@ -11379,7 +11349,7 @@ GameObject:
   - component: {fileID: 428941617}
   m_Layer: 10
   m_Name: Terrain_(-500.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11755,7 +11725,7 @@ GameObject:
   - component: {fileID: 461905463}
   m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11980,7 +11950,7 @@ GameObject:
   - component: {fileID: 467105342}
   m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12873,7 +12843,7 @@ GameObject:
   - component: {fileID: 495243157}
   m_Layer: 10
   m_Name: Terrain_(400.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13132,7 +13102,7 @@ GameObject:
   - component: {fileID: 500598506}
   m_Layer: 10
   m_Name: Terrain_(-400.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13223,7 +13193,7 @@ GameObject:
   - component: {fileID: 501795333}
   m_Layer: 10
   m_Name: Terrain_(300.00, 0.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13675,7 +13645,7 @@ GameObject:
   - component: {fileID: 528917168}
   m_Layer: 10
   m_Name: Terrain_(-1300.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -14905,7 +14875,7 @@ GameObject:
   - component: {fileID: 599066056}
   m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15242,7 +15212,7 @@ GameObject:
   - component: {fileID: 623278204}
   m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15735,7 +15705,7 @@ GameObject:
   - component: {fileID: 632587206}
   m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15826,7 +15796,7 @@ GameObject:
   - component: {fileID: 635142559}
   m_Layer: 10
   m_Name: Terrain_(-500.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -15917,7 +15887,7 @@ GameObject:
   - component: {fileID: 636611792}
   m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16113,7 +16083,7 @@ GameObject:
   - component: {fileID: 643851442}
   m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -16807,7 +16777,7 @@ Transform:
   - {fileID: 218042800}
   - {fileID: 1258802158}
   - {fileID: 662883035}
-  - {fileID: 537205028811398116}
+  - {fileID: 423933250}
   m_Father: {fileID: 1708380814}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16993,7 +16963,7 @@ GameObject:
   - component: {fileID: 688838787}
   m_Layer: 10
   m_Name: Terrain_(0.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -17497,7 +17467,7 @@ GameObject:
   - component: {fileID: 703677041}
   m_Layer: 10
   m_Name: Terrain_(-600.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -17876,7 +17846,7 @@ GameObject:
   - component: {fileID: 714708158}
   m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -17967,7 +17937,7 @@ GameObject:
   - component: {fileID: 718646021}
   m_Layer: 10
   m_Name: Terrain_(200.00, 0.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22904,7 +22874,7 @@ GameObject:
   - component: {fileID: 725290718}
   m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -23185,7 +23155,7 @@ GameObject:
   - component: {fileID: 747316362}
   m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -23386,7 +23356,7 @@ GameObject:
   - component: {fileID: 756079397}
   m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -23748,7 +23718,7 @@ GameObject:
   - component: {fileID: 760514821}
   m_Layer: 10
   m_Name: Terrain_(500.00, 0.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -24275,7 +24245,7 @@ GameObject:
   - component: {fileID: 805976854}
   m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -600.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -24624,7 +24594,7 @@ GameObject:
   - component: {fileID: 838415044}
   m_Layer: 10
   m_Name: Terrain_(-100.00, 0.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -24950,7 +24920,7 @@ GameObject:
   - component: {fileID: 845793763}
   m_Layer: 10
   m_Name: Terrain_(0.00, 0.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -25186,7 +25156,7 @@ GameObject:
   - component: {fileID: 856225693}
   m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -25277,7 +25247,7 @@ GameObject:
   - component: {fileID: 857914400}
   m_Layer: 10
   m_Name: Terrain_(-300.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -25368,7 +25338,7 @@ GameObject:
   - component: {fileID: 859924713}
   m_Layer: 10
   m_Name: Terrain_(500.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -25851,7 +25821,7 @@ GameObject:
   - component: {fileID: 869110557}
   m_Layer: 10
   m_Name: Terrain_(-100.00, -300.00, -600.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -26235,7 +26205,7 @@ GameObject:
   - component: {fileID: 883493613}
   m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -26338,7 +26308,7 @@ GameObject:
   - component: {fileID: 886917264}
   m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -26565,7 +26535,7 @@ GameObject:
   - component: {fileID: 889515004}
   m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -27060,7 +27030,7 @@ GameObject:
   - component: {fileID: 894406437}
   m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -33580,7 +33550,7 @@ GameObject:
   - component: {fileID: 941664111}
   m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -34000,7 +33970,7 @@ GameObject:
   - component: {fileID: 949328098}
   m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -34091,7 +34061,7 @@ GameObject:
   - component: {fileID: 954253354}
   m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, 100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -35084,7 +35054,7 @@ GameObject:
   - component: {fileID: 989361348}
   m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -35480,7 +35450,7 @@ GameObject:
   - component: {fileID: 1006451316}
   m_Layer: 10
   m_Name: Terrain_(200.00, 0.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -46339,7 +46309,7 @@ GameObject:
   - component: {fileID: 1048221031}
   m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -47065,7 +47035,7 @@ GameObject:
   - component: {fileID: 1081457068}
   m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -47177,7 +47147,7 @@ GameObject:
   - component: {fileID: 1084737798}
   m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -47367,7 +47337,7 @@ GameObject:
   - component: {fileID: 1099402738}
   m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -47851,7 +47821,7 @@ GameObject:
   - component: {fileID: 1118046372}
   m_Layer: 10
   m_Name: Terrain_(100.00, 0.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -48785,7 +48755,7 @@ GameObject:
   - component: {fileID: 1160644217}
   m_Layer: 10
   m_Name: Terrain_(100.00, 0.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -49105,7 +49075,7 @@ GameObject:
   - component: {fileID: 1164281286}
   m_Layer: 10
   m_Name: Terrain_(400.00, 0.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -50591,7 +50561,7 @@ GameObject:
   - component: {fileID: 1211992075}
   m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -50895,7 +50865,7 @@ GameObject:
   - component: {fileID: 1226157375}
   m_Layer: 10
   m_Name: Terrain_(-300.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -51073,7 +51043,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 67cca3b532d034b0f81ae4257e4271a8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1227233928}
+      addedObject: {fileID: 1227233931}
   m_SourcePrefab: {fileID: 100100000, guid: 67cca3b532d034b0f81ae4257e4271a8, type: 3}
 --- !u!4 &1227233926 stripped
 Transform:
@@ -51087,8 +51057,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1227233925}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1227233928
-CapsuleCollider:
+--- !u!64 &1227233931
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -51105,11 +51075,10 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.07
-  m_Height: 2.46
-  m_Direction: 2
-  m_Center: {x: 0.044966545, y: 0.019488927, z: -0.035043444}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4711208715938537054, guid: 67cca3b532d034b0f81ae4257e4271a8, type: 3}
 --- !u!1001 &1234696389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51341,7 +51310,7 @@ GameObject:
   - component: {fileID: 1243969536}
   m_Layer: 10
   m_Name: Terrain_(100.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -51869,7 +51838,7 @@ GameObject:
   - component: {fileID: 1265854775}
   m_Layer: 10
   m_Name: Terrain_(-400.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -52048,7 +52017,7 @@ GameObject:
   - component: {fileID: 1277569751}
   m_Layer: 10
   m_Name: Terrain_(-500.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -52139,7 +52108,7 @@ GameObject:
   - component: {fileID: 1278853045}
   m_Layer: 10
   m_Name: Terrain_(-1300.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -52230,7 +52199,7 @@ GameObject:
   - component: {fileID: 1279893669}
   m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, 100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -53325,7 +53294,7 @@ GameObject:
   - component: {fileID: 1311654001}
   m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, 100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -54049,7 +54018,7 @@ GameObject:
   - component: {fileID: 1335736263}
   m_Layer: 10
   m_Name: Terrain_(-600.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -54542,7 +54511,7 @@ GameObject:
   - component: {fileID: 1354305854}
   m_Layer: 10
   m_Name: Terrain_(-1000.00, -300.00, 100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -55494,7 +55463,7 @@ GameObject:
   - component: {fileID: 1395229228}
   m_Layer: 10
   m_Name: Terrain_(500.00, 0.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -56035,7 +56004,7 @@ GameObject:
   - component: {fileID: 1438319225}
   m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -57364,7 +57333,7 @@ GameObject:
   - component: {fileID: 1478541929}
   m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -57648,7 +57617,7 @@ GameObject:
   - component: {fileID: 1490516270}
   m_Layer: 10
   m_Name: Terrain_(-400.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -57739,7 +57708,7 @@ GameObject:
   - component: {fileID: 1492502974}
   m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -58127,7 +58096,7 @@ GameObject:
   - component: {fileID: 1511932927}
   m_Layer: 10
   m_Name: Terrain_(0.00, 0.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -58650,7 +58619,7 @@ GameObject:
   - component: {fileID: 1531412721}
   m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -58741,7 +58710,7 @@ GameObject:
   - component: {fileID: 1533124575}
   m_Layer: 10
   m_Name: Terrain_(-200.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -58832,7 +58801,7 @@ GameObject:
   - component: {fileID: 1534811081}
   m_Layer: 10
   m_Name: Terrain_(-400.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -60130,7 +60099,7 @@ GameObject:
   - component: {fileID: 1566431925}
   m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, 100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -60221,7 +60190,7 @@ GameObject:
   - component: {fileID: 1570118637}
   m_Layer: 10
   m_Name: Terrain_(-800.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -60480,7 +60449,7 @@ GameObject:
   - component: {fileID: 1581076447}
   m_Layer: 10
   m_Name: Terrain_(-100.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -61639,17 +61608,17 @@ PrefabInstance:
     - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 270
+      value: 10.7
       objectReference: {fileID: 0}
     - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -143
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2896778198059046886, guid: a27ec4483fd44f04c9148c316e6ffe4f,
         type: 3}
@@ -61709,7 +61678,7 @@ GameObject:
   - component: {fileID: 1611925598}
   m_Layer: 10
   m_Name: Terrain_(600.00, 0.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -62551,7 +62520,7 @@ GameObject:
   - component: {fileID: 1644376603}
   m_Layer: 10
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -62857,7 +62826,7 @@ GameObject:
   - component: {fileID: 1657045554}
   m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -63231,7 +63200,7 @@ GameObject:
   - component: {fileID: 1677304400}
   m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -63406,7 +63375,7 @@ GameObject:
   - component: {fileID: 1684185139}
   m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -63708,7 +63677,7 @@ GameObject:
   - component: {fileID: 1705469718}
   m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -65433,7 +65402,7 @@ GameObject:
   - component: {fileID: 1740640905}
   m_Layer: 10
   m_Name: Terrain_(300.00, 0.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -65870,7 +65839,7 @@ GameObject:
   - component: {fileID: 1769641758}
   m_Layer: 10
   m_Name: Terrain_(600.00, 0.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -66488,7 +66457,7 @@ GameObject:
   - component: {fileID: 1782883919}
   m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -67012,7 +66981,7 @@ GameObject:
   - component: {fileID: 1788678161}
   m_Layer: 10
   m_Name: Terrain_(700.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -67109,7 +67078,7 @@ GameObject:
   - component: {fileID: 1795698739}
   m_Layer: 10
   m_Name: Terrain_(-700.00, -300.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -67524,7 +67493,7 @@ GameObject:
   - component: {fileID: 1808720981}
   m_Layer: 10
   m_Name: Terrain_(-1100.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -67952,7 +67921,7 @@ GameObject:
   - component: {fileID: 1817634665}
   m_Layer: 10
   m_Name: Terrain_(600.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -68926,7 +68895,7 @@ GameObject:
   - component: {fileID: 1838070249}
   m_Layer: 10
   m_Name: Terrain_(-300.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -69358,7 +69327,7 @@ GameObject:
   - component: {fileID: 1857633404}
   m_Layer: 10
   m_Name: Terrain_(-100.00, 0.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -75674,10 +75643,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1958995004}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8a66a5da99174824fa48fa36a55e7a2b,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1958995007}
   m_SourcePrefab: {fileID: 100100000, guid: 8a66a5da99174824fa48fa36a55e7a2b, type: 3}
 --- !u!4 &1958995002 stripped
@@ -75692,20 +75657,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1958995001}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1958995004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1958995003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5462d09ca69ca2b4a95135fc721956eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  childCollider: {fileID: 0}
-  multiplier: 0
 --- !u!54 &1958995007
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75746,7 +75697,7 @@ GameObject:
   - component: {fileID: 1960364797}
   m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -77111,7 +77062,7 @@ GameObject:
   - component: {fileID: 2005120300}
   m_Layer: 10
   m_Name: Terrain_(400.00, 0.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -78075,7 +78026,7 @@ GameObject:
   - component: {fileID: 2015963198}
   m_Layer: 10
   m_Name: Terrain_(-1200.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -78584,7 +78535,7 @@ GameObject:
   - component: {fileID: 2027681629}
   m_Layer: 10
   m_Name: Terrain_(0.00, -300.00, -500.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -83656,7 +83607,7 @@ GameObject:
   - component: {fileID: 2033486256}
   m_Layer: 10
   m_Name: Terrain_(-100.00, 0.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -83747,7 +83698,7 @@ GameObject:
   - component: {fileID: 2035718700}
   m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -84648,7 +84599,7 @@ GameObject:
   - component: {fileID: 2062367798}
   m_Layer: 10
   m_Name: Terrain_(300.00, 0.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -84739,7 +84690,7 @@ GameObject:
   - component: {fileID: 2068764036}
   m_Layer: 10
   m_Name: Terrain_(-900.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -85139,7 +85090,7 @@ GameObject:
   - component: {fileID: 2090121513}
   m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -85230,7 +85181,7 @@ GameObject:
   - component: {fileID: 2091923587}
   m_Layer: 10
   m_Name: Terrain_(900.00, -300.00, -100.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -85452,7 +85403,7 @@ GameObject:
   - component: {fileID: 2108194737}
   m_Layer: 10
   m_Name: Terrain_(600.00, 0.00, -300.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -85543,7 +85494,7 @@ GameObject:
   - component: {fileID: 2114665322}
   m_Layer: 10
   m_Name: Terrain_(800.00, -300.00, -400.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -85908,7 +85859,7 @@ GameObject:
   - component: {fileID: 2137481485}
   m_Layer: 10
   m_Name: Terrain_(-300.00, -300.00, 0.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -85999,7 +85950,7 @@ GameObject:
   - component: {fileID: 2139247870}
   m_Layer: 10
   m_Name: Terrain_(-1300.00, -300.00, -200.00)
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -86349,12 +86300,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d25533f50ad31ea4da3a524ded74c692, type: 3}
---- !u!4 &537205028811398116 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9223372036854775806, guid: d25533f50ad31ea4da3a524ded74c692,
-    type: 3}
-  m_PrefabInstance: {fileID: 537205028811398115}
-  m_PrefabAsset: {fileID: 0}
 --- !u!135 &678298419614100345
 SphereCollider:
   m_ObjectHideFlags: 0
