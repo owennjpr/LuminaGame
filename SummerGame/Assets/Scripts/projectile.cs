@@ -32,7 +32,12 @@ public class projectile : MonoBehaviour
             other.GetComponent<Collider>().transform.GetComponent<breakableObject>().hit();
             StartCoroutine(handleImpact());
         } else if (other.CompareTag("lamp")) {
-            other.GetComponent<Collider>().transform.GetComponent<lamp>().hit();
+            Transform otherTransform = other.GetComponent<Collider>().transform;
+            if (otherTransform.GetComponent<lamp>() != null) {
+                otherTransform.GetComponent<lamp>().hit();
+            } else {
+                otherTransform.GetComponent<TimedLamp>().hit();
+            }
             StartCoroutine(handleImpact());
         } else if (other.gameObject.layer == LayerMask.NameToLayer("ground")) {
             StartCoroutine(handleImpact());
