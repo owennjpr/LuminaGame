@@ -13,6 +13,8 @@ public class lampManager : MonoBehaviour
     [SerializeField] private bool verticalDoorSolve;
     [SerializeField] private bool revealLightSolve;
     [SerializeField] private float doorHeight;
+    [SerializeField] private bool activateObjectSolve;
+    public GameObject activationObject;
     private bool hasBeenSolved;
     [SerializeField] private bool isFivebyFive;
     [SerializeField] private bool isLogicGate;
@@ -283,9 +285,13 @@ public class lampManager : MonoBehaviour
             Debug.Log("Correct Combination");
             if (verticalDoorSolve) {
                 StartCoroutine(openVerticalDoor(doorHeight));
-            } else if (revealLightSolve) {
+            }
+            if (revealLightSolve) {
                 Debug.Log("revealing Light");
                 solutionObject.SetActive(true);
+            }
+            if (activateObjectSolve) {
+                activationObject.SetActive(true);
             }
         }
     }
