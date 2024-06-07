@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DialController : MonoBehaviour
 {
+    
+    public GameObject centerCastObj;
     private struct pointData {
         public int[] positions;
         public int[] colors;
@@ -146,5 +148,10 @@ public class DialController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void centerClicked() {
+        Debug.Log("You clicked the center!");
+        GameObject sphere = Instantiate(centerCastObj, transform.GetChild(0).position, Quaternion.identity, transform);
     }
 }

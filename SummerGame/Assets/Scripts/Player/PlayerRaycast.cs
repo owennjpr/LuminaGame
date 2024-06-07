@@ -27,7 +27,12 @@ public class PlayerRaycast : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 15, mask)) {
             if(Input.GetMouseButtonDown(0)) {
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Dial Control")) {
-                    hit.collider.gameObject.GetComponent<knobControl>().clicked();
+                    var objScript = hit.collider.gameObject;
+                    if (objScript.GetComponent<knobControl>() != null) {
+                        objScript.GetComponent<knobControl>().clicked();
+                    } else {
+                        objScript.GetComponent<dialCenterControl>().clicked();
+                    }
                 } else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Magic Cube")) {
                     hit.collider.gameObject.GetComponent<magicCubeScript>().clicked();
                 }
