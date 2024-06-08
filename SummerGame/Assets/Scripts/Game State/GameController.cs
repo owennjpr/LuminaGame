@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityStandardAssets.Characters.FirstPerson;
+// using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
 
 
@@ -50,6 +50,8 @@ public class GameController : MonoBehaviour
     private int numPowersFound;
 
     public GameObject DialUIElems;
+
+    public GameObject lightSequenceUIElems;
     public ZoneState currZone;
     public enum ZoneState {
         SouthZone,
@@ -331,6 +333,7 @@ public class GameController : MonoBehaviour
                 warping = false;
 
                 turnTowardsTarget(CenterPoint);
+                lightSequenceUIElems.GetComponent<uiLightSequence>().updateSequence(currColorID);
                 
                 while (LightMask.color.a > 0f) {
                     LightMaskColor.a -= Time.deltaTime * 1.5f;
@@ -600,6 +603,12 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < DialUIElems.transform.childCount; i++) {
             DialUIElems.transform.GetChild(i).gameObject.SetActive(false);
         }
+        // lightSequenceUIElems.GetComponent<uiLightSequence>().clear();
+    }
+
+    public void showColorSequence(List<int> colorSequence) {
+        // Debug.Log(colorSequence.Count);
+        lightSequenceUIElems.GetComponent<uiLightSequence>().newSequence(colorSequence);
     }
 
     private void readSaveData() {

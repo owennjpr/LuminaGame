@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class dialSphereIntersect : MonoBehaviour
 {
+    private List<int> colorSequence;
+    private GameController controller;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        colorSequence = new List<int>();
+        controller = GameObject.FindWithTag("GameController").GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -15,20 +19,21 @@ public class dialSphereIntersect : MonoBehaviour
     {
        
 
-        if (transform.localScale.magnitude > 4) {
+        if (transform.localScale.magnitude > 2.5f) {
+            controller.showColorSequence(colorSequence);
             Destroy(gameObject);
         } else {
-            transform.localScale += Vector3.one * Time.deltaTime * 6;
+            transform.localScale += Vector3.one * Time.deltaTime * 10;
         }
     }
 
     private void OnTriggerEnter(Collider other) {
-        // Debug.Log("Hit something");
         if (other.transform.gameObject.layer == LayerMask.NameToLayer("Dial Point")) {
-            // Debug.Log("hit a point");
             dialPoint point = other.transform.GetComponent<dialPoint>();
             if (point.active) {
-                Debug.Log(point.colorID);
+                // Debug.Log(point.colorID);
+                colorSequence.Add(point.colorID);
+
             }
         }
     }

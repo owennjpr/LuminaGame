@@ -154,6 +154,7 @@ MonoBehaviour:
   relativeSpawnPos: {x: 0, y: 0, z: -10}
   particles: {fileID: 3642158518388329705}
   lights: {fileID: 5397828274482675455}
+  centerObjects: {fileID: 0}
 --- !u!1 &3520697539923255897
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +541,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.06
+      scalar: 0.04
       minScalar: 0.02
       maxCurve:
         serializedVersion: 2
