@@ -28,26 +28,32 @@ public class uiLightSequence : MonoBehaviour
         foreach(Transform child in transform) {
             Destroy(child.gameObject);
         }
-        lightSequence.Clear();
+        // lightSequence.Clear();
     }
 
     public void updateSequence(int followColor) {
+        // Debug.Log(followColor);
+        // Debug.Log(lightSequence[0]);
+        
         if(lightSequence.Count > 0) {
             if (followColor == lightSequence[0]) {
                 lightSequence.RemoveAt(0);
                 newSequence(lightSequence);
             } else {
                 clear();
+                lightSequence.Clear();
             }
         }
         
     }
     public void newSequence (List<int> seq) {
+        // List<int> temp = seq;
         clear();
         lightSequence = seq;
+        Debug.Log(seq.Count);
         for (int i = 0; i < lightSequence.Count; i++) {
-            Debug.Log(lightSequence[i]);
-            int offset = i * 100;
+            // Debug.Log(lightSequence[i]);
+            int offset = i * 60;
             GameObject elem = Instantiate(uiElemObj, transform.position + new Vector3(offset, 0, 0), Quaternion.identity, transform);
             Image img = elem.GetComponent<Image>();
             switch (lightSequence[i]) {

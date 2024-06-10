@@ -295,7 +295,7 @@ public class GameController : MonoBehaviour
     // when the player is in a moving light
     public IEnumerator teleportToDestination() {
         // Debug.Log("in a mover");
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
         if (CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving & !warping) {
             float distance = Vector2.Distance(centerVector, playerVector);
             
