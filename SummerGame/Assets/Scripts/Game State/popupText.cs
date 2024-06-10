@@ -29,8 +29,8 @@ public class popupText : MonoBehaviour
         lowerTextBox = transform.GetChild(1).gameObject;
         lowerTMP = lowerTextBox.transform.GetChild(0).GetComponent<TMP_Text>();
         lowerTextBox.SetActive(false);
-        StartCoroutine(LowerPopupAppear("Howdy", 3.2f));
-        StartCoroutine(CenterPopupAppear("NEW NEW NEW", "Greetings there player", 2));
+        // StartCoroutine(LowerPopupAppear("Howdy", 3.2f));
+        // StartCoroutine(CenterPopupAppear("NEW NEW NEW", "Greetings there player", 2));
     }
 
     public IEnumerator LowerPopupAppear(string text, float secondsActive) {
