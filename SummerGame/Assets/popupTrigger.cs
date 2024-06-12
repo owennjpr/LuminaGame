@@ -6,15 +6,21 @@ public class popupTrigger : MonoBehaviour
 {
     
     public popupText popup;
+    private GameController controller;
+
+    [Header("Side Cover")]
+    public bool useSideCover;
+    public int sideCoverIndex;
     private bool hit;
     [Header("Popup 1")]
+    public bool usePopup1;
     public bool isTitle;
     public string mainText;
     public string subText;
     public float secondsActive;
 
     [Header("Popup 2")]
-    public bool consecutive;
+    public bool usePopup2;
     public float gapTime;
     public bool isTitle2;
     public string mainText2;
@@ -25,6 +31,7 @@ public class popupTrigger : MonoBehaviour
     void Start()
     {
         hit = false;
+        controller = GameObject.FindWithTag("GameController").transform.GetComponent<GameController>();
     }
 
 
@@ -37,14 +44,19 @@ public class popupTrigger : MonoBehaviour
 
     private IEnumerator handleTrigger() {
         // display the first popup
-        if (isTitle) {
-            StartCoroutine(popup.CenterPopupAppear(mainText, subText, secondsActive));
-        } else {
-            StartCoroutine(popup.LowerPopupAppear(mainText, secondsActive));
+        if (useSideCover) {
+            controller.triggerSideCover(sideCoverIndex);
         }
-        yield return new WaitForSeconds(secondsActive + gapTime);
+        if (usePopup1) {
+            if (isTitle) {
+                StartCoroutine(popup.CenterPopupAppear(mainText, subText, secondsActive));
+            } else {
+                StartCoroutine(popup.LowerPopupAppear(mainText, secondsActive));
+            }
+            yield return new WaitForSeconds(secondsActive + gapTime);
+        }
         // display the second
-        if (consecutive) {
+        if (usePopup2) {
             if (isTitle2) {
                 StartCoroutine(popup.CenterPopupAppear(mainText2, subText2, secondsActive2));
             } else {

@@ -67,6 +67,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject optionsmenu;
     
     [SerializeField] private popupText popup;
+    [SerializeField] private GameObject sideCovers;
+
+    private bool sideCoverActive;
+    private int sideCoverIndex;
 
 
     // colors
@@ -126,12 +130,15 @@ public class GameController : MonoBehaviour
         cameraController.paused = false;
         pausemenu.SetActive(false);
         optionsmenu.SetActive(false);
+        sideCoverActive = false;
+        sideCoverIndex = 0;
 
 
         yellowColor = new Color(1f, 0.95f, 0.7f);
         blueColor = new Color(0.7f, 1f, 1f);
         purpleColor = new Color(0.9f, 0.7f, 1f);
         redColor = new Color(1f, 0.7f, 0.7f);
+
     }
 
     // Update is called once per frame
@@ -139,14 +146,9 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             pausePlay();
+        } else if (sideCoverActive && Input.GetKeyDown(KeyCode.C)) {
+            pausePlay();
         }
-
-        // if (Input.GetKeyDown("r")) {
-        //     Debug.Log("rrr");
-        //     turnTowardsTarget(targetSphere);
-        // }
-
-        // Debug.Log(CenterPoint.gameObject.name);
 
         if (CenterPoint == null & !warping) {
             panicFindCenter();
@@ -536,19 +538,23 @@ public class GameController : MonoBehaviour
     }
 
     // -------------------------------------------------------------------------------------------
-    // PAUSE MENU FUNCTIONS
-    // PAUSE MENU FUNCTIONS
-    // PAUSE MENU FUNCTIONS
+    // PAUSE MENU FUNCTIONS & UI
+    // PAUSE MENU FUNCTIONS & UI
+    // PAUSE MENU FUNCTIONS & UI
     // -------------------------------------------------------------------------------------------
 
     private void pausePlay() {
         if (!paused) {
-            pausemenu.SetActive(true);
+            if (!sideCoverActive) {
+                pausemenu.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
+            }
             Time.timeScale = 0;
             paused = true;
             cameraController.paused = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
+            
+            
 
         } else {
             resume();
@@ -556,12 +562,18 @@ public class GameController : MonoBehaviour
     }
 
     public void resume() {
-        pausemenu.SetActive(false);
+        if (!sideCoverActive) {
+            pausemenu.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        } else {
+            sideCoverActive = false;
+            sideCovers.transform.GetChild(sideCoverIndex).gameObject.SetActive(false);
+        }
         Time.timeScale = 1;
         paused = false;
         cameraController.paused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     public void options() {
@@ -588,6 +600,13 @@ public class GameController : MonoBehaviour
         // Debug.Log(savePos);
         writeSaveData(savePos);
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void triggerSideCover(int index) {
+        sideCovers.transform.GetChild(index).gameObject.SetActive(true);
+        sideCoverActive = true;
+        sideCoverIndex = index;
+        pausePlay();
     }
 
     // -------------------------------------------

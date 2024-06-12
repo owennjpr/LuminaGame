@@ -15,8 +15,8 @@ public class PlayerRaycast : MonoBehaviour
     void Start()
     {
         mainCam = GetComponent<Camera>();
-        active = Color.white;
-        inactive = Color.black;
+        active = Color.black;
+        inactive = Color.white;
     }
 
     // Update is called once per frame
@@ -48,12 +48,12 @@ public class PlayerRaycast : MonoBehaviour
                     }
                 }
             }
-            rotation += 90 *Time.deltaTime;
+            rotation += 90 * Time.deltaTime * 2;
             crosshair.rectTransform.localEulerAngles = new Vector3(0, 0, rotation);
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             // Debug.Log("Did Hit");
             crosshair.color = active;
-            crosshair.rectTransform.localScale = new Vector3(2, 2, 1);
+            crosshair.rectTransform.localScale = new Vector3(1.5f, 1.5f, 1);
         } else {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             //Debug.Log("Did not Hit");
