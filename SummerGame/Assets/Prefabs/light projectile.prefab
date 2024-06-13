@@ -123,6 +123,8 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 1024
+  particleObj: {fileID: 2531317231557795765, guid: c2bda2807816cb747872f00824ad6791,
+    type: 3}
 --- !u!54 &1511880464955788262
 Rigidbody:
   m_ObjectHideFlags: 0

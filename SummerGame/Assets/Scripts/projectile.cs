@@ -8,6 +8,8 @@ public class projectile : MonoBehaviour
     public float speed;
     private float timer;
     public LayerMask ground;
+    public GameObject particleObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,8 @@ public class projectile : MonoBehaviour
     }
 
     private IEnumerator handleImpact() {
+        GameObject particles = Instantiate(particleObj, transform.position - rb.velocity * Time.deltaTime * 2, Quaternion.identity);
+        particles.GetComponent<particleSelfDestruct>().setColor(0);
         rb.velocity = new Vector3(0, 0, 0);
         rb.useGravity = false;
         GetComponent<Renderer>().enabled = false;
