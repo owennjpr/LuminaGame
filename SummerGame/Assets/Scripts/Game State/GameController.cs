@@ -79,7 +79,10 @@ public class GameController : MonoBehaviour
     private Color purpleColor;
     private Color redColor;
 
-
+    // audio
+    private AudioSource audio_s;
+    public AudioClip warp_sfx;
+    public AudioClip menu_sfx;
 
 
     //Debugging toggle
@@ -138,6 +141,8 @@ public class GameController : MonoBehaviour
         blueColor = new Color(0.7f, 1f, 1f);
         purpleColor = new Color(0.9f, 0.7f, 1f);
         redColor = new Color(1f, 0.7f, 0.7f);
+
+        audio_s = gameObject.GetComponent<AudioSource>();
 
     }
 
@@ -299,11 +304,13 @@ public class GameController : MonoBehaviour
         // Debug.Log("in a mover");
         yield return new WaitForSeconds(2.0f);
         if (CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving & !warping) {
-            float distance = Vector2.Distance(centerVector, playerVector);
             
+            float distance = Vector2.Distance(centerVector, playerVector);
             //if the player is still in range after 3 seconds, start the teleport
             if(fadeEndDistance >= distance) {
                 warping = true;
+                audio_s.clip = warp_sfx;
+                audio_s.Play();
 
                 var (destination, currColorID) = CenterPoint.parent.GetComponent<ControlledLightMove>().getDestinationAndColor();
                 
@@ -549,6 +556,9 @@ public class GameController : MonoBehaviour
                 pausemenu.SetActive(true);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
+
+                audio_s.clip = menu_sfx;
+                audio_s.Play();
             }
             Time.timeScale = 0;
             paused = true;
@@ -573,20 +583,33 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
         paused = false;
         cameraController.paused = false;
+
+        audio_s.clip = menu_sfx;
+        audio_s.Play();
+
         
     }
 
     public void options() {
         pausemenu.SetActive(false);
         optionsmenu.SetActive(true);
+
+        audio_s.clip = menu_sfx;
+        audio_s.Play();
     }
 
     public void options_back() {
         optionsmenu.SetActive(false);
         pausemenu.SetActive(true);
+
+        audio_s.clip = menu_sfx;
+        audio_s.Play();
     }
 
     public void exit() {
+        audio_s.clip = menu_sfx;
+        audio_s.Play();
+        
         Time.timeScale = 1;
 
         Vector3 savePos = StableCenterPoint.position + StableCenterPoint.GetComponent<CenterPointControl>().relativeSpawnPos + new Vector3(0, 1, 0);

@@ -14,6 +14,8 @@ public class knobControl : MonoBehaviour
     public Material activeMat;
     public Material inactiveMat;
 
+    private AudioSource audio_s;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class knobControl : MonoBehaviour
         distFromCenter = Vector3.Distance(transform.position, center);
         direction = center - transform.position;
         mask = 1 << 8;
+        audio_s = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,7 @@ public class knobControl : MonoBehaviour
 
     public void clicked() {
         active = !active;
+        audio_s.Play();
         if (active) {
             activate();
         } else {

@@ -6,6 +6,7 @@ public class FloatingLightControl : MonoBehaviour
 {
     private Vector3 startPos;
     private bool beingPulled;
+    private bool pullable;
     private Transform playerHand;
     public Vector3[] pathArray;
     public GameObject objectToSpawn;
@@ -19,10 +20,18 @@ public class FloatingLightControl : MonoBehaviour
     private float idle_zMod;
     private int ID;
 
+    //materials
     public Material mat1;
     public Material mat2;
     public Material mat3;
     public Material mat4;
+
+    //sound effects
+    private AudioSource audio_s;
+    public AudioClip yellow_sfx;
+    public AudioClip blue_sfx;
+    public AudioClip purple_sfx;
+    public AudioClip red_sfx;
     
     // Start is called before the first frame update
     void Start()
@@ -32,6 +41,7 @@ public class FloatingLightControl : MonoBehaviour
         idle_yMod = Random.Range(0.5f, 2.5f);
         idle_zMod = Random.Range(0.5f, 2.5f);
         idle = true;
+        pullable = true;
         time = 0;
         controller = GameObject.FindWithTag("GameController").transform;
         startPos = transform.position;
@@ -42,25 +52,32 @@ public class FloatingLightControl : MonoBehaviour
             disappear();
         }
 
+        
+
     }
 
 
     public void Init(Vector3[] path, int lightID) {
         pathArray = path;
+        audio_s = gameObject.GetComponent<AudioSource>();
         // Debug.Log(lightID);
         ID = lightID;
         switch (ID) {
             case 0:
-            transform.GetComponent<MeshRenderer> ().material = mat1;
+                transform.GetComponent<MeshRenderer> ().material = mat1;
+                audio_s.clip = yellow_sfx;
                 break;
             case 1:
-            transform.GetComponent<MeshRenderer> ().material = mat2;
+                transform.GetComponent<MeshRenderer> ().material = mat2;
+                audio_s.clip = blue_sfx;
                 break;
             case 2:
-            transform.GetComponent<MeshRenderer> ().material = mat3;
+                transform.GetComponent<MeshRenderer> ().material = mat3;
+                audio_s.clip = purple_sfx;
                 break;
             case 3:
-            transform.GetComponent<MeshRenderer> ().material = mat4;
+                transform.GetComponent<MeshRenderer> ().material = mat4;
+                audio_s.clip = red_sfx;
                 break;
         }        
     }
@@ -71,7 +88,7 @@ public class FloatingLightControl : MonoBehaviour
         if (Input.GetMouseButtonUp(1)) {
             beingPulled = false;
         }
-        if (beingPulled) {
+        if (beingPulled && pullable) {
             idle = false;
             if (transform.position != playerHand.position) {
                 transform.position = Vector3.MoveTowards(transform.position, playerHand.position, 15*Time.deltaTime);
@@ -136,17 +153,19 @@ public class FloatingLightControl : MonoBehaviour
     }
 
     private IEnumerator spawnLight() {
-        
+        pullable = false;
+        audio_s.Play();
         GameObject newLight = Instantiate(objectToSpawn, transform.position, transform.rotation, controller);
         GetComponent<Renderer>().enabled = false;
+        gameObject.layer = LayerMask.NameToLayer("Default");
         LightManager manager = transform.parent.GetComponent<LightManager>();
             if (manager != null) {
                 manager.lightUsed(ID);
             } else {
                 transform.parent.GetComponent<fixedLightSpawner>().lightUsed();
         }
-        newLight.GetComponent<ControlledLightMove>().Init(pathArray, speed, ID);
-        yield return new WaitForSeconds(0.1f);
+        newLight.GetComponent<ControlledLightMove>().Init(pathArray, speed, ID);        
+        yield return new WaitForSeconds(4f);
         Destroy(gameObject);
     }
 

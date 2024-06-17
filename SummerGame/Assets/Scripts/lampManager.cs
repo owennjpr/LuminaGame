@@ -297,6 +297,7 @@ public class lampManager : MonoBehaviour
     }
 
     private IEnumerator openVerticalDoor(float height) {
+        solutionObject.GetComponent<AudioSource>().Play();
         Transform doorTransform = solutionObject.transform;
         Vector3 doorPosition = doorTransform.position;
         float counter = height;
