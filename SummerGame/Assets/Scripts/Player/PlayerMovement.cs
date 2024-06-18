@@ -53,13 +53,21 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
+    
+
+    [Header("Audio")]
+    private AudioSource audio_s;
+    public AudioClip jump_sfx;
+    public AudioClip land_sfx;
+    public AudioClip step1_sfx;    
+    public AudioClip step2_sfx;
+    
     public MovementState state;
     public enum MovementState {
         walking,
         sprinting,
         air
     }
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -69,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
         canJump = true;
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        audio_s = GetComponent<AudioSource>();
     }
 
     private void MyInput() {
@@ -122,6 +131,10 @@ public class PlayerMovement : MonoBehaviour
             slowfallInUse = false;
             readyToSlowfall = false;
             StartCoroutine(gameController.fadeoutSlowfall());
+        }
+        if (grounded && state == MovementState.air) {
+            audio_s.clip = land_sfx;
+            audio_s.Play();
         }
         MyInput();
         StateHandler();
@@ -179,7 +192,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.AddForce(transform.up * jumpMult, ForceMode.Impulse);
-        
+        audio_s.clip = jump_sfx;
+        audio_s.Play();
+
         if (readyToSlowfall) {    
             readyToSlowfall = false;
             float delay = slowfallDelay;
