@@ -61,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip land_sfx;
     public AudioClip step1_sfx;    
     public AudioClip step2_sfx;
+    public float steptimer;
+    public int stepIndex;
     
     public MovementState state;
     public enum MovementState {
@@ -78,6 +80,8 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         audio_s = GetComponent<AudioSource>();
+        steptimer = 0;
+        stepIndex = 0;
     }
 
     private void MyInput() {
@@ -144,6 +148,7 @@ public class PlayerMovement : MonoBehaviour
         } else {
             rb.drag = 0;
         }
+        footstep();
        
     }
 
@@ -160,6 +165,29 @@ public class PlayerMovement : MonoBehaviour
             cForce.force = gravDirection * gravityMultiplier;
         }
         
+    }
+
+    private void footstep() {
+        steptimer += Time.deltaTime;
+        if (rb.velocity.magnitude > 2 && state == MovementState.walking && steptimer > 0.5f) {
+            playStep();
+            steptimer = 0;
+        } else if (rb.velocity.magnitude > 2 && state == MovementState.sprinting && steptimer > 0.3f) {
+            playStep();
+            steptimer = 0;
+        }
+    }
+
+    private void playStep() {
+        if (stepIndex == 0) {
+            audio_s.clip = step1_sfx;
+            stepIndex = 1;
+        } else if (stepIndex == 1) {
+            audio_s.clip = step2_sfx;
+            stepIndex = 0;
+        }
+        audio_s.volume = 0.2f;
+        audio_s.Play();
     }
 
     private void SpeedControl() {
@@ -192,7 +220,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.AddForce(transform.up * jumpMult, ForceMode.Impulse);
+
+
         audio_s.clip = jump_sfx;
+        audio_s.volume = 0.5f;
+
         audio_s.Play();
 
         if (readyToSlowfall) {    
