@@ -57,7 +57,7 @@ public class DialController : MonoBehaviour
             int tempMask = 1 << n;
             correctKnobMask += tempMask;
         }
-        Debug.Log(correctKnobMask);
+        // Debug.Log(correctKnobMask);
         
         centerPos = transform.position + new Vector3(0, -0.1f, 0.1f);
 

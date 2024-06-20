@@ -49,7 +49,7 @@ public class CenterPointControl : MonoBehaviour
     // }
 
     public void updateCenterState() {
-        controller.findNewCenter();
+        controller.tryFindNewCenter();
     }
 
     public void checkFade() {

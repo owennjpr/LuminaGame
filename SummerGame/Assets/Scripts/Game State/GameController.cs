@@ -143,6 +143,7 @@ public class GameController : MonoBehaviour
         redColor = new Color(1f, 0.7f, 0.7f);
 
         audio_s = gameObject.GetComponent<AudioSource>();
+        // RenderSettings.fogDensity = 1;
 
     }
 
@@ -201,7 +202,8 @@ public class GameController : MonoBehaviour
                 if (!movingCenter) {
                     StableCenterPoint = CenterPoint;
                 }
-                RenderSettings.fogDensity = 1.2f/fadeStartDistance;
+                StartCoroutine(fogFade(1.2f/fadeStartDistance));
+                // RenderSettings.fogDensity = 1.2f/fadeStartDistance;
             }
         }
 
@@ -210,7 +212,7 @@ public class GameController : MonoBehaviour
             CenterPoint = StableCenterPoint;
         }
 
-        Debug.Log("new center " + CenterPoint.gameObject.name);
+        // Debug.Log("new center " + CenterPoint.gameObject.name);
 
     }
 
@@ -218,30 +220,34 @@ public class GameController : MonoBehaviour
         
         // controller.haltWalk = true;
         if (CenterPoint == StableCenterPoint) {
-            // controller.flipped = !(controller.flipped);
-            // turnTowardsTarget(CenterPoint);
             cameraController.yOverride += 180;
+            
             player.transform.position = Vector3.MoveTowards(player.transform.position, CenterPoint.position, fadeRange/2);
         } else {
             Vector3 stablePos = StableCenterPoint.position;
             player.transform.position = stablePos + StableCenterPoint.GetComponent<CenterPointControl>().relativeSpawnPos;
         }
+        playerVector = new Vector2(player.transform.position.x, player.transform.position.z);
+
         
         yield return new WaitForSeconds(0.05f);
         // controller.haltWalk = false;
     }
 
+
+    public void tryFindNewCenter() {
+        if (!warping) {
+            findNewCenter();
+        }
+    }
     // figures out what center point player in rn so can figure out what should be able to do
     // called at start() but also when enter or leave centers
-    public void findNewCenter() {
+    public void findNewCenter() {        
         //stop rendering current centerpoint
         Transform oldCenter = null;
         if (StableCenterPoint != null) {
             oldCenter = StableCenterPoint;
         }
-        // if (CenterPoint != null && CenterPoint != StableCenterPoint) {
-        //     CenterPoint.GetComponent<CenterPointControl>().deactivate();
-        // }
         
         GameObject[] centers = GameObject.FindGameObjectsWithTag("centerpoint");
         GameObject[] activeCenters = {null, null};
@@ -252,6 +258,11 @@ public class GameController : MonoBehaviour
             Vector2 currCenterVector = new Vector2(c.transform.position.x, c.transform.position.z);
             float distance = Vector2.Distance(currCenterVector, playerVector);
             
+            // if (c.name == "Center 2A") {
+            //     Debug.Log("player vector: " + playerVector);
+            //     Debug.Log("player location: " + player.transform.position);
+            //     Debug.Log("2A distance = " + distance);
+            // }
             if (distance <= c.GetComponent<CenterPointControl>().startDistance) {
                 if(activeCenters[0] == null) {
                     activeCenters[0] = c;
@@ -262,12 +273,16 @@ public class GameController : MonoBehaviour
         }
 
         if (activeCenters[0] == null) {
+            // Debug.Log("no active centers");
             return;
         } else if (activeCenters[1] == null) {
             CenterPoint = activeCenters[0].transform;
+            // Debug.Log("active center: " + CenterPoint.gameObject.name);
         } else {
             float c1range = activeCenters[0].GetComponent<CenterPointControl>().startDistance;
             float c2range = activeCenters[1].GetComponent<CenterPointControl>().startDistance;
+            
+            // Debug.Log("Active centers: " + activeCenters[0].name + " and " + activeCenters[1].name);
 
             // if in two overlapping always puts you in bigger one
             if (c1range > c2range) {
@@ -283,12 +298,14 @@ public class GameController : MonoBehaviour
 
         centerVector = new Vector2(CenterPoint.position.x, CenterPoint.position.z);
         movingCenter = CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving;
+
         if (!movingCenter) {
             StableCenterPoint = CenterPoint;
         } else {
+            // Debug.Log("trying to teleport from " + CenterPoint.gameObject.name);
             StartCoroutine(teleportToDestination());
         }
-        RenderSettings.fogDensity = 1.2f/fadeStartDistance;
+        StartCoroutine(fogFade(1.2f/fadeStartDistance));
         // Debug.Log("new center " + CenterPoint.gameObject.name);
         
         if (oldCenter != null && oldCenter != CenterPoint) {
@@ -297,23 +314,30 @@ public class GameController : MonoBehaviour
         if (StableCenterPoint != null) {
             StableCenterPoint.GetComponent<CenterPointControl>().activate();
         }
+
+        // Debug.Log("newly found centerpoint " + CenterPoint.gameObject.name);
+        // Debug.Log("player position: " + player.transform.position);
     }
     
     // when the player is in a moving light
     public IEnumerator teleportToDestination() {
-        // Debug.Log("in a mover");
+        // Debug.Log("entered moving center");
         yield return new WaitForSeconds(2.0f);
+        // Debug.Log("current center to check is " + CenterPoint.gameObject.name);
         if (CenterPoint.gameObject.GetComponent<CenterPointControl>().isMoving & !warping) {
-            
+            // Debug.Log("confirmed moving and not warping");
+
             float distance = Vector2.Distance(centerVector, playerVector);
             //if the player is still in range after 3 seconds, start the teleport
             if(fadeEndDistance >= distance) {
+                // Debug.Log("confirmed in range");
+
                 warping = true;
                 audio_s.clip = warp_sfx;
                 audio_s.Play();
 
                 var (destination, currColorID) = CenterPoint.parent.GetComponent<ControlledLightMove>().getDestinationAndColor();
-                
+                // Debug.Log("Destination: " + destination);
 
                 Color LightMaskColor = Color.white;
                 switch (currColorID) {
@@ -337,8 +361,9 @@ public class GameController : MonoBehaviour
                     yield return null;
                 }
 
-                StartCoroutine(warpPlayer(destination));
+                warpPlayer(destination);
                 yield return new WaitForSeconds(0.2f);
+
                 warping = false;
 
                 turnTowardsTarget(CenterPoint);
@@ -352,6 +377,7 @@ public class GameController : MonoBehaviour
                 foreach (Transform child in transform) {
                     Destroy(child.gameObject);
                 }
+
             }
         }
 
@@ -371,17 +397,26 @@ public class GameController : MonoBehaviour
         // cameraController.xOverride += xRotationDifference;
     }
 
+    
+    //teleport the player by overriding the walk controller
+    private void warpPlayer(Vector3 pos) {        
+        player.transform.position = pos;
+        playerVector = new Vector2(pos.x, pos.z);
+        Debug.Log("warping to " + player.transform.position);
+        findNewCenter();
+    }
+
+
+
     public void checkFade() {
         if (fadeColor.a > 0.0f) {
             StartCoroutine(manualFade(fadeColor.a));
-            // Debug.Log("Howdy");
         }
     }
 
     private IEnumerator manualFade(float startingAlpha) {
         float currAlpha = startingAlpha;
         while (currAlpha > 0.0f) {
-            // Debug.Log(currAlpha);
             DynamicFadeColor.a = currAlpha;
             DynamicFullScreenFade.color = DynamicFadeColor;
             currAlpha -= 0.01f;
@@ -399,14 +434,32 @@ public class GameController : MonoBehaviour
             yield return null;
         }
         DynamicFadeColor.a = 1.0f;
-        // Debug.Log("huh???");
-        // controller.haltWalk = true;
         yield return new WaitForSeconds(1f);
         player.transform.position = MainCenter.position + new Vector3(0, 1.2f, 0);
         findNewCenter();
         yield return new WaitForSeconds(0.1f);
-        // controller.haltWalk = false;
     
+    }
+
+    public IEnumerator fogFade(float newDensity) {
+        float startDensity = RenderSettings.fogDensity;
+        float currDensity = startDensity;
+        if (newDensity > startDensity) {
+            while (newDensity > currDensity) {
+                currDensity += Time.deltaTime * 0.2f;
+                RenderSettings.fogDensity = currDensity;
+                yield return null;
+            }
+        } else {
+            yield return new WaitForSeconds(0.3f);
+
+            while (newDensity < currDensity) {
+                currDensity -= Time.deltaTime * 0.05f;
+                RenderSettings.fogDensity = currDensity;
+                yield return null;
+            }
+        }
+        yield return null;
     }
     // -------------------------------------------------------------------------------------------
     // PLAYER POWERS
@@ -494,7 +547,7 @@ public class GameController : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(warpPlayer(playerSpawnPoint));
+        warpPlayer(playerSpawnPoint);
 
         yield return new WaitForSeconds(0.2f);
 
@@ -505,9 +558,6 @@ public class GameController : MonoBehaviour
         }
         
     }
-
-    
-
 
     public void newPowerFound() {
         numPowersFound++;
@@ -688,22 +738,10 @@ public class GameController : MonoBehaviour
             SaveData.hasRedPower = false;
         }
         // Debug.Log(SaveData.spawnPoint);
-        StartCoroutine(warpPlayer(SaveData.spawnPoint));
+        warpPlayer(SaveData.spawnPoint);
     }
 
-    //teleport the player by overriding the walk controller
-    private IEnumerator warpPlayer(Vector3 pos) {
-        // controller.haltWalk = true;
-        yield return new WaitForSeconds(0.1f);
-        
-        player.transform.position = pos;
-        findNewCenter();
-        Debug.Log(player.transform.position);
-        yield return new WaitForSeconds(0.1f);
-        
-        // controller.haltWalk = false;
-        
-    }
+    
 
     private void writeSaveData(Vector3 position) {
         SaveData.hasYellowPower = hasYellowPower;
