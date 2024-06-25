@@ -8,12 +8,16 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [Header("Centerpoints")]
+
     public Transform CenterPoint;
     public Transform StableCenterPoint;
-
     public GameObject player;
     private Vector2 playerVector;
     private Vector2 centerVector;
+
+    [Header("Screen Fading")]
+
     public Image fullScreenFade;
     public Image DynamicFullScreenFade;
     private Color fadeColor;
@@ -26,6 +30,8 @@ public class GameController : MonoBehaviour
     private bool warping;
 
     //movement Ability variables
+    [Header("Player Powers")]
+
     public PlayerMovement controller;
     public PlayerCam cameraController;
 
@@ -42,12 +48,16 @@ public class GameController : MonoBehaviour
     [SerializeField] private Transform MainCenter;
     
 
+    [Header("Progression markers")]
+
     // game progress markers
     public bool hasYellowPower;
     public bool hasBluePower;
     public bool hasPurplePower;
     public bool hasRedPower;
     private int numPowersFound;
+
+    [Header("UI Elements")]
 
     public GameObject DialUIElems;
 
@@ -72,12 +82,16 @@ public class GameController : MonoBehaviour
     private bool sideCoverActive;
     private int sideCoverIndex;
 
+    [SerializeField] private GameObject crosshair;
+
 
     // colors
     private Color yellowColor;
     private Color blueColor;
     private Color purpleColor;
     private Color redColor;
+
+    [Header("Audio")]
 
     // audio
     private AudioSource audio_s;
@@ -569,25 +583,25 @@ public class GameController : MonoBehaviour
         switch (numPowersFound) {
             case 1:
                 Debug.Log("Got Yellow");
-                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED","Throw Yellow Lights to Interact With Objects" , 3));
+                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED","Throw Yellow Lights to Interact With Objects" , 3, Color.black));
                 hasYellowPower = true;
                 currZone = ZoneState.WestZone;
                 break;
             case 2:
                 Debug.Log("Got Blue");
-                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Blue Lights to Slow Your Fall", 3));
+                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Blue Lights to Slow Your Fall", 3, Color.black));
                 hasBluePower = true;
                 currZone = ZoneState.EastZone;
                 break;
             case 3:
                 Debug.Log("Got Purple");
-                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Purple Lights to Jump Higher", 3));
+                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Purple Lights to Jump Higher", 3, Color.black));
                 hasPurplePower = true;
                 currZone = ZoneState.NorthZone;
                 break;
             case 4:
                 Debug.Log("Got Red");
-                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Red Lights to Do Something", 3));
+                StartCoroutine(popup.CenterPopupAppear("NEW POWER UNLOCKED", "Absorb Red Lights to Do Something", 3, Color.black));
                 hasRedPower = true;
                 currZone = ZoneState.EndingZone;
                 break;
@@ -613,6 +627,7 @@ public class GameController : MonoBehaviour
             Time.timeScale = 0;
             paused = true;
             cameraController.paused = true;
+            hideCrosshair();
             
             
 
@@ -622,6 +637,7 @@ public class GameController : MonoBehaviour
     }
 
     public void resume() {
+        showCrosshair();
         if (!sideCoverActive) {
             pausemenu.SetActive(false);
             Cursor.visible = false;
@@ -636,6 +652,8 @@ public class GameController : MonoBehaviour
 
         audio_s.clip = menu_sfx;
         audio_s.Play();
+
+        
 
         
     }
@@ -680,6 +698,14 @@ public class GameController : MonoBehaviour
         sideCoverActive = true;
         sideCoverIndex = index;
         pausePlay();
+    }
+
+    public void hideCrosshair() {
+        crosshair.SetActive(false);
+    }
+
+    public void showCrosshair() {
+        crosshair.SetActive(true);
     }
 
     // -------------------------------------------

@@ -49,7 +49,7 @@ public class popupTrigger : MonoBehaviour
         }
         if (usePopup1) {
             if (isTitle) {
-                StartCoroutine(popup.CenterPopupAppear(mainText, subText, secondsActive));
+                StartCoroutine(popup.CenterPopupAppear(mainText, subText, secondsActive, Color.white));
             } else {
                 StartCoroutine(popup.LowerPopupAppear(mainText, secondsActive));
             }
@@ -58,7 +58,7 @@ public class popupTrigger : MonoBehaviour
         // display the second
         if (usePopup2) {
             if (isTitle2) {
-                StartCoroutine(popup.CenterPopupAppear(mainText2, subText2, secondsActive2));
+                StartCoroutine(popup.CenterPopupAppear(mainText2, subText2, secondsActive2, Color.white));
             } else {
                 StartCoroutine(popup.LowerPopupAppear(mainText2, secondsActive2));
             }

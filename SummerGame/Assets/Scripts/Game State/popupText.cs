@@ -16,6 +16,8 @@ public class popupText : MonoBehaviour
 
     [SerializeField] private TMP_Text lowerTMP;
 
+    private GameController controller;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,8 @@ public class popupText : MonoBehaviour
         lowerTextBox = transform.GetChild(1).gameObject;
         lowerTMP = lowerTextBox.transform.GetChild(0).GetComponent<TMP_Text>();
         lowerTextBox.SetActive(false);
+
+        controller = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         // StartCoroutine(LowerPopupAppear("Howdy", 3.2f));
         // StartCoroutine(CenterPopupAppear("NEW NEW NEW", "Greetings there player", 2));
     }
@@ -59,7 +63,11 @@ public class popupText : MonoBehaviour
         lowerTextBox.SetActive(false);
     }
 
-    public IEnumerator CenterPopupAppear(string mainText, string subText, float secondsActive) {
+    public IEnumerator CenterPopupAppear(string mainText, string subText, float secondsActive, Color clr) {
+        
+        controller.hideCrosshair();
+
+        centerTMP.color = clr;
         centerTMP.text = mainText;
         centerSubTMP.text = subText;
         centerText.SetActive(true);
@@ -67,6 +75,7 @@ public class popupText : MonoBehaviour
         yield return new WaitForSeconds(secondsActive);
         centerText.SetActive(false);
         centerSubText.SetActive(false);
+        controller.showCrosshair();
 
     }
 }

@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     
 
     [Header("Audio")]
+    public AudioSource jump_audio_player;
     private AudioSource audio_s;
     public AudioClip jump_sfx;
     public AudioClip land_sfx;
@@ -137,8 +138,8 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(gameController.fadeoutSlowfall());
         }
         if (grounded && state == MovementState.air) {
-            audio_s.clip = land_sfx;
-            audio_s.Play();
+            jump_audio_player.clip = land_sfx;
+            jump_audio_player.Play();
         }
         MyInput();
         StateHandler();
@@ -186,7 +187,6 @@ public class PlayerMovement : MonoBehaviour
             audio_s.clip = step2_sfx;
             stepIndex = 0;
         }
-        audio_s.volume = 0.2f;
         audio_s.Play();
     }
 
@@ -222,10 +222,8 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(transform.up * jumpMult, ForceMode.Impulse);
 
 
-        audio_s.clip = jump_sfx;
-        audio_s.volume = 0.5f;
-
-        audio_s.Play();
+        jump_audio_player.clip = jump_sfx;
+        jump_audio_player.Play();
 
         if (readyToSlowfall) {    
             readyToSlowfall = false;
