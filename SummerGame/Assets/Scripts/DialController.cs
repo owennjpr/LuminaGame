@@ -6,6 +6,7 @@ public class DialController : MonoBehaviour
 {
     
     public GameObject centerCastObj;
+    public GameObject solveTrigger;
     private struct pointData {
         public int[] positions;
         public int[] colors;
@@ -151,7 +152,14 @@ public class DialController : MonoBehaviour
     }
 
     public void centerClicked() {
-        Debug.Log("You clicked the center!");
+        // Debug.Log("You clicked the center!");
         GameObject sphere = Instantiate(centerCastObj, transform.GetChild(0).position, Quaternion.identity, transform);
+        if (!solved && correctKnobMask == knobMask) {
+            solved = true;
+            // Debug.Log("Make a purple light");
+            if (solveTrigger != null) {
+                solveTrigger.SetActive(true);
+            }
+        }
     }
 }
