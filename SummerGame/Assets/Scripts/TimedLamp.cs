@@ -33,7 +33,7 @@ public class TimedLamp : MonoBehaviour
             
             glowCube.gameObject.SetActive(true);
             while(glowCube.localScale.x < 0.85f) {
-                glowCube.localScale += new Vector3(1f, 1f, 0.5f) * 2f * Time.deltaTime;
+                glowCube.localScale += new Vector3(1f, 1f, 0.5f) * 3f * Time.deltaTime;
                 yield return null;
             }
             lit = true;

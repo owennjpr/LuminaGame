@@ -13,6 +13,8 @@ public class lampManager : MonoBehaviour
     [SerializeField] private bool verticalDoorSolve;
     [SerializeField] private bool revealLightSolve;
     [SerializeField] private float doorHeight;
+    [SerializeField] private float doorSpeed;
+
     [SerializeField] private bool activateObjectSolve;
     public GameObject activationObject;
     private bool hasBeenSolved;
@@ -302,8 +304,8 @@ public class lampManager : MonoBehaviour
         Vector3 doorPosition = doorTransform.position;
         float counter = height;
         while (counter > 0.1) {
-            counter -= Time.deltaTime;
-            doorPosition -= new Vector3(0, Time.deltaTime, 0);
+            counter -= Time.deltaTime * doorSpeed;
+            doorPosition -= new Vector3(0, Time.deltaTime * doorSpeed, 0);
             doorTransform.position = doorPosition;
             yield return null;
         }
