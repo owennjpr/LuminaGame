@@ -94,7 +94,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d864817c5bb87b342be087c2d8d69f15,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d864817c5bb87b342be087c2d8d69f15,
         type: 3}
@@ -166,10 +166,15 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d864817c5bb87b342be087c2d8d69f15,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: effbe2fb70e46d743865467fb843ffaf, type: 2}
     - target: {fileID: 919132149155446097, guid: d864817c5bb87b342be087c2d8d69f15,
         type: 3}
       propertyPath: m_Name
-      value: LightCube Variant
+      value: Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d864817c5bb87b342be087c2d8d69f15,
         type: 3}
@@ -232,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd12db41ba04ef447b83507ecf6a50ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localID: 0
 --- !u!4 &2954182451210616095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d864817c5bb87b342be087c2d8d69f15,
