@@ -21,31 +21,11 @@ public class DialController : MonoBehaviour
     private int correctKnobMask;
     [SerializeField] private int[] colorSequence;
     private bool solved;
-    private Vector3 centerPos;
 
-    [SerializeField] private int[] knob0_positions;
-    [SerializeField] private int[] knob0_colors;
-
-    [SerializeField] private int[] knob1_positions;
-    [SerializeField] private int[] knob1_colors;
-
-    [SerializeField] private int[] knob2_positions;
-    [SerializeField] private int[] knob2_colors;
-
-    [SerializeField] private int[] knob3_positions;
-    [SerializeField] private int[] knob3_colors;
-
-    [SerializeField] private int[] knob4_positions;
-    [SerializeField] private int[] knob4_colors;
-
-    [SerializeField] private int[] knob5_positions;
-    [SerializeField] private int[] knob5_colors;
-
-    [SerializeField] private int[] knob6_positions;
-    [SerializeField] private int[] knob6_colors;
-
-    [SerializeField] private int[] knob7_positions;
-    [SerializeField] private int[] knob7_colors;
+    //audio
+    private AudioSource audio_s;
+    public AudioClip incorrectSFX;
+    public AudioClip correctSFX;
 
 
     // Start is called before the first frame update
@@ -58,75 +38,10 @@ public class DialController : MonoBehaviour
             int tempMask = 1 << n;
             correctKnobMask += tempMask;
         }
-        // Debug.Log(correctKnobMask);
+        audio_s = GetComponent<AudioSource>();
         
-        centerPos = transform.position + new Vector3(0, -0.1f, 0.1f);
-
-        // for (int i = 0; i < 8; i++) {
-        //     pointData currKnobData = getActiveKnobData(i);
-        //     int numPoints = currKnobData.positions.Length;
-        //     for (int j = 0; j < numPoints; j++) {
-        //         // Debug.Log(transform.position);
-        //         GameObject point = Instantiate(pointObject, transform.position, Quaternion.identity, transform);
-        //         point.transform.position += new Vector3(0, -0.1f, 0.1f);
-        //         point.transform.position += new Vector3(0, stepsize * currKnobData.positions[j] + 0.08f, 0);
-        //         point.transform.RotateAround(centerPos, new Vector3(0, 0, 1), 45*i);
-        //         point.transform.RotateAround(centerPos, new Vector3(1, 0, 0), 45);
-        //         point.GetComponent<dialPoint>().colorID = currKnobData.colors[j];
-
-        //     }
-        // }
     }
 
-    private pointData getActiveKnobData(int i) {
-        pointData currKnobData = new pointData();
-        switch (i) {
-            case 0:
-                currKnobData.positions = knob0_positions;
-                currKnobData.colors = knob0_colors;
-                break;
-            case 1:
-                currKnobData.positions = knob1_positions;
-                currKnobData.colors = knob1_colors;
-                break;
-            case 2:
-                currKnobData.positions = knob2_positions;
-                currKnobData.colors = knob2_colors;
-                break;
-            case 3:
-                currKnobData.positions = knob3_positions;
-                currKnobData.colors = knob3_colors;
-                break;
-            case 4:
-                currKnobData.positions = knob4_positions;
-                currKnobData.colors = knob4_colors;
-                break;
-            case 5:
-                currKnobData.positions = knob5_positions;
-                currKnobData.colors = knob5_colors;
-                break;
-            case 6:
-                currKnobData.positions = knob6_positions;
-                currKnobData.colors = knob6_colors;
-                break;
-            case 7:
-                currKnobData.positions = knob7_positions;
-                currKnobData.colors = knob7_colors;
-                break;
-        }
-        return currKnobData;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // if (!solved && correctKnobMask == knobMask) {
-        //     solved = true;
-        //     handleSolved();
-            
-        // }
-    }
 
     public void updateMask(bool activate, int knobID) {
         
@@ -136,7 +51,6 @@ public class DialController : MonoBehaviour
         } else {
             knobMask -= tempMask;
         }
-        Debug.Log("mask is " + knobMask);
     }
 
     private void handleSolved() {
@@ -154,12 +68,22 @@ public class DialController : MonoBehaviour
     public void centerClicked() {
         // Debug.Log("You clicked the center!");
         GameObject sphere = Instantiate(centerCastObj, transform.GetChild(0).position, Quaternion.identity, transform);
-        if (!solved && correctKnobMask == knobMask) {
-            solved = true;
-            // Debug.Log("Make a purple light");
-            if (solveTrigger != null) {
-                solveTrigger.SetActive(true);
-            }
+        if (correctKnobMask == knobMask) {
+            if (!solved) {
+                solved = true;
+                // Debug.Log("Make a purple light");
+                if (solveTrigger != null) {
+                    solveTrigger.SetActive(true);
+                }
+            }            
+
+            // do the dial ui check
+            audio_s.clip = correctSFX;
+            audio_s.Play();
+            
+        } else {
+            audio_s.clip = incorrectSFX;
+            audio_s.Play();
         }
     }
 }
