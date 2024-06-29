@@ -61,6 +61,8 @@ public class GameController : MonoBehaviour
 
     public GameObject DialUIElems;
 
+    private int dialOverlayCount;
+
     public GameObject lightSequenceUIElems;
     public ZoneState currZone;
     public enum ZoneState {
@@ -465,10 +467,10 @@ public class GameController : MonoBehaviour
                 yield return null;
             }
         } else {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
 
             while (newDensity < currDensity) {
-                currDensity -= Time.deltaTime * 0.05f;
+                currDensity -= Time.deltaTime * 0.1f;
                 RenderSettings.fogDensity = currDensity;
                 yield return null;
             }
@@ -715,15 +717,24 @@ public class GameController : MonoBehaviour
     public void AddNewDialToUI(int id) {
         Debug.Log("adding new ui element");
         DialUIElems.transform.GetChild(id).gameObject.SetActive(true);
+        dialOverlayCount++;
     }
 
     private void clearDialUI() {
         for (int i = 0; i < DialUIElems.transform.childCount; i++) {
             DialUIElems.transform.GetChild(i).gameObject.SetActive(false);
         }
+        dialOverlayCount = 0;
         // lightSequenceUIElems.GetComponent<uiLightSequence>().clear();
     }
 
+    public bool hasFoundDials() {
+        if (dialOverlayCount == 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public void showColorSequence(List<int> colorSequence) {
         // Debug.Log(colorSequence.Count);
         lightSequenceUIElems.GetComponent<uiLightSequence>().newSequence(colorSequence);

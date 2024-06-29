@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialController : MonoBehaviour
 {
     
+    private GameController controller;
     public GameObject centerCastObj;
     public GameObject solveTrigger;
     private struct pointData {
@@ -31,6 +32,8 @@ public class DialController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controller = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+
         solved = false;
         knobMask = 0;
         correctKnobMask = 0;
@@ -39,7 +42,6 @@ public class DialController : MonoBehaviour
             correctKnobMask += tempMask;
         }
         audio_s = GetComponent<AudioSource>();
-        
     }
 
 
@@ -68,19 +70,16 @@ public class DialController : MonoBehaviour
     public void centerClicked() {
         // Debug.Log("You clicked the center!");
         GameObject sphere = Instantiate(centerCastObj, transform.GetChild(0).position, Quaternion.identity, transform);
-        if (correctKnobMask == knobMask) {
-            if (!solved) {
-                solved = true;
-                // Debug.Log("Make a purple light");
-                if (solveTrigger != null) {
-                    solveTrigger.SetActive(true);
-                }
-            }            
-
-            // do the dial ui check
-            audio_s.clip = correctSFX;
-            audio_s.Play();
-            
+        if (correctKnobMask == knobMask && controller.hasFoundDials()) {
+                audio_s.clip = correctSFX;
+                audio_s.Play();
+                if (!solved) {
+                    solved = true;
+                    // Debug.Log("Make a purple light");
+                    if (solveTrigger != null) {
+                        solveTrigger.SetActive(true);
+                    }
+                }        
         } else {
             audio_s.clip = incorrectSFX;
             audio_s.Play();
